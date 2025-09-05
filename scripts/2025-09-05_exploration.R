@@ -20,7 +20,8 @@ glimpse(exam_data)
 str(exam_data)
 head(exam_data)
 tail(exam_data)
-
+skimr::skim(exam_data)
+    
 # Seems like: 
 # - pre0p_ is unnecessary for gender, age, smoking, pain
 # - there are two gender columns
