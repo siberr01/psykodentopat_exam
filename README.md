@@ -1,5 +1,5 @@
 # README exam project for RMED901A
-GitHub repository for group exam in RMED901A
+GitHub repository for group exam in RMED901A  
 Group: psykodentopat
 
 ## Folders: 
