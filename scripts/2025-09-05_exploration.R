@@ -36,42 +36,22 @@ exam_data <- exam_data %>%
     age = preOp_age
   )
 
-exam_data <- exam_data %>% 
-  rename (
-    age = preOp_age
-  )
-glimpse(exam_data)
 
-
-# Changing the dataset form wide to long formate
-# Trying first on cough variable
-
-exam_data_long1 <- exam_data %>%  
+#Making the data into long version using pivot longer
+exam_data_clean <- exam_data %>%
   pivot_longer(
-    cols = c(pacu30min_cough,pacu90min_cough,postOp4hour_cough,pod1am_cough), 
-    names_to = "time", 
-    values_to = "cough"
-    
+    cols = matches("cough|throatPain"), 
+    names_to = c("time_final", "symptom"),
+    names_sep = "_",
+    values_to = "value"
+  ) %>%
+  pivot_wider(
+    names_from = symptom,
+    values_from = value
   )
-view(exam_data_long1)
 
-# Want to do the same with throat-pain 
-exam_data_long1 <- exam_data_long1 %>%  
-  pivot_longer(
-    cols = c(pacu30min_throatPain,pacu90min_throatPain,postOp4hour_throatPain,pod1am_throatPain), 
-    names_to = "time1", 
-    values_to = "throatPain"
-    
-  )
-view(exam_data_long1)
+exam_data_clean <- exam_data_clean %>%  
+  rename(time = time_final)
 
-exam_data <- exam_data_long1 %>%
-  mutate(obs_time = time) %>%  
-  select(-time, -time1)           
-
-exam_data <- exam_data %>% 
-  rename(time = obs_time)
-
-view(exam_data)
 
 #----End----####
