@@ -72,10 +72,6 @@ exam_data <- exam_data %>%
 
 str(exam_data)
 
-# Remove month and year
-exam_data_clean <- exam_data_clean %>% 
-  select(-month, -year)
-
 # Cleaning dataset to long format ----
 
 # Making the data into long version using pivot longer
@@ -100,6 +96,10 @@ str(exam_data_clean)
 head(exam_data_clean)
 tail(exam_data_clean)
 skimr::skim(exam_data_clean)
+
+# Remove month and year
+exam_data_clean <- exam_data_clean %>% 
+  select(-month, -year)
 
 # Separating ASA_Mallampati to ASA and mallampati ----
 
@@ -173,12 +173,13 @@ exam_data_clean %>%
 glimpse(exam_data_clean)
 
 # Save data ----
-fileName <- paste0("exam_data_clean_", Sys.Date(), ".txt") 
+# Uncomment to save
+# fileName <- paste0("exam_data_clean_", Sys.Date(), ".txt") 
 
-write_delim(
-  exam_data_clean,
-  file = fileName,
-  delim = "\t"
-)
+# write_delim(
+#  exam_data_clean,
+#  file = fileName,
+#  delim = "\t"
+#)
 
 #----End----####
