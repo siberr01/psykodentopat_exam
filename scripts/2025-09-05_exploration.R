@@ -60,7 +60,9 @@ exam_data <- exam_data %>%
   rename(
     gender = preOp_gender,
     smoking =preOp_smoking,
-    age = preOp_age
+    age = preOp_age,
+    BMI =`BMI kg/m2`
+    
   )
 
 # Remove 1gender column ----
@@ -71,6 +73,35 @@ exam_data <- exam_data %>%
 
 str(exam_data)
 
+
+# Changing numeric values to factor 
+
+exam_data <- exam_data %>%
+  mutate(
+    gender = factor(
+      gender, 
+      levels = c(0,1),
+      labels = c("M","F")
+    )
+  )
+      
+exam_data <- exam_data %>% 
+  mutate(
+    smoking = factor(
+      smoking, 
+      levels = c(1,2,3),
+      labels = c("current","past","never")
+    )
+  )
+
+exam_data <- exam_data %>% 
+  mutate(preOp_pain = factor(
+    preOp_pain, 
+    levels = c(0,1),
+    labels = c("no","yes")
+  )
+  )
+        
 # Cleaning dataset to long format ----
 
 #Making the data into long version using pivot longer
@@ -89,6 +120,16 @@ exam_data_clean <- exam_data %>%
 exam_data_clean <- exam_data_clean %>%  
   rename(time = time_final)
 
+# Changing new variabel from numeric to factor 
+exam_data_clean <- exam_data_clean %>% 
+  mutate(cough = factor(
+    cough, 
+    levels = c(0,1,2,3),
+    labels = c("no","mild", "moderate","severe")
+  )
+  ) 
+
+glimpse(exam_data_clean)
 
 
 #----End----####
