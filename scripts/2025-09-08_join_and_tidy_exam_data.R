@@ -114,4 +114,26 @@ joined_exam_data <- joined_exam_data %>%
 
 glimpse(joined_exam_data)
 
+# Task 3: a column cutting BMI into quartiles (4 equal parts); HINT: cut() function
+
+# Viewing BMI 
+summary(joined_exam_data$BMI)
+
+# Using WHOs standard BMI categories 
+
+joined_exam_data <- joined_exam_data %>%
+  mutate(
+    BMI_category = cut(
+      BMI,
+      breaks = c(-Inf, 18.5, 25, 30, Inf),
+      labels = c("Underweight", "Normal weight", "Overweight", "Obese"),
+      right = FALSE
+    )
+  )
+
+glimpse(joined_exam_data)
+
+
+
+
 #----End----####
