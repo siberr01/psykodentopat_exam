@@ -114,6 +114,7 @@ joined_exam_data <- joined_exam_data %>%
 
 glimpse(joined_exam_data)
 
+
 # Create new columns ----
 ## A column showing whether severity of throat pain changed from "pacu30min" to "pod1amdata 
 throat_pain_change <- joined_exam_data %>% 
@@ -153,5 +154,46 @@ joined_exam_data <- joined_exam_data %>%
 
 # Sanity check
 glimpse(joined_exam_data)
+
+## A column cutting BMI into quartiles (4 equal parts)
+
+# Viewing BMI 
+summary(joined_exam_data$BMI)
+
+# Using WHOs standard BMI categories 
+
+joined_exam_data <- joined_exam_data %>%
+  mutate(
+    BMI_category = cut(
+      BMI,
+      breaks = c(-Inf, 18.5, 25, 30, Inf),
+      labels = c("Underweight", "Normal weight", "Overweight", "Obese"),
+      right = FALSE
+    )
+  )
+
+glimpse(joined_exam_data)
+
+# Arranging data 
+joined_exam_data <- joined_exam_data %>%
+  select(patient_id, BMI, age, smoking, gender, everything()) %>% 
+  arrange(patient_id)
+
+
+# Exploring the new data
+skimr::skim(joined_exam_data)
+
+
+# Exploring missing data
+
+joined_exam_data %>%
+  summarise(across(everything(), ~ sum(is.na(.)))) %>%   # Showing were we have missing values
+  pivot_longer(cols = everything(),
+               names_to = "variable",
+               values_to = "n_missing") %>%
+  arrange(desc(n_missing))
+
+# It appears as we have 8 missing values in swallowPain, cough, throatPain and extubation_cough
+# Since we have a long formate, this is only missing values for two individuals 
 
 #----End----####
