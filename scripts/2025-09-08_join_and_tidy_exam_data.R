@@ -116,7 +116,9 @@ glimpse(joined_exam_data)
 
 
 # Create new columns ----
-## A column showing whether severity of throat pain changed from "pacu30min" to "pod1amdata 
+## Create both change variables first
+
+### Throat pain change
 throat_pain_change <- joined_exam_data %>% 
   select(patient_id, time, throatPain) %>% 
   filter(time %in% c("pacu30min", "pod1am")) %>% 
@@ -128,64 +130,32 @@ throat_pain_change <- joined_exam_data %>%
   )) %>% 
   select(patient_id, throat_pain_change)
 
-glimpse(throat_pain_change)
-
-### Join throat_pain_change and joined_exam_data
-joined_exam_data <- joined_exam_data %>% 
-  left_join(throat_pain_change)
-
-## Exploring whether severity of cough changed from "extubation" to "pod1am"
+### Cough change
 cough_change <- joined_exam_data %>% 
   filter(time == "pod1am") %>% 
   mutate(cough_change = case_when(
     extubation_cough == "no cough" & cough == "no" ~ "no_change",
     extubation_cough == "no cough" & cough %in% c("mild", "moderate", "severe") ~ "more_cough",
     extubation_cough %in% c("mild", "moderate", "severe") & cough == "no" ~ "cough_resolved",
-    extubation_cough %in% c("mild", "moderate", "severe") & cough %in% c("mild", "moderate", "severe") ~ "persistent_cough",
+    extubation_cough %in% c("mild", "moderate", "severe") & cough %in% c("mild", "moderate", "severe") ~ "persistent_cough"
   )) %>% 
   select(patient_id, cough_change)
-    
-cough_change %>% 
-  count(cough_change)
 
-### Join data and cough_change
-joined_exam_data <- joined_exam_data %>%
-  left_join(cough_change)
-
-# Sanity check
-glimpse(joined_exam_data)
-
-## A column cutting BMI into quartiles (4 equal parts)
-
-# Viewing BMI 
-summary(joined_exam_data$BMI)
-
-# Using WHOs standard BMI categories 
-
-joined_exam_data <- joined_exam_data %>%
-  mutate(
-    BMI_category = cut(
-      BMI,
-      breaks = c(-Inf, 18.5, 25, 30, Inf),
-      labels = c("Underweight", "Normal weight", "Overweight", "Obese"),
-      right = FALSE
-    )
-  )
-
-glimpse(joined_exam_data)
-
-# Arranging data 
-joined_exam_data <- joined_exam_data %>%
-  select(patient_id, BMI, age, smoking, gender, everything()) %>% 
+# One pipe for joining throat pain, cough, BMI categories, selecting columns, and arranging by ID
+joined_exam_data <- joined_exam_data %>% 
+  left_join(throat_pain_change, by = "patient_id") %>% 
+  left_join(cough_change, by = "patient_id") %>% 
+  mutate(BMI_category = cut(BMI, breaks = c(-Inf, 18.5, 25, 30, Inf), 
+                            labels = c("Underweight", "Normal weight", "Overweight", "Obese"), 
+                            right = FALSE)) %>% 
+  select(patient_id, BMI, age, smoking, gender, everything()) %>%
   arrange(patient_id)
-
 
 # Exploring the new data
 skimr::skim(joined_exam_data)
 
 
 # Exploring missing data
-
 joined_exam_data %>%
   summarise(across(everything(), ~ sum(is.na(.)))) %>%   # Showing were we have missing values
   pivot_longer(cols = everything(),
@@ -195,5 +165,38 @@ joined_exam_data %>%
 
 # It appears as we have 8 missing values in swallowPain, cough, throatPain and extubation_cough
 # Since we have a long formate, this is only missing values for two individuals 
+
+# Stratify data ----
+## Stratify by gender
+joined_exam_data %>% 
+  group_by(gender) %>% 
+  summarise(
+    min = min(swallowPain, na.rm = TRUE),
+    max = max(swallowPain, na.rm = TRUE),
+    mean = mean(swallowPain, na.rm = TRUE),
+    sd = sd(swallowPain, na.rm = TRUE),
+    n_missing = sum(is.na(swallowPain)),
+    n_total = n()
+  )
+
+## Report min, max, mean, sd
+#gender   min   max  mean    sd
+#<fct>  <dbl> <dbl> <dbl> <dbl>
+#1 F          0     9 0.613  1.62
+#2 M          0    10 0.993  1.88
+
+## Throat pain day after by treatment (for females)
+joined_exam_data %>% 
+  filter(gender == "F" & time == "pod1am") %>% 
+  group_by(treat) %>% 
+  summarise(
+    min = min(throatPain, na.rm = TRUE),
+    max = max(throatPain, na.rm = TRUE),
+    mean = mean(throatPain, na.rm = TRUE),
+    sd = sd(throatPain, na.rm = TRUE),
+    n = n()
+  ) %>% 
+  knitr::kable(digits = 2, caption = "Throat Pain at POD1AM by Treatment (Females Only)")
+
 
 #----End----####
