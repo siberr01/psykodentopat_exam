@@ -2,11 +2,10 @@
 # Date: 2025-09-05
 # Author: psykodentopat
 # File name: 2025-09-05_exploration.R
-# Description: This is a script for exploring exam_data.txt
-#
+# Description: This is a script for exploring exam_data.txt, and 
+# tidying it accordingly.
 #
 # Project: psykodentopat_exam.Rproj
-
 
 # Setup ----
 library(tidyverse)
@@ -65,17 +64,21 @@ exam_data <- exam_data %>%
     age = preOp_age
     )
 
-# Remove 1gender column ----
+# Remove 1gender column
 exam_data$gender == exam_data$`1gender` # Check if they are identical
 
 exam_data <- exam_data %>% 
   select(-'1gender')
 
 str(exam_data)
-   
+
+# Remove month and year
+exam_data_clean <- exam_data_clean %>% 
+  select(-month, -year)
+
 # Cleaning dataset to long format ----
 
-#Making the data into long version using pivot longer
+# Making the data into long version using pivot longer
 exam_data_clean <- exam_data %>%
   pivot_longer(
     cols = matches("cough|throatPain"), 
@@ -91,8 +94,25 @@ exam_data_clean <- exam_data %>%
 exam_data_clean <- exam_data_clean %>%  
   rename(time = time_final)
 
+# Checking the clean data
+glimpse(exam_data_clean)
+str(exam_data_clean)
+head(exam_data_clean)
+tail(exam_data_clean)
+skimr::skim(exam_data_clean)
 
-# Changing new variabels from numeric to factor 
+# Separating ASA_Mallampati to ASA and mallampati ----
+
+exam_data_clean <- exam_data_clean %>%
+  separate(preOp_ASA_Mallampati, 
+           into = c("ASA", "mallampati"), 
+           sep = "_")
+  
+exam_data_clean %>% 
+  count(ASA, mallampati)
+
+# Changing new variabels from numeric to factor ----
+## Cough
 exam_data_clean <- exam_data_clean %>%             
   mutate(cough = factor(                    
     cough, 
@@ -101,6 +121,7 @@ exam_data_clean <- exam_data_clean %>%
   )
   ) 
 
+## Gender
 exam_data_clean <- exam_data_clean %>%
   mutate(
     gender = factor(
@@ -109,7 +130,8 @@ exam_data_clean <- exam_data_clean %>%
       labels = c("M","F")
     )
   )
-      
+
+## Smoking      
 exam_data_clean <- exam_data_clean %>% 
   mutate(
     smoking = factor(
@@ -119,22 +141,44 @@ exam_data_clean <- exam_data_clean %>%
     )
   )
 
+## preOp_pain
 exam_data_clean <- exam_data_clean %>% 
   mutate(preOp_pain = factor(
     preOp_pain, 
     levels = c(0,1),
-    labels = c("no","yes")
-  )
+    labels = c("no","yes"))
   )
 
-
+## Treatment
 exam_data_clean$treat <- factor(      # Convert the variable `treat` into a factor with two levels:
   exam_data_clean$treat,
   levels = c(0, 1),                 # 0 = "Sugar 5g" and 1 = "Licorice 0.5g"
   labels = c("Sugar", "Licorice")
 )
 
+## Mutate from num to factor for ASA and mallampati
+exam_data_clean %>% 
+  mutate(
+    ASA = factor(ASA, levels = 1:3),
+    mallampati = factor(mallampati, levels = 1:4)
+  )
+
+## Sanity check
 glimpse(exam_data_clean)
 skimr::skim(exam_data_clean)
+
+exam_data_clean %>% 
+  count(ASA, mallampati)
+
+glimpse(exam_data_clean)
+
+# Save data ----
+fileName <- paste0("exam_data_clean_", Sys.Date(), ".txt") 
+
+write_delim(
+  exam_data_clean,
+  file = fileName,
+  delim = "\t"
+)
 
 #----End----####
