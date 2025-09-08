@@ -115,7 +115,7 @@ joined_exam_data <- joined_exam_data %>%
 glimpse(joined_exam_data)
 
 # Create new columns ----
-## A column showing whether severity of throat pain changed from "pacu30min" to "pod1amdata %>% 
+## A column showing whether severity of throat pain changed from "pacu30min" to "pod1amdata 
 throat_pain_change <- joined_exam_data %>% 
   select(patient_id, time, throatPain) %>% 
   filter(time %in% c("pacu30min", "pod1am")) %>% 
@@ -133,6 +133,25 @@ glimpse(throat_pain_change)
 joined_exam_data <- joined_exam_data %>% 
   left_join(throat_pain_change)
 
+## Exploring whether severity of cough changed from "extubation" to "pod1am"
+cough_change <- joined_exam_data %>% 
+  filter(time == "pod1am") %>% 
+  mutate(cough_change = case_when(
+    extubation_cough == "no cough" & cough == "no" ~ "no_change",
+    extubation_cough == "no cough" & cough %in% c("mild", "moderate", "severe") ~ "more_cough",
+    extubation_cough %in% c("mild", "moderate", "severe") & cough == "no" ~ "cough_resolved",
+    extubation_cough %in% c("mild", "moderate", "severe") & cough %in% c("mild", "moderate", "severe") ~ "persistent_cough",
+  )) %>% 
+  select(patient_id, cough_change)
+    
+cough_change %>% 
+  count(cough_change)
+
+### Join data and cough_change
+joined_exam_data <- joined_exam_data %>%
+  left_join(cough_change)
+
+# Sanity check
 glimpse(joined_exam_data)
 
 #----End----####
