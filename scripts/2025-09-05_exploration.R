@@ -7,7 +7,6 @@
 #
 # Project: psykodentopat_exam.Rproj
 
-
 # Setup ----
 library(tidyverse)
 library(here)
@@ -59,17 +58,23 @@ exam_data %>%
 exam_data <- exam_data %>%
   rename(
     gender = preOp_gender,
-    smoking =preOp_smoking,
+    smoking = preOp_smoking,
+    BMI = "BMI kg/m2",
+    swallowPain = pacu30min_swallowPain,
     age = preOp_age
-  )
+    )
 
-# Remove 1gender column ----
+# Remove 1gender column
 exam_data$gender == exam_data$`1gender` # Check if they are identical
 
 exam_data <- exam_data %>% 
   select(-'1gender')
 
 str(exam_data)
+
+# Remove month and year
+exam_data_clean <- exam_data_clean %>% 
+  select(-month, -year)
 
 # Cleaning dataset to long format ----
 
@@ -106,19 +111,64 @@ exam_data_clean <- exam_data_clean %>%
 exam_data_clean %>% 
   count(ASA, mallampati)
 
-# Mutate from num to factor for ASA and mallampati
+# Changing new variabels from numeric to factor ----
+## Cough
+exam_data_clean <- exam_data_clean %>%             
+  mutate(cough = factor(                    
+    cough, 
+    levels = c(0,1,2,3),
+    labels = c("no","mild", "moderate","severe")
+  )
+  ) 
+
+## Gender
+exam_data_clean <- exam_data_clean %>%
+  mutate(
+    gender = factor(
+      gender, 
+      levels = c(0,1),
+      labels = c("M","F")
+    )
+  )
+
+## Smoking      
+exam_data_clean <- exam_data_clean %>% 
+  mutate(
+    smoking = factor(
+      smoking, 
+      levels = c(1,2,3),
+      labels = c("current","past","never")
+    )
+  )
+
+## preOp_pain
+exam_data_clean <- exam_data_clean %>% 
+  mutate(preOp_pain = factor(
+    preOp_pain, 
+    levels = c(0,1),
+    labels = c("no","yes"))
+  )
+
+## Treatment
+exam_data_clean$treat <- factor(      # Convert the variable `treat` into a factor with two levels:
+  exam_data_clean$treat,
+  levels = c(0, 1),                 # 0 = "Sugar 5g" and 1 = "Licorice 0.5g"
+  labels = c("Sugar", "Licorice")
+)
+
+## Mutate from num to factor for ASA and mallampati
 exam_data_clean %>% 
   mutate(
     ASA = factor(ASA, levels = 1:3),
     mallampati = factor(mallampati, levels = 1:4)
   )
 
+## Sanity check
+glimpse(exam_data_clean)
+skimr::skim(exam_data_clean)
+
 exam_data_clean %>% 
   count(ASA, mallampati)
-
-# Remove month and year
-exam_data_clean <- exam_data_clean %>% 
-  select(-month, -year)
 
 glimpse(exam_data_clean)
 
