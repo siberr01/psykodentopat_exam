@@ -2,8 +2,8 @@
 # Date: 2025-09-05
 # Author: psykodentopat
 # File name: 2025-09-05_exploration.R
-# Description: This is a script for exploring exam_data.txt
-#
+# Description: This is a script for exploring exam_data.txt, and 
+# tidying it accordingly.
 #
 # Project: psykodentopat_exam.Rproj
 
@@ -73,7 +73,7 @@ str(exam_data)
 
 # Cleaning dataset to long format ----
 
-#Making the data into long version using pivot longer
+# Making the data into long version using pivot longer
 exam_data_clean <- exam_data %>%
   pivot_longer(
     cols = matches("cough|throatPain"), 
@@ -89,6 +89,46 @@ exam_data_clean <- exam_data %>%
 exam_data_clean <- exam_data_clean %>%  
   rename(time = time_final)
 
+# Checking the clean data
+glimpse(exam_data_clean)
+str(exam_data_clean)
+head(exam_data_clean)
+tail(exam_data_clean)
+skimr::skim(exam_data_clean)
 
+# Separating ASA_Mallampati to ASA and mallampati ----
+
+exam_data_clean <- exam_data_clean %>%
+  separate(preOp_ASA_Mallampati, 
+           into = c("ASA", "mallampati"), 
+           sep = "_")
+  
+exam_data_clean %>% 
+  count(ASA, mallampati)
+
+# Mutate from num to factor for ASA and mallampati
+exam_data_clean %>% 
+  mutate(
+    ASA = factor(ASA, levels = 1:3),
+    mallampati = factor(mallampati, levels = 1:4)
+  )
+
+exam_data_clean %>% 
+  count(ASA, mallampati)
+
+# Remove month and year
+exam_data_clean <- exam_data_clean %>% 
+  select(-month, -year)
+
+glimpse(exam_data_clean)
+
+# Save data ----
+fileName <- paste0("exam_data_clean_", Sys.Date(), ".txt") 
+
+write_delim(
+  exam_data_clean,
+  file = fileName,
+  delim = "\t"
+)
 
 #----End----####
