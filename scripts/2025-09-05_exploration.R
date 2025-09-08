@@ -59,11 +59,11 @@ exam_data %>%
 exam_data <- exam_data %>%
   rename(
     gender = preOp_gender,
-    smoking =preOp_smoking,
-    age = preOp_age,
-    BMI =`BMI kg/m2`
-    
-  )
+    smoking = preOp_smoking,
+    BMI = "BMI kg/m2",
+    swallowPain = pacu30min_swallowPain,
+    age = preOp_age
+    )
 
 # Remove 1gender column ----
 exam_data$gender == exam_data$`1gender` # Check if they are identical
@@ -72,36 +72,7 @@ exam_data <- exam_data %>%
   select(-'1gender')
 
 str(exam_data)
-
-
-# Changing numeric values to factor 
-
-exam_data <- exam_data %>%
-  mutate(
-    gender = factor(
-      gender, 
-      levels = c(0,1),
-      labels = c("M","F")
-    )
-  )
-      
-exam_data <- exam_data %>% 
-  mutate(
-    smoking = factor(
-      smoking, 
-      levels = c(1,2,3),
-      labels = c("current","past","never")
-    )
-  )
-
-exam_data <- exam_data %>% 
-  mutate(preOp_pain = factor(
-    preOp_pain, 
-    levels = c(0,1),
-    labels = c("no","yes")
-  )
-  )
-        
+   
 # Cleaning dataset to long format ----
 
 #Making the data into long version using pivot longer
@@ -120,16 +91,50 @@ exam_data_clean <- exam_data %>%
 exam_data_clean <- exam_data_clean %>%  
   rename(time = time_final)
 
-# Changing new variabel from numeric to factor 
-exam_data_clean <- exam_data_clean %>% 
-  mutate(cough = factor(
+
+# Changing new variabels from numeric to factor 
+exam_data_clean <- exam_data_clean %>%             
+  mutate(cough = factor(                    
     cough, 
     levels = c(0,1,2,3),
     labels = c("no","mild", "moderate","severe")
   )
   ) 
 
-glimpse(exam_data_clean)
+exam_data_clean <- exam_data_clean %>%
+  mutate(
+    gender = factor(
+      gender, 
+      levels = c(0,1),
+      labels = c("M","F")
+    )
+  )
+      
+exam_data_clean <- exam_data_clean %>% 
+  mutate(
+    smoking = factor(
+      smoking, 
+      levels = c(1,2,3),
+      labels = c("current","past","never")
+    )
+  )
 
+exam_data_clean <- exam_data_clean %>% 
+  mutate(preOp_pain = factor(
+    preOp_pain, 
+    levels = c(0,1),
+    labels = c("no","yes")
+  )
+  )
+
+
+exam_data_clean$treat <- factor(      # Convert the variable `treat` into a factor with two levels:
+  exam_data_clean$treat,
+  levels = c(0, 1),                 # 0 = "Sugar 5g" and 1 = "Licorice 0.5g"
+  labels = c("Sugar", "Licorice")
+)
+
+glimpse(exam_data_clean)
+skimr::skim(exam_data_clean)
 
 #----End----####
