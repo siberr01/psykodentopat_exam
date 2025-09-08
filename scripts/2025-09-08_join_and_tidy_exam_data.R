@@ -198,5 +198,15 @@ joined_exam_data %>%
   ) %>% 
   knitr::kable(digits = 2, caption = "Throat Pain at POD1AM by Treatment (Females Only)")
 
+## Stratifying cater. column gender dor persons with BMI <25
+joined_exam_data %>%
+  filter(BMI < 25) %>%
+  group_by(gender) %>%
+  summarise(
+    min_BMI  = min(BMI, na.rm = TRUE),
+    max_BMI  = max(BMI, na.rm = TRUE),
+    mean_BMI = mean(BMI, na.rm = TRUE),
+    sd_BMI   = sd(BMI, na.rm = TRUE)
+  )
 
 #----End----####
