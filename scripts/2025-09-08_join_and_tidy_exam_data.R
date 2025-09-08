@@ -196,4 +196,15 @@ joined_exam_data %>%
 # It appears as we have 8 missing values in swallowPain, cough, throatPain and extubation_cough
 # Since we have a long formate, this is only missing values for two individuals 
 
+### Stratifying cater. column gender dor persons with BMI <25
+joined_exam_data %>%
+  filter(BMI < 25) %>%
+  group_by(gender) %>%
+  summarise(
+    min_BMI  = min(BMI, na.rm = TRUE),
+    max_BMI  = max(BMI, na.rm = TRUE),
+    mean_BMI = mean(BMI, na.rm = TRUE),
+    sd_BMI   = sd(BMI, na.rm = TRUE)
+  )
+
 #----End----####
