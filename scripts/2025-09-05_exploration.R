@@ -7,28 +7,55 @@
 #
 # Project: psykodentopat_exam.Rproj
 
+
+# Setup ----
 library(tidyverse)
 library(here)
 
+# Reading the data ----
 exam_data <- read_delim(here("data","exam_data.txt"))
+
+# Checking the data ----
 exam_data
-
 glimpse(exam_data)
-view(exam_data)
+str(exam_data)
+head(exam_data)
+tail(exam_data)
+skimr::skim(exam_data)
+    
+# Seems like: 
+# - pre0p_ is unnecessary for gender, age, smoking, pain
+# - there are two gender columns
+# - gender can be written as m and f instead of 0 and 1 for clarity
+# - can create long format: preop, pacu30min, pacu90min, postop4hour, pod1am --> time
+# - long format: cough, throatpain
+# - can rename some variables: BMI, 
+# - split preOp_ASA_Mallampati: Contains two measures
+# - month and year are not mentioned in the notebook, might refer to month/year of operation, but might be something else as well
+# several of the columns are numerical, but are in fact factors
 
-# Tidying ----
+# Looking at the IDs ----
+exam_data %>% 
+  count(patient_id) %>% 
+  distinct() # seems like even though there are 265 rows, there are 235 distinct patient_ids
 
-# Gender is written as "preOp_gender" and "'1gender'" 
-# We want to check if these two collums includes the same information
-all(exam_data$preOp_gender == exam_data$`1gender`)
+exam_data %>% 
+  count(patient_id) %>% 
+  filter(n>1) # seems like 28 patient_ids are reported more than once
 
-# The two collums contain the same information, therefore we remove one of the collums 
-# and change the name 
+exam_data %>% 
+  count(patient_id) %>% 
+  filter(n>2) # ... and two ids counted three times
 
-exam_data <- exam_data %>% 
-  select(-`1gender`)
+# Looking at the data of the IDs reported several times: Looks like they have been operated several times (due to different month/year)
 
-# Adjusting the names of the collums 
+exam_data %>% 
+  count(patient_id) %>% 
+  filter(n>1) %>% 
+  pull(patient_id)
+
+# Organizing columns ----
+# Renaming collums 
 exam_data <- exam_data %>%
   rename(
     gender = preOp_gender,
@@ -36,6 +63,15 @@ exam_data <- exam_data %>%
     age = preOp_age
   )
 
+# Remove 1gender column ----
+exam_data$gender == exam_data$`1gender` # Check if they are identical
+
+exam_data <- exam_data %>% 
+  select(-'1gender')
+
+str(exam_data)
+
+# Cleaning dataset to long format ----
 
 #Making the data into long version using pivot longer
 exam_data_clean <- exam_data %>%
@@ -52,6 +88,7 @@ exam_data_clean <- exam_data %>%
 
 exam_data_clean <- exam_data_clean %>%  
   rename(time = time_final)
+
 
 
 #----End----####
