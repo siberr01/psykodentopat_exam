@@ -114,7 +114,48 @@ joined_exam_data <- joined_exam_data %>%
 
 glimpse(joined_exam_data)
 
-# Task 3: a column cutting BMI into quartiles (4 equal parts); HINT: cut() function
+
+# Create new columns ----
+## A column showing whether severity of throat pain changed from "pacu30min" to "pod1amdata 
+throat_pain_change <- joined_exam_data %>% 
+  select(patient_id, time, throatPain) %>% 
+  filter(time %in% c("pacu30min", "pod1am")) %>% 
+  pivot_wider(names_from = time, values_from = throatPain) %>% 
+  mutate(throat_pain_change = case_when(
+    pod1am > pacu30min ~ "increased",
+    pod1am < pacu30min ~ "decreased", 
+    pod1am == pacu30min ~ "no_change"
+  )) %>% 
+  select(patient_id, throat_pain_change)
+
+glimpse(throat_pain_change)
+
+### Join throat_pain_change and joined_exam_data
+joined_exam_data <- joined_exam_data %>% 
+  left_join(throat_pain_change)
+
+## Exploring whether severity of cough changed from "extubation" to "pod1am"
+cough_change <- joined_exam_data %>% 
+  filter(time == "pod1am") %>% 
+  mutate(cough_change = case_when(
+    extubation_cough == "no cough" & cough == "no" ~ "no_change",
+    extubation_cough == "no cough" & cough %in% c("mild", "moderate", "severe") ~ "more_cough",
+    extubation_cough %in% c("mild", "moderate", "severe") & cough == "no" ~ "cough_resolved",
+    extubation_cough %in% c("mild", "moderate", "severe") & cough %in% c("mild", "moderate", "severe") ~ "persistent_cough",
+  )) %>% 
+  select(patient_id, cough_change)
+    
+cough_change %>% 
+  count(cough_change)
+
+### Join data and cough_change
+joined_exam_data <- joined_exam_data %>%
+  left_join(cough_change)
+
+# Sanity check
+glimpse(joined_exam_data)
+
+## A column cutting BMI into quartiles (4 equal parts)
 
 # Viewing BMI 
 summary(joined_exam_data$BMI)
@@ -133,18 +174,17 @@ joined_exam_data <- joined_exam_data %>%
 
 glimpse(joined_exam_data)
 
-
 # Arranging data 
 joined_exam_data <- joined_exam_data %>%
   select(patient_id, BMI, age, smoking, gender, everything()) %>% 
   arrange(patient_id)
 
 
-## Exploring new data 
+# Exploring the new data
 skimr::skim(joined_exam_data)
 
 
-### Missing data
+# Exploring missing data
 
 joined_exam_data %>%
   summarise(across(everything(), ~ sum(is.na(.)))) %>%   # Showing were we have missing values
@@ -153,7 +193,7 @@ joined_exam_data %>%
                values_to = "n_missing") %>%
   arrange(desc(n_missing))
 
-# It appears as 8 missing values in swallowPain, cough, throatPain and extubation_cough
+# It appears as we have 8 missing values in swallowPain, cough, throatPain and extubation_cough
 # Since we have a long formate, this is only missing values for two individuals 
 
 #----End----####
