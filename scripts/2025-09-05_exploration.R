@@ -59,7 +59,9 @@ exam_data %>%
 exam_data <- exam_data %>%
   rename(
     gender = preOp_gender,
-    smoking =preOp_smoking,
+    smoking = preOp_smoking,
+    BMI = "BMI kg/m2",
+    swallowPain = pacu30min_swallowPain,
     age = preOp_age
   )
 
@@ -89,6 +91,16 @@ exam_data_clean <- exam_data %>%
 exam_data_clean <- exam_data_clean %>%  
   rename(time = time_final)
 
+# Convert the variable `treat` into a factor with two levels:
+# 0 = "Sugar 5g" and 1 = "Licorice 0.5g"
 
+exam_data_clean$treat <- factor(
+  exam_data_clean$treat,
+  levels = c(0, 1),
+  labels = c("Sugar", "Licorice")
+)
+
+glimpse(exam_data_clean)
+skimr::skim(exam_data_clean)
 
 #----End----####
