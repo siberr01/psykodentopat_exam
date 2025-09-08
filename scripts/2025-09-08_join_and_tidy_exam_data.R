@@ -114,4 +114,25 @@ joined_exam_data <- joined_exam_data %>%
 
 glimpse(joined_exam_data)
 
+# Create new columns ----
+## A column showing whether severity of throat pain changed from "pacu30min" to "pod1amdata %>% 
+throat_pain_change <- joined_exam_data %>% 
+  select(patient_id, time, throatPain) %>% 
+  filter(time %in% c("pacu30min", "pod1am")) %>% 
+  pivot_wider(names_from = time, values_from = throatPain) %>% 
+  mutate(throat_pain_change = case_when(
+    pod1am > pacu30min ~ "increased",
+    pod1am < pacu30min ~ "decreased", 
+    pod1am == pacu30min ~ "no_change"
+  )) %>% 
+  select(patient_id, throat_pain_change)
+
+glimpse(throat_pain_change)
+
+### Join throat_pain_change and joined_exam_data
+joined_exam_data <- joined_exam_data %>% 
+  left_join(throat_pain_change)
+
+glimpse(joined_exam_data)
+
 #----End----####
