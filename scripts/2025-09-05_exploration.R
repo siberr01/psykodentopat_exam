@@ -7,6 +7,7 @@
 #
 # Project: psykodentopat_exam.Rproj
 
+
 # Setup ----
 library(tidyverse)
 library(here)
@@ -53,13 +54,14 @@ exam_data %>%
   filter(n>1) %>% 
   pull(patient_id)
 
-# Organizing gender columns ----
-# Changing name of gender and BMI
-exam_data <- exam_data %>% 
-  rename(gender = preOp_gender,
-         BMI = `BMI kg/m2`)
-
-exam_data
+# Organizing columns ----
+# Renaming collums 
+exam_data <- exam_data %>%
+  rename(
+    gender = preOp_gender,
+    smoking =preOp_smoking,
+    age = preOp_age
+  )
 
 # Remove 1gender column ----
 exam_data$gender == exam_data$`1gender` # Check if they are identical
@@ -68,5 +70,25 @@ exam_data <- exam_data %>%
   select(-'1gender')
 
 str(exam_data)
+
+# Cleaning dataset to long format ----
+
+#Making the data into long version using pivot longer
+exam_data_clean <- exam_data %>%
+  pivot_longer(
+    cols = matches("cough|throatPain"), 
+    names_to = c("time_final", "symptom"),
+    names_sep = "_",
+    values_to = "value"
+  ) %>%
+  pivot_wider(
+    names_from = symptom,
+    values_from = value
+  )
+
+exam_data_clean <- exam_data_clean %>%  
+  rename(time = time_final)
+
+
 
 #----End----####
