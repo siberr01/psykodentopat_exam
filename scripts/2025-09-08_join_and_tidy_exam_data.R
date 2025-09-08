@@ -166,6 +166,7 @@ joined_exam_data %>%
 # It appears as we have 8 missing values in swallowPain, cough, throatPain and extubation_cough
 # Since we have a long formate, this is only missing values for two individuals 
 
+
 # Stratify data ----
 ## Stratify by gender
 joined_exam_data %>% 
@@ -207,6 +208,18 @@ joined_exam_data %>%
     max_BMI  = max(BMI, na.rm = TRUE),
     mean_BMI = mean(BMI, na.rm = TRUE),
     sd_BMI   = sd(BMI, na.rm = TRUE)
+  )
+
+## Difference in swallow pain stratified by gender, only for persons older than 50 years of age
+joined_exam_data %>%
+  filter(age > 50) %>%
+  group_by(gender) %>%
+  summarise(
+    swallowPain_min = min(swallowPain, na.rm = TRUE),
+    swallowPain_max = max(swallowPain, na.rm = TRUE),
+    swallowPain_mean = mean(swallowPain, na.rm = TRUE),
+    swallowPain_sd = sd(swallowPain, na.rm = TRUE),
+    .groups = "drop"
   )
 
 #----End----####
