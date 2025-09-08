@@ -134,6 +134,26 @@ joined_exam_data <- joined_exam_data %>%
 glimpse(joined_exam_data)
 
 
+# Arranging data 
+joined_exam_data <- joined_exam_data %>%
+  select(patient_id, BMI, age, smoking, gender, everything()) %>% 
+  arrange(patient_id)
 
+
+## Exploring new data 
+skimr::skim(joined_exam_data)
+
+
+### Missing data
+
+joined_exam_data %>%
+  summarise(across(everything(), ~ sum(is.na(.)))) %>%   # Showing were we have missing values
+  pivot_longer(cols = everything(),
+               names_to = "variable",
+               values_to = "n_missing") %>%
+  arrange(desc(n_missing))
+
+# It appears as 8 missing values in swallowPain, cough, throatPain and extubation_cough
+# Since we have a long formate, this is only missing values for two individuals 
 
 #----End----####
