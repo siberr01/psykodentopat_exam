@@ -7,24 +7,34 @@
 #
 # Project: psykodentopat_exam.Rproj
 
-# SETUP ----
-library(here)
+# Setup ----
 library(tidyverse)
-library(patchwork)
+library(here)
 library(ggplot2)
+library(patchwork)
 
 # Load data
-joined_exam_data <- read_delim(here("data", "joined_exam_data_2025-09-09.txt"))
+joined_exam_data <- read_delim(here("data","joined_exam_data_2025-09-09.txt"))
 
-# Explore
-glimpse(joined_exam_data)
-skimr::skim(joined_exam_data)
-
-# Changing from character to factor
+# Mutate from character to factor
 joined_exam_data <- joined_exam_data %>% 
   mutate(across(where(is.character), as.factor))
 
-# Exploring whether the age distribution of patients differs by gender
+# Are there any correlated measures? ----
+GGally::ggcorr(joined_exam_data)
+# Seems like throatPain and swallowPain are correlated, and also age and BMI. Also seems like Patient ID is correlated with swallowPain and throatPain, probably an artifact, could also be that that the patients recruited later had more pain...?
+
+# Does the age distribution depend on treat? ----
+ggplot(joined_exam_data, aes(x = age, fill = treat)) +
+  geom_density(alpha = 0.5) +
+  theme_gray() +
+  labs(title = "Age distribution by treatment",
+       x = "Patient age",
+       fill = "Treatment:") +
+  theme(legend.position = "bottom") +
+  scale_fill_brewer(palette = "PuOr")
+
+# Exploring whether the age distribution of patients differs by gender ----
 ## Numerical summery
 joined_exam_data %>%
   group_by(gender) %>%
@@ -53,10 +63,10 @@ density_age_distribution_by_gender <- ggplot(joined_exam_data,
        fill = "Gender") +
   scale_fill_brewer(palette = "Pastel2")
 density_age_distribution_by_gender
-  
-## T-test to see whether mean age differs between male and female patients (Welch two-sample t-test)
-t.test(age ~ gender, data = joined_exam_data)
-# p-value = 0.598: There is no statistically significant difference in mean age between genders.
 
+# T-tests (Welch Two Sample t-test) ----
+t.test(age ~ treat, data = joined_exam_data)
+t.test(age ~ preOp_pain, data = joined_exam_data)
+t.test(age ~ gender, data = joined_exam_data)
 
 #----End----####
