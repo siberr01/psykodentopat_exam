@@ -1,0 +1,941 @@
+patient_id	BMI	age	smoking	gender	preOp_pain	treat	swallowPain	ASA	mallampati	time	cough	throatPain	surgerySize	extubation_cough	throat_pain_change	cough_change	BMI_category
+1	32.98	67	current	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Obese
+1	32.98	67	current	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Obese
+1	32.98	67	current	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Obese
+1	32.98	67	current	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Obese
+2	23.66	76	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	no_change	Normal weight
+2	23.66	76	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	no_change	Normal weight
+2	23.66	76	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	no_change	no_change	Normal weight
+2	23.66	76	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	small	no cough	no_change	no_change	Normal weight
+3	26.83	58	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+3	26.83	58	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+3	26.83	58	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Overweight
+3	26.83	58	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+4	28.39	59	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	large	no cough	no_change	no_change	Overweight
+4	28.39	59	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	large	no cough	no_change	no_change	Overweight
+4	28.39	59	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	large	no cough	no_change	no_change	Overweight
+4	28.39	59	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	large	no cough	no_change	no_change	Overweight
+5	30.45	73	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Obese
+5	30.45	73	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Obese
+5	30.45	73	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Obese
+5	30.45	73	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Obese
+6	35.49	61	current	M	no	Licorice	0	mild	soft palate, base of uvula visible	pacu30min	no	0	large	no cough	no_change	no_change	Obese
+6	35.49	61	current	M	no	Licorice	0	mild	soft palate, base of uvula visible	pacu90min	no	0	large	no cough	no_change	no_change	Obese
+6	35.49	61	current	M	no	Licorice	0	mild	soft palate, base of uvula visible	postOp4hour	no	0	large	no cough	no_change	no_change	Obese
+6	35.49	61	current	M	no	Licorice	0	mild	soft palate, base of uvula visible	pod1am	no	0	large	no cough	no_change	no_change	Obese
+7	25.5	66	current	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	large	no cough	no_change	no_change	Overweight
+7	25.5	66	current	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	large	no cough	no_change	no_change	Overweight
+7	25.5	66	current	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	large	no cough	no_change	no_change	Overweight
+7	25.5	66	current	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pod1am	no	0	large	no cough	no_change	no_change	Overweight
+8	31.1	61	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	no_change	Obese
+8	31.1	61	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	no_change	Obese
+8	31.1	61	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	no_change	no_change	Obese
+8	31.1	61	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	small	no cough	no_change	no_change	Obese
+9	21.22	83	current	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	small	no cough	no_change	no_change	Normal weight
+9	21.22	83	current	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	no cough	no_change	no_change	Normal weight
+9	21.22	83	current	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	small	no cough	no_change	no_change	Normal weight
+9	21.22	83	current	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pod1am	no	0	small	no cough	no_change	no_change	Normal weight
+10	27.16	69	never	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+10	27.16	69	never	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+10	27.16	69	never	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Overweight
+10	27.16	69	never	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+11	19.08	31	current	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+11	19.08	31	current	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+11	19.08	31	current	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+11	19.08	31	current	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+12	25.68	72	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	no_change	Overweight
+12	25.68	72	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	no_change	Overweight
+12	25.68	72	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	no_change	no_change	Overweight
+12	25.68	72	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	small	no cough	no_change	no_change	Overweight
+13	27.64	66	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	no_change	Overweight
+13	27.64	66	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	no_change	Overweight
+13	27.64	66	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	no_change	no_change	Overweight
+13	27.64	66	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	small	no cough	no_change	no_change	Overweight
+14	23.5	30	never	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+14	23.5	30	never	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+14	23.5	30	never	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+14	23.5	30	never	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+15	20.2	69	never	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+15	20.2	69	never	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+15	20.2	69	never	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+15	20.2	69	never	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+16	29.03	29	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+16	29.03	29	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+16	29.03	29	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Overweight
+16	29.03	29	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+17	26.3	71	never	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+17	26.3	71	never	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+17	26.3	71	never	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Overweight
+17	26.3	71	never	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+18	32.32	58	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	no_change	Obese
+18	32.32	58	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	no_change	Obese
+18	32.32	58	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	no_change	no_change	Obese
+18	32.32	58	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	small	no cough	no_change	no_change	Obese
+19	30.07	66	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Obese
+19	30.07	66	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Obese
+19	30.07	66	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Obese
+19	30.07	66	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Obese
+20	34.33	46	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	small	no cough	no_change	no_change	Obese
+20	34.33	46	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	no cough	no_change	no_change	Obese
+20	34.33	46	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	small	no cough	no_change	no_change	Obese
+20	34.33	46	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	small	no cough	no_change	no_change	Obese
+21	26.29	55	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	no_change	Overweight
+21	26.29	55	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	no_change	Overweight
+21	26.29	55	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	no_change	no_change	Overweight
+21	26.29	55	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pod1am	no	0	small	no cough	no_change	no_change	Overweight
+22	19.88	30	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pacu30min	no	0	medium	mild	no_change	cough_resolved	Normal weight
+22	19.88	30	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pacu90min	no	0	medium	mild	no_change	cough_resolved	Normal weight
+22	19.88	30	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	mild	no_change	cough_resolved	Normal weight
+22	19.88	30	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	no_change	cough_resolved	Normal weight
+23	25.62	50	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pacu30min	no	0	medium	mild	no_change	cough_resolved	Overweight
+23	25.62	50	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pacu90min	no	0	medium	mild	no_change	cough_resolved	Overweight
+23	25.62	50	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	mild	no_change	cough_resolved	Overweight
+23	25.62	50	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	no_change	cough_resolved	Overweight
+24	22.84	22	never	M	no	Licorice	0	healthy	soft palate, base of uvula visible	pacu30min	no	0	medium	mild	no_change	cough_resolved	Normal weight
+24	22.84	22	never	M	no	Licorice	0	healthy	soft palate, base of uvula visible	pacu90min	no	0	medium	mild	no_change	cough_resolved	Normal weight
+24	22.84	22	never	M	no	Licorice	0	healthy	soft palate, base of uvula visible	postOp4hour	no	0	medium	mild	no_change	cough_resolved	Normal weight
+24	22.84	22	never	M	no	Licorice	0	healthy	soft palate, base of uvula visible	pod1am	no	0	medium	mild	no_change	cough_resolved	Normal weight
+25	27.78	68	past	M	no	Licorice	0	severe	soft palate, base of uvula visible	pacu30min	no	0	medium	mild	no_change	cough_resolved	Overweight
+25	27.78	68	past	M	no	Licorice	0	severe	soft palate, base of uvula visible	pacu90min	no	0	medium	mild	no_change	cough_resolved	Overweight
+25	27.78	68	past	M	no	Licorice	0	severe	soft palate, base of uvula visible	postOp4hour	no	0	medium	mild	no_change	cough_resolved	Overweight
+25	27.78	68	past	M	no	Licorice	0	severe	soft palate, base of uvula visible	pod1am	no	0	medium	mild	no_change	cough_resolved	Overweight
+26	25.5	72	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	mild	0	medium	no cough	no_change	no_change	Overweight
+26	25.5	72	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+26	25.5	72	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Overweight
+26	25.5	72	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+27	20.68	33	never	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	small	no cough	no_change	no_change	Normal weight
+27	20.68	33	never	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	mild	0	small	no cough	no_change	no_change	Normal weight
+27	20.68	33	never	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	small	no cough	no_change	no_change	Normal weight
+27	20.68	33	never	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	small	no cough	no_change	no_change	Normal weight
+28	24.49	19	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	mild	0	small	no cough	no_change	no_change	Normal weight
+28	24.49	19	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	mild	0	small	no cough	no_change	no_change	Normal weight
+28	24.49	19	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	0	small	no cough	no_change	no_change	Normal weight
+28	24.49	19	past	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	small	no cough	no_change	no_change	Normal weight
+29	26.23	36	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	more_cough	Overweight
+29	26.23	36	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	more_cough	Overweight
+29	26.23	36	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	no_change	more_cough	Overweight
+29	26.23	36	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	mild	0	small	no cough	no_change	more_cough	Overweight
+30	20.94	24	never	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	small	no cough	no_change	more_cough	Normal weight
+30	20.94	24	never	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	no cough	no_change	more_cough	Normal weight
+30	20.94	24	never	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	small	no cough	no_change	more_cough	Normal weight
+30	20.94	24	never	M	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	mild	0	small	no cough	no_change	more_cough	Normal weight
+31	21.16	30	current	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Normal weight
+31	21.16	30	current	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	more_cough	Normal weight
+31	21.16	30	current	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	0	medium	no cough	no_change	more_cough	Normal weight
+31	21.16	30	current	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Normal weight
+32	25.95	29	never	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	more_cough	Overweight
+32	25.95	29	never	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	more_cough	Overweight
+32	25.95	29	never	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	postOp4hour	mild	0	small	no cough	no_change	more_cough	Overweight
+32	25.95	29	never	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pod1am	mild	0	small	no cough	no_change	more_cough	Overweight
+33	16.72	27	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pacu30min	no	0	medium	moderate	no_change	persistent_cough	Underweight
+33	16.72	27	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pacu90min	no	0	medium	moderate	no_change	persistent_cough	Underweight
+33	16.72	27	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	postOp4hour	mild	0	medium	moderate	no_change	persistent_cough	Underweight
+33	16.72	27	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pod1am	mild	0	medium	moderate	no_change	persistent_cough	Underweight
+34	32.61	59	past	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	medium	mild	no_change	persistent_cough	Obese
+34	32.61	59	past	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	medium	mild	no_change	persistent_cough	Obese
+34	32.61	59	past	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	postOp4hour	mild	0	medium	mild	no_change	persistent_cough	Obese
+34	32.61	59	past	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pod1am	mild	0	medium	mild	no_change	persistent_cough	Obese
+35	28.98	68	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	mild	no_change	persistent_cough	Overweight
+35	28.98	68	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	mild	no_change	persistent_cough	Overweight
+35	28.98	68	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	mild	0	medium	mild	no_change	persistent_cough	Overweight
+35	28.98	68	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	mild	0	medium	mild	no_change	persistent_cough	Overweight
+36	18.73	53	past	M	no	Licorice	0	severe	soft palate, base of uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Normal weight
+36	18.73	53	past	M	no	Licorice	0	severe	soft palate, base of uvula visible	pacu90min	mild	0	medium	no cough	no_change	more_cough	Normal weight
+36	18.73	53	past	M	no	Licorice	0	severe	soft palate, base of uvula visible	postOp4hour	mild	0	medium	no cough	no_change	more_cough	Normal weight
+36	18.73	53	past	M	no	Licorice	0	severe	soft palate, base of uvula visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Normal weight
+37	23.14	67	past	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Normal weight
+37	23.14	67	past	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	mild	0	medium	no cough	no_change	more_cough	Normal weight
+37	23.14	67	past	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	moderate	0	medium	no cough	no_change	more_cough	Normal weight
+37	23.14	67	past	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	moderate	0	medium	no cough	no_change	more_cough	Normal weight
+38	26.37	64	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	increased	no_change	Overweight
+38	26.37	64	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	increased	no_change	Overweight
+38	26.37	64	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	increased	no_change	Overweight
+38	26.37	64	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	2	medium	no cough	increased	no_change	Overweight
+39	25.38	73	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	increased	no_change	Overweight
+39	25.38	73	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	increased	no_change	Overweight
+39	25.38	73	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	increased	no_change	Overweight
+39	25.38	73	never	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	3	medium	no cough	increased	no_change	Overweight
+40	31.18	76	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	mild	0	small	no cough	increased	more_cough	Obese
+40	31.18	76	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	increased	more_cough	Obese
+40	31.18	76	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	increased	more_cough	Obese
+40	31.18	76	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	mild	1	small	no cough	increased	more_cough	Obese
+41	24.38	28	current	M	no	Licorice	2	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Normal weight
+41	24.38	28	current	M	no	Licorice	2	mild	soft palate, fauces, uvula visible	pacu90min	mild	0	medium	no cough	no_change	more_cough	Normal weight
+41	24.38	28	current	M	no	Licorice	2	mild	soft palate, fauces, uvula visible	postOp4hour	mild	0	medium	no cough	no_change	more_cough	Normal weight
+41	24.38	28	current	M	no	Licorice	2	mild	soft palate, fauces, uvula visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Normal weight
+42	31.64	49	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Obese
+42	31.64	49	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Obese
+42	31.64	49	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	1	medium	no cough	no_change	no_change	Obese
+42	31.64	49	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Obese
+43	29.38	57	current	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+43	29.38	57	current	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+43	29.38	57	current	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	1	medium	no cough	no_change	no_change	Overweight
+43	29.38	57	current	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+44	29.39	63	never	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	small	no cough	no_change	more_cough	Overweight
+44	29.39	63	never	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	no cough	no_change	more_cough	Overweight
+44	29.39	63	never	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	1	small	no cough	no_change	more_cough	Overweight
+44	29.39	63	never	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pod1am	mild	0	small	no cough	no_change	more_cough	Overweight
+45	27.38	52	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Overweight
+45	27.38	52	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pacu90min	mild	0	medium	no cough	no_change	more_cough	Overweight
+45	27.38	52	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	postOp4hour	mild	3	medium	no cough	no_change	more_cough	Overweight
+45	27.38	52	current	M	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Overweight
+46	22.98	59	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	increased	no_change	Normal weight
+46	22.98	59	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	increased	no_change	Normal weight
+46	22.98	59	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	3	medium	no cough	increased	no_change	Normal weight
+46	22.98	59	current	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	2	medium	no cough	increased	no_change	Normal weight
+47	29.01	64	never	M	no	Licorice	0	severe	soft palate, base of uvula visible	pacu30min	no	0	medium	no cough	increased	no_change	Overweight
+47	29.01	64	never	M	no	Licorice	0	severe	soft palate, base of uvula visible	pacu90min	no	0	medium	no cough	increased	no_change	Overweight
+47	29.01	64	never	M	no	Licorice	0	severe	soft palate, base of uvula visible	postOp4hour	no	2	medium	no cough	increased	no_change	Overweight
+47	29.01	64	never	M	no	Licorice	0	severe	soft palate, base of uvula visible	pod1am	no	2	medium	no cough	increased	no_change	Overweight
+48	27.77	71	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	increased	no_change	Overweight
+48	27.77	71	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	increased	no_change	Overweight
+48	27.77	71	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	2	small	no cough	increased	no_change	Overweight
+48	27.77	71	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	1	small	no cough	increased	no_change	Overweight
+49	25.01	55	never	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	increased	more_cough	Overweight
+49	25.01	55	never	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	increased	more_cough	Overweight
+49	25.01	55	never	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	2	medium	no cough	increased	more_cough	Overweight
+49	25.01	55	never	M	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	mild	3	medium	no cough	increased	more_cough	Overweight
+50	28.06	64	current	M	no	Licorice	0	mild	soft palate, base of uvula visible	pacu30min	no	0	large	no cough	increased	more_cough	Overweight
+50	28.06	64	current	M	no	Licorice	0	mild	soft palate, base of uvula visible	pacu90min	no	0	large	no cough	increased	more_cough	Overweight
+50	28.06	64	current	M	no	Licorice	0	mild	soft palate, base of uvula visible	postOp4hour	mild	2	large	no cough	increased	more_cough	Overweight
+50	28.06	64	current	M	no	Licorice	0	mild	soft palate, base of uvula visible	pod1am	mild	1	large	no cough	increased	more_cough	Overweight
+51	27.04	65	past	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	large	mild	increased	persistent_cough	Overweight
+51	27.04	65	past	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	large	mild	increased	persistent_cough	Overweight
+51	27.04	65	past	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	3	large	mild	increased	persistent_cough	Overweight
+51	27.04	65	past	M	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pod1am	mild	2	large	mild	increased	persistent_cough	Overweight
+52	24.62	53	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	no_change	Normal weight
+52	24.62	53	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	no_change	Normal weight
+52	24.62	53	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	no_change	no_change	Normal weight
+52	24.62	53	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	small	no cough	no_change	no_change	Normal weight
+53	21.05	44	current	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+53	21.05	44	current	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+53	21.05	44	current	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+53	21.05	44	current	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+54	22.68	63	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+54	22.68	63	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+54	22.68	63	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+54	22.68	63	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+55	20.32	69	current	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+55	20.32	69	current	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+55	20.32	69	current	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+55	20.32	69	current	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+56	24.74	53	never	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	small	no cough	no_change	no_change	Normal weight
+56	24.74	53	never	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	no cough	no_change	no_change	Normal weight
+56	24.74	53	never	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	small	no cough	no_change	no_change	Normal weight
+56	24.74	53	never	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	0	small	no cough	no_change	no_change	Normal weight
+57	27.24	55	never	F	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+57	27.24	55	never	F	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+57	27.24	55	never	F	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Overweight
+57	27.24	55	never	F	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+58	22.66	50	current	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	small	no cough	no_change	no_change	Normal weight
+58	22.66	50	current	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	no cough	no_change	no_change	Normal weight
+58	22.66	50	current	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	small	no cough	no_change	no_change	Normal weight
+58	22.66	50	current	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	small	no cough	no_change	no_change	Normal weight
+59	22.99	56	current	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+59	22.99	56	current	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+59	22.99	56	current	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+59	22.99	56	current	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+60	30.41	65	past	F	no	Licorice	0	severe	soft palate, base of uvula visible	pacu30min	no	0	small	no cough	no_change	no_change	Obese
+60	30.41	65	past	F	no	Licorice	0	severe	soft palate, base of uvula visible	pacu90min	no	0	small	no cough	no_change	no_change	Obese
+60	30.41	65	past	F	no	Licorice	0	severe	soft palate, base of uvula visible	postOp4hour	no	0	small	no cough	no_change	no_change	Obese
+60	30.41	65	past	F	no	Licorice	0	severe	soft palate, base of uvula visible	pod1am	no	0	small	no cough	no_change	no_change	Obese
+61	28.93	60	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	no_change	Overweight
+61	28.93	60	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	no_change	Overweight
+61	28.93	60	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	no_change	no_change	Overweight
+61	28.93	60	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	small	no cough	no_change	no_change	Overweight
+62	22.86	44	past	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+62	22.86	44	past	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+62	22.86	44	past	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+62	22.86	44	past	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+63	22.66	63	past	F	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+63	22.66	63	past	F	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+63	22.66	63	past	F	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+63	22.66	63	past	F	no	Licorice	0	severe	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+64	25.71	62	past	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+64	25.71	62	past	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+64	25.71	62	past	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Overweight
+64	25.71	62	past	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+65	22.77	41	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+65	22.77	41	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+65	22.77	41	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+65	22.77	41	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+66	18.82	29	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+66	18.82	29	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+66	18.82	29	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+66	18.82	29	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+67	25.91	63	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+67	25.91	63	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+67	25.91	63	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Overweight
+67	25.91	63	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+68	23.23	81	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+68	23.23	81	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+68	23.23	81	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+68	23.23	81	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+69	18.75	63	current	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+69	18.75	63	current	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+69	18.75	63	current	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+69	18.75	63	current	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+70	24.61	73	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	mild	no_change	cough_resolved	Normal weight
+70	24.61	73	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	mild	no_change	cough_resolved	Normal weight
+70	24.61	73	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	mild	no_change	cough_resolved	Normal weight
+70	24.61	73	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	no_change	cough_resolved	Normal weight
+71	26.85	50	current	F	no	Licorice	0	severe	soft palate, base of uvula visible	pacu30min	no	0	medium	mild	no_change	cough_resolved	Overweight
+71	26.85	50	current	F	no	Licorice	0	severe	soft palate, base of uvula visible	pacu90min	no	0	medium	mild	no_change	cough_resolved	Overweight
+71	26.85	50	current	F	no	Licorice	0	severe	soft palate, base of uvula visible	postOp4hour	no	0	medium	mild	no_change	cough_resolved	Overweight
+71	26.85	50	current	F	no	Licorice	0	severe	soft palate, base of uvula visible	pod1am	no	0	medium	mild	no_change	cough_resolved	Overweight
+72	16.38	42	never	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	medium	mild	no_change	cough_resolved	Underweight
+72	16.38	42	never	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	medium	mild	no_change	cough_resolved	Underweight
+72	16.38	42	never	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	mild	no_change	cough_resolved	Underweight
+72	16.38	42	never	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	no_change	cough_resolved	Underweight
+73	25.26	73	never	F	no	Licorice	0	severe	soft palate, base of uvula visible	pacu30min	no	0	medium	mild	no_change	cough_resolved	Overweight
+73	25.26	73	never	F	no	Licorice	0	severe	soft palate, base of uvula visible	pacu90min	no	0	medium	mild	no_change	cough_resolved	Overweight
+73	25.26	73	never	F	no	Licorice	0	severe	soft palate, base of uvula visible	postOp4hour	no	0	medium	mild	no_change	cough_resolved	Overweight
+73	25.26	73	never	F	no	Licorice	0	severe	soft palate, base of uvula visible	pod1am	no	0	medium	mild	no_change	cough_resolved	Overweight
+74	29.64	57	never	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	small	moderate	no_change	cough_resolved	Overweight
+74	29.64	57	never	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	small	moderate	no_change	cough_resolved	Overweight
+74	29.64	57	never	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	small	moderate	no_change	cough_resolved	Overweight
+74	29.64	57	never	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pod1am	no	0	small	moderate	no_change	cough_resolved	Overweight
+75	23.51	71	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	mild	0	medium	mild	no_change	cough_resolved	Normal weight
+75	23.51	71	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	mild	no_change	cough_resolved	Normal weight
+75	23.51	71	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	mild	0	medium	mild	no_change	cough_resolved	Normal weight
+75	23.51	71	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	no_change	cough_resolved	Normal weight
+76	36.33	56	never	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Obese
+76	36.33	56	never	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	more_cough	Obese
+76	36.33	56	never	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	more_cough	Obese
+76	36.33	56	never	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	moderate	0	medium	no cough	no_change	more_cough	Obese
+77	30.48	65	never	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Obese
+77	30.48	65	never	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	more_cough	Obese
+77	30.48	65	never	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	postOp4hour	mild	0	medium	no cough	no_change	more_cough	Obese
+77	30.48	65	never	F	no	Licorice	0	severe	soft palate, fauces, uvula visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Obese
+78	19.4	73	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Normal weight
+78	19.4	73	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	more_cough	Normal weight
+78	19.4	73	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	mild	0	medium	no cough	no_change	more_cough	Normal weight
+78	19.4	73	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Normal weight
+79	21.2	48	current	F	no	Licorice	0	mild	soft palate, base of uvula visible	pacu30min	mild	0	large	no cough	no_change	more_cough	Normal weight
+79	21.2	48	current	F	no	Licorice	0	mild	soft palate, base of uvula visible	pacu90min	no	0	large	no cough	no_change	more_cough	Normal weight
+79	21.2	48	current	F	no	Licorice	0	mild	soft palate, base of uvula visible	postOp4hour	mild	0	large	no cough	no_change	more_cough	Normal weight
+79	21.2	48	current	F	no	Licorice	0	mild	soft palate, base of uvula visible	pod1am	moderate	0	large	no cough	no_change	more_cough	Normal weight
+80	17.72	48	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	mild	0	small	mild	no_change	persistent_cough	Underweight
+80	17.72	48	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	mild	no_change	persistent_cough	Underweight
+80	17.72	48	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	0	small	mild	no_change	persistent_cough	Underweight
+80	17.72	48	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	mild	0	small	mild	no_change	persistent_cough	Underweight
+81	28.06	60	current	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	increased	no_change	Overweight
+81	28.06	60	current	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	increased	no_change	Overweight
+81	28.06	60	current	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	increased	no_change	Overweight
+81	28.06	60	current	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	1	medium	no cough	increased	no_change	Overweight
+82	33.67	65	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	increased	no_change	Obese
+82	33.67	65	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	increased	no_change	Obese
+82	33.67	65	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	increased	no_change	Obese
+82	33.67	65	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	1	medium	no cough	increased	no_change	Obese
+83	32.05	52	past	F	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	increased	more_cough	Obese
+83	32.05	52	past	F	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	increased	more_cough	Obese
+83	32.05	52	past	F	no	Licorice	0	healthy	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	increased	more_cough	Obese
+83	32.05	52	past	F	no	Licorice	0	healthy	soft palate, fauces, uvula visible	pod1am	mild	2	medium	no cough	increased	more_cough	Obese
+84	18.36	47	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	mild	0	medium	no cough	increased	more_cough	Underweight
+84	18.36	47	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	mild	0	medium	no cough	increased	more_cough	Underweight
+84	18.36	47	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	increased	more_cough	Underweight
+84	18.36	47	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	mild	1	medium	no cough	increased	more_cough	Underweight
+85	22.06	60	never	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	mild	increased	persistent_cough	Normal weight
+85	22.06	60	never	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	mild	increased	persistent_cough	Normal weight
+85	22.06	60	never	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	0	medium	mild	increased	persistent_cough	Normal weight
+85	22.06	60	never	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	mild	1	medium	mild	increased	persistent_cough	Normal weight
+86	23.03	39	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	mild	0	medium	no cough	increased	more_cough	Normal weight
+86	23.03	39	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	mild	0	medium	no cough	increased	more_cough	Normal weight
+86	23.03	39	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	0	medium	no cough	increased	more_cough	Normal weight
+86	23.03	39	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	mild	2	medium	no cough	increased	more_cough	Normal weight
+87	25.61	66	past	F	no	Licorice	2	severe	soft palate, fauces, uvula visible	pacu30min	no	0	large	mild	no_change	cough_resolved	Overweight
+87	25.61	66	past	F	no	Licorice	2	severe	soft palate, fauces, uvula visible	pacu90min	no	0	large	mild	no_change	cough_resolved	Overweight
+87	25.61	66	past	F	no	Licorice	2	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	large	mild	no_change	cough_resolved	Overweight
+87	25.61	66	past	F	no	Licorice	2	severe	soft palate, fauces, uvula visible	pod1am	no	0	large	mild	no_change	cough_resolved	Overweight
+88	19.63	46	current	F	no	Licorice	2	healthy	soft palate, fauces, uvula visible	pacu30min	no	0	small	mild	no_change	cough_resolved	Normal weight
+88	19.63	46	current	F	no	Licorice	2	healthy	soft palate, fauces, uvula visible	pacu90min	no	0	small	mild	no_change	cough_resolved	Normal weight
+88	19.63	46	current	F	no	Licorice	2	healthy	soft palate, fauces, uvula visible	postOp4hour	no	0	small	mild	no_change	cough_resolved	Normal weight
+88	19.63	46	current	F	no	Licorice	2	healthy	soft palate, fauces, uvula visible	pod1am	no	0	small	mild	no_change	cough_resolved	Normal weight
+89	28.34	53	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+89	28.34	53	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+89	28.34	53	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	2	medium	no cough	no_change	no_change	Overweight
+89	28.34	53	current	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+90	30.12	48	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	moderate	no_change	cough_resolved	Obese
+90	30.12	48	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	moderate	no_change	cough_resolved	Obese
+90	30.12	48	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	mild	2	small	moderate	no_change	cough_resolved	Obese
+90	30.12	48	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	small	moderate	no_change	cough_resolved	Obese
+91	20.03	27	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	mild	no_change	persistent_cough	Normal weight
+91	20.03	27	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	mild	no_change	persistent_cough	Normal weight
+91	20.03	27	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	1	medium	mild	no_change	persistent_cough	Normal weight
+91	20.03	27	never	F	no	Licorice	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	mild	0	medium	mild	no_change	persistent_cough	Normal weight
+92	24.16	68	never	F	no	Licorice	0	mild	soft palate, base of uvula visible	pacu30min	no	0	small	no cough	no_change	more_cough	Normal weight
+92	24.16	68	never	F	no	Licorice	0	mild	soft palate, base of uvula visible	pacu90min	no	0	small	no cough	no_change	more_cough	Normal weight
+92	24.16	68	never	F	no	Licorice	0	mild	soft palate, base of uvula visible	postOp4hour	mild	1	small	no cough	no_change	more_cough	Normal weight
+92	24.16	68	never	F	no	Licorice	0	mild	soft palate, base of uvula visible	pod1am	mild	0	small	no cough	no_change	more_cough	Normal weight
+93	27.85	66	current	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	increased	no_change	Overweight
+93	27.85	66	current	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	increased	no_change	Overweight
+93	27.85	66	current	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	2	medium	no cough	increased	no_change	Overweight
+93	27.85	66	current	F	no	Licorice	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	1	medium	no cough	increased	no_change	Overweight
+94	26.84	72	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	increased	no_change	Overweight
+94	26.84	72	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	increased	no_change	Overweight
+94	26.84	72	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	2	small	no cough	increased	no_change	Overweight
+94	26.84	72	past	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	3	small	no cough	increased	no_change	Overweight
+95	27.24	66	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	increased	no_change	Overweight
+95	27.24	66	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	1	medium	no cough	increased	no_change	Overweight
+95	27.24	66	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	1	medium	no cough	increased	no_change	Overweight
+95	27.24	66	never	F	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	1	medium	no cough	increased	no_change	Overweight
+96	29.73	61	current	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pacu30min	no	1	medium	no cough	decreased	no_change	Overweight
+96	29.73	61	current	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	decreased	no_change	Overweight
+96	29.73	61	current	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	decreased	no_change	Overweight
+96	29.73	61	current	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	decreased	no_change	Overweight
+97	26.81	45	past	M	no	Licorice	1	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	1	large	no cough	decreased	no_change	Overweight
+97	26.81	45	past	M	no	Licorice	1	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	large	no cough	decreased	no_change	Overweight
+97	26.81	45	past	M	no	Licorice	1	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	large	no cough	decreased	no_change	Overweight
+97	26.81	45	past	M	no	Licorice	1	severe	soft palate, fauces, uvula, pillars visible	pod1am	no	0	large	no cough	decreased	no_change	Overweight
+98	26.15	72	past	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pacu30min	no	1	medium	no cough	decreased	no_change	Overweight
+98	26.15	72	past	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	decreased	no_change	Overweight
+98	26.15	72	past	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	decreased	no_change	Overweight
+98	26.15	72	past	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	decreased	no_change	Overweight
+99	26.22	68	past	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pacu30min	no	1	small	mild	decreased	cough_resolved	Overweight
+99	26.22	68	past	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	mild	decreased	cough_resolved	Overweight
+99	26.22	68	past	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	small	mild	decreased	cough_resolved	Overweight
+99	26.22	68	past	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pod1am	no	0	small	mild	decreased	cough_resolved	Overweight
+100	20.52	21	current	M	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	pacu30min	mild	1	small	mild	decreased	cough_resolved	Normal weight
+100	20.52	21	current	M	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	pacu90min	mild	0	small	mild	decreased	cough_resolved	Normal weight
+100	20.52	21	current	M	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	small	mild	decreased	cough_resolved	Normal weight
+100	20.52	21	current	M	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	0	small	mild	decreased	cough_resolved	Normal weight
+101	28.71	47	current	M	no	Licorice	2	healthy	soft palate, fauces, uvula visible	pacu30min	mild	2	medium	no cough	decreased	more_cough	Overweight
+101	28.71	47	current	M	no	Licorice	2	healthy	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	decreased	more_cough	Overweight
+101	28.71	47	current	M	no	Licorice	2	healthy	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	decreased	more_cough	Overweight
+101	28.71	47	current	M	no	Licorice	2	healthy	soft palate, fauces, uvula visible	pod1am	mild	0	medium	no cough	decreased	more_cough	Overweight
+102	34.11	68	past	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu30min	mild	1	medium	mild	decreased	cough_resolved	Obese
+102	34.11	68	past	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu90min	mild	1	medium	mild	decreased	cough_resolved	Obese
+102	34.11	68	past	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	mild	decreased	cough_resolved	Obese
+102	34.11	68	past	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	decreased	cough_resolved	Obese
+103	29.41	47	current	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu30min	mild	3	medium	moderate	decreased	cough_resolved	Overweight
+103	29.41	47	current	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pacu90min	no	2	medium	moderate	decreased	cough_resolved	Overweight
+103	29.41	47	current	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	moderate	decreased	cough_resolved	Overweight
+103	29.41	47	current	M	no	Licorice	0	severe	soft palate, fauces, uvula visible	pod1am	no	1	medium	moderate	decreased	cough_resolved	Overweight
+104	31.28	80	past	M	no	Licorice	1	mild	soft palate, base of uvula visible	pacu30min	no	1	small	no cough	decreased	no_change	Obese
+104	31.28	80	past	M	no	Licorice	1	mild	soft palate, base of uvula visible	pacu90min	no	1	small	no cough	decreased	no_change	Obese
+104	31.28	80	past	M	no	Licorice	1	mild	soft palate, base of uvula visible	postOp4hour	no	0	small	no cough	decreased	no_change	Obese
+104	31.28	80	past	M	no	Licorice	1	mild	soft palate, base of uvula visible	pod1am	no	0	small	no cough	decreased	no_change	Obese
+105	24.61	47	current	M	no	Licorice	2	mild	soft palate, base of uvula visible	pacu30min	mild	1	medium	mild	decreased	cough_resolved	Normal weight
+105	24.61	47	current	M	no	Licorice	2	mild	soft palate, base of uvula visible	pacu90min	mild	1	medium	mild	decreased	cough_resolved	Normal weight
+105	24.61	47	current	M	no	Licorice	2	mild	soft palate, base of uvula visible	postOp4hour	mild	0	medium	mild	decreased	cough_resolved	Normal weight
+105	24.61	47	current	M	no	Licorice	2	mild	soft palate, base of uvula visible	pod1am	no	0	medium	mild	decreased	cough_resolved	Normal weight
+106	27.34	75	past	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pacu30min	no	1	large	no cough	decreased	more_cough	Overweight
+106	27.34	75	past	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pacu90min	no	1	large	no cough	decreased	more_cough	Overweight
+106	27.34	75	past	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	large	no cough	decreased	more_cough	Overweight
+106	27.34	75	past	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pod1am	severe	0	large	no cough	decreased	more_cough	Overweight
+107	24.34	63	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu30min	no	2	medium	no cough	decreased	no_change	Normal weight
+107	24.34	63	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	decreased	no_change	Normal weight
+107	24.34	63	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	2	medium	no cough	decreased	no_change	Normal weight
+107	24.34	63	past	M	no	Licorice	0	mild	soft palate, fauces, uvula visible	pod1am	no	1	medium	no cough	decreased	no_change	Normal weight
+108	22.15	63	current	M	no	Licorice	1	severe	soft palate, fauces, uvula visible	pacu30min	mild	1	large	no cough	increased	no_change	Normal weight
+108	22.15	63	current	M	no	Licorice	1	severe	soft palate, fauces, uvula visible	pacu90min	mild	0	large	no cough	increased	no_change	Normal weight
+108	22.15	63	current	M	no	Licorice	1	severe	soft palate, fauces, uvula visible	postOp4hour	no	1	large	no cough	increased	no_change	Normal weight
+108	22.15	63	current	M	no	Licorice	1	severe	soft palate, fauces, uvula visible	pod1am	no	2	large	no cough	increased	no_change	Normal weight
+109	27.38	72	past	M	no	Licorice	6	mild	soft palate, fauces, uvula visible	pacu30min	mild	3	medium	mild	decreased	cough_resolved	Overweight
+109	27.38	72	past	M	no	Licorice	6	mild	soft palate, fauces, uvula visible	pacu90min	mild	1	medium	mild	decreased	cough_resolved	Overweight
+109	27.38	72	past	M	no	Licorice	6	mild	soft palate, fauces, uvula visible	postOp4hour	mild	1	medium	mild	decreased	cough_resolved	Overweight
+109	27.38	72	past	M	no	Licorice	6	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	decreased	cough_resolved	Overweight
+110	20.55	54	current	M	no	Licorice	2	severe	soft palate, fauces, uvula visible	pacu30min	mild	2	medium	no cough	decreased	more_cough	Normal weight
+110	20.55	54	current	M	no	Licorice	2	severe	soft palate, fauces, uvula visible	pacu90min	mild	2	medium	no cough	decreased	more_cough	Normal weight
+110	20.55	54	current	M	no	Licorice	2	severe	soft palate, fauces, uvula visible	postOp4hour	moderate	2	medium	no cough	decreased	more_cough	Normal weight
+110	20.55	54	current	M	no	Licorice	2	severe	soft palate, fauces, uvula visible	pod1am	mild	0	medium	no cough	decreased	more_cough	Normal weight
+111	18.47	66	current	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pacu30min	no	1	medium	mild	no_change	cough_resolved	Underweight
+111	18.47	66	current	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pacu90min	no	1	medium	mild	no_change	cough_resolved	Underweight
+111	18.47	66	current	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	postOp4hour	no	1	medium	mild	no_change	cough_resolved	Underweight
+111	18.47	66	current	M	no	Licorice	1	mild	soft palate, fauces, uvula visible	pod1am	no	1	medium	mild	no_change	cough_resolved	Underweight
+112	28.63	66	current	M	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	pacu30min	mild	1	medium	mild	no_change	cough_resolved	Overweight
+112	28.63	66	current	M	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	1	medium	mild	no_change	cough_resolved	Overweight
+112	28.63	66	current	M	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	2	medium	mild	no_change	cough_resolved	Overweight
+112	28.63	66	current	M	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	1	medium	mild	no_change	cough_resolved	Overweight
+113	24.58	70	past	M	no	Licorice	NA	mild	soft palate, fauces, uvula visible	pacu30min	NA	NA	large	NA	NA	NA	Normal weight
+113	24.58	70	past	M	no	Licorice	NA	mild	soft palate, fauces, uvula visible	pacu90min	NA	NA	large	NA	NA	NA	Normal weight
+113	24.58	70	past	M	no	Licorice	NA	mild	soft palate, fauces, uvula visible	postOp4hour	NA	NA	large	NA	NA	NA	Normal weight
+113	24.58	70	past	M	no	Licorice	NA	mild	soft palate, fauces, uvula visible	pod1am	NA	NA	large	NA	NA	NA	Normal weight
+114	22.48	76	never	F	no	Licorice	1	mild	soft palate, fauces, uvula visible	pacu30min	no	1	small	no cough	decreased	no_change	Normal weight
+114	22.48	76	never	F	no	Licorice	1	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	decreased	no_change	Normal weight
+114	22.48	76	never	F	no	Licorice	1	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	decreased	no_change	Normal weight
+114	22.48	76	never	F	no	Licorice	1	mild	soft palate, fauces, uvula visible	pod1am	no	0	small	no cough	decreased	no_change	Normal weight
+115	29.39	51	past	F	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	1	medium	no cough	decreased	no_change	Overweight
+115	29.39	51	past	F	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	decreased	no_change	Overweight
+115	29.39	51	past	F	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	decreased	no_change	Overweight
+115	29.39	51	past	F	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	decreased	no_change	Overweight
+116	19.2	46	never	F	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	1	small	no cough	decreased	no_change	Normal weight
+116	19.2	46	never	F	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	no cough	decreased	no_change	Normal weight
+116	19.2	46	never	F	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	small	no cough	decreased	no_change	Normal weight
+116	19.2	46	never	F	no	Licorice	1	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	0	small	no cough	decreased	no_change	Normal weight
+117	20.31	68	current	F	no	Licorice	1	mild	soft palate, fauces, uvula visible	pacu30min	no	1	medium	no cough	decreased	no_change	Normal weight
+117	20.31	68	current	F	no	Licorice	1	mild	soft palate, fauces, uvula visible	pacu90min	mild	1	medium	no cough	decreased	no_change	Normal weight
+117	20.31	68	current	F	no	Licorice	1	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	decreased	no_change	Normal weight
+117	20.31	68	current	F	no	Licorice	1	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	decreased	no_change	Normal weight
+118	26.12	68	never	F	no	Licorice	4	mild	soft palate, fauces, uvula, pillars visible	pacu30min	mild	4	medium	mild	decreased	persistent_cough	Overweight
+118	26.12	68	never	F	no	Licorice	4	mild	soft palate, fauces, uvula, pillars visible	pacu90min	mild	3	medium	mild	decreased	persistent_cough	Overweight
+118	26.12	68	never	F	no	Licorice	4	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	1	medium	mild	decreased	persistent_cough	Overweight
+118	26.12	68	never	F	no	Licorice	4	mild	soft palate, fauces, uvula, pillars visible	pod1am	mild	1	medium	mild	decreased	persistent_cough	Overweight
+119	32.37	74	never	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	no_change	Obese
+119	32.37	74	never	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	no_change	Obese
+119	32.37	74	never	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	no_change	no_change	Obese
+119	32.37	74	never	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	small	no cough	no_change	no_change	Obese
+120	25.76	62	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+120	25.76	62	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+120	25.76	62	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Overweight
+120	25.76	62	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+121	24.45	65	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+121	24.45	65	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+121	24.45	65	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+121	24.45	65	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+122	28.09	55	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+122	28.09	55	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+122	28.09	55	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Overweight
+122	28.09	55	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+123	30.27	69	past	M	no	Sugar	NA	healthy	soft palate, fauces, uvula visible	pacu30min	NA	NA	large	NA	NA	NA	Obese
+123	30.27	69	past	M	no	Sugar	NA	healthy	soft palate, fauces, uvula visible	pacu90min	NA	NA	large	NA	NA	NA	Obese
+123	30.27	69	past	M	no	Sugar	NA	healthy	soft palate, fauces, uvula visible	postOp4hour	NA	NA	large	NA	NA	NA	Obese
+123	30.27	69	past	M	no	Sugar	NA	healthy	soft palate, fauces, uvula visible	pod1am	NA	NA	large	NA	NA	NA	Obese
+124	20.34	55	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	small	no cough	no_change	no_change	Normal weight
+124	20.34	55	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	no cough	no_change	no_change	Normal weight
+124	20.34	55	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	small	no cough	no_change	no_change	Normal weight
+124	20.34	55	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	small	no cough	no_change	no_change	Normal weight
+125	28.08	66	current	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	no_change	Overweight
+125	28.08	66	current	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	no_change	Overweight
+125	28.08	66	current	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	no_change	no_change	Overweight
+125	28.08	66	current	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pod1am	no	0	small	no cough	no_change	no_change	Overweight
+126	22.65	70	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+126	22.65	70	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+126	22.65	70	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+126	22.65	70	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+127	20.05	31	current	M	no	Sugar	0	healthy	soft palate, base of uvula visible	pacu30min	no	0	small	no cough	no_change	no_change	Normal weight
+127	20.05	31	current	M	no	Sugar	0	healthy	soft palate, base of uvula visible	pacu90min	no	0	small	no cough	no_change	no_change	Normal weight
+127	20.05	31	current	M	no	Sugar	0	healthy	soft palate, base of uvula visible	postOp4hour	no	0	small	no cough	no_change	no_change	Normal weight
+127	20.05	31	current	M	no	Sugar	0	healthy	soft palate, base of uvula visible	pod1am	no	0	small	no cough	no_change	no_change	Normal weight
+128	27.16	63	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+128	27.16	63	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+128	27.16	63	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Overweight
+128	27.16	63	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+129	20.11	28	never	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+129	20.11	28	never	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+129	20.11	28	never	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+129	20.11	28	never	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+130	20.06	21	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	no_change	Normal weight
+130	20.06	21	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	no_change	Normal weight
+130	20.06	21	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	no_change	no_change	Normal weight
+130	20.06	21	current	M	no	Sugar	0	healthy	soft palate, fauces, uvula visible	pod1am	no	0	small	no cough	no_change	no_change	Normal weight
+131	22.68	67	never	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+131	22.68	67	never	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+131	22.68	67	never	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+131	22.68	67	never	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+132	27.02	70	never	M	yes	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+132	27.02	70	never	M	yes	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+132	27.02	70	never	M	yes	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Overweight
+132	27.02	70	never	M	yes	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+133	30.42	70	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	moderate	no_change	cough_resolved	Obese
+133	30.42	70	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	moderate	no_change	cough_resolved	Obese
+133	30.42	70	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	moderate	no_change	cough_resolved	Obese
+133	30.42	70	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	moderate	no_change	cough_resolved	Obese
+134	26.03	66	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	moderate	no_change	cough_resolved	Overweight
+134	26.03	66	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	moderate	no_change	cough_resolved	Overweight
+134	26.03	66	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	moderate	no_change	cough_resolved	Overweight
+134	26.03	66	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	moderate	no_change	cough_resolved	Overweight
+135	20.05	18	never	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	mild	0	small	no cough	no_change	no_change	Normal weight
+135	20.05	18	never	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	no cough	no_change	no_change	Normal weight
+135	20.05	18	never	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	small	no cough	no_change	no_change	Normal weight
+135	20.05	18	never	M	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	small	no cough	no_change	no_change	Normal weight
+136	24.34	65	current	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	mild	0	medium	no cough	no_change	no_change	Normal weight
+136	24.34	65	current	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+136	24.34	65	current	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+136	24.34	65	current	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+137	18.31	22	never	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	more_cough	Underweight
+137	18.31	22	never	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	more_cough	Underweight
+137	18.31	22	never	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	small	no cough	no_change	more_cough	Underweight
+137	18.31	22	never	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pod1am	mild	0	small	no cough	no_change	more_cough	Underweight
+138	31.21	65	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Obese
+138	31.21	65	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	more_cough	Obese
+138	31.21	65	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	more_cough	Obese
+138	31.21	65	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	moderate	0	medium	no cough	no_change	more_cough	Obese
+139	27.76	40	never	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Overweight
+139	27.76	40	never	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	more_cough	Overweight
+139	27.76	40	never	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	more_cough	Overweight
+139	27.76	40	never	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Overweight
+140	30.04	54	never	M	no	Sugar	0	mild	soft palate, base of uvula visible	pacu30min	no	0	medium	moderate	no_change	persistent_cough	Obese
+140	30.04	54	never	M	no	Sugar	0	mild	soft palate, base of uvula visible	pacu90min	no	0	medium	moderate	no_change	persistent_cough	Obese
+140	30.04	54	never	M	no	Sugar	0	mild	soft palate, base of uvula visible	postOp4hour	no	0	medium	moderate	no_change	persistent_cough	Obese
+140	30.04	54	never	M	no	Sugar	0	mild	soft palate, base of uvula visible	pod1am	mild	0	medium	moderate	no_change	persistent_cough	Obese
+141	28.03	68	never	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	mild	no_change	persistent_cough	Overweight
+141	28.03	68	never	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	mild	no_change	persistent_cough	Overweight
+141	28.03	68	never	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	mild	no_change	persistent_cough	Overweight
+141	28.03	68	never	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	mild	0	medium	mild	no_change	persistent_cough	Overweight
+142	23.04	62	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Normal weight
+142	23.04	62	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	mild	0	medium	no cough	no_change	more_cough	Normal weight
+142	23.04	62	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	more_cough	Normal weight
+142	23.04	62	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Normal weight
+143	21.33	30	never	M	no	Sugar	0	healthy	soft palate, base of uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Normal weight
+143	21.33	30	never	M	no	Sugar	0	healthy	soft palate, base of uvula visible	pacu90min	no	0	medium	no cough	no_change	more_cough	Normal weight
+143	21.33	30	never	M	no	Sugar	0	healthy	soft palate, base of uvula visible	postOp4hour	mild	0	medium	no cough	no_change	more_cough	Normal weight
+143	21.33	30	never	M	no	Sugar	0	healthy	soft palate, base of uvula visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Normal weight
+144	30.76	36	current	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	small	no cough	no_change	more_cough	Obese
+144	30.76	36	current	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	no cough	no_change	more_cough	Obese
+144	30.76	36	current	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	0	small	no cough	no_change	more_cough	Obese
+144	30.76	36	current	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	mild	0	small	no cough	no_change	more_cough	Obese
+145	20.57	60	current	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	medium	mild	no_change	persistent_cough	Normal weight
+145	20.57	60	current	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	medium	mild	no_change	persistent_cough	Normal weight
+145	20.57	60	current	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	postOp4hour	mild	0	medium	mild	no_change	persistent_cough	Normal weight
+145	20.57	60	current	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pod1am	mild	0	medium	mild	no_change	persistent_cough	Normal weight
+146	25.25	65	never	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	mild	no_change	persistent_cough	Overweight
+146	25.25	65	never	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	mild	no_change	persistent_cough	Overweight
+146	25.25	65	never	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	0	medium	mild	no_change	persistent_cough	Overweight
+146	25.25	65	never	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	mild	0	medium	mild	no_change	persistent_cough	Overweight
+147	30.86	45	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Obese
+147	30.86	45	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	mild	0	medium	no cough	no_change	more_cough	Obese
+147	30.86	45	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	mild	0	medium	no cough	no_change	more_cough	Obese
+147	30.86	45	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Obese
+148	27.13	73	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	mild	no_change	persistent_cough	Overweight
+148	27.13	73	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	mild	0	medium	mild	no_change	persistent_cough	Overweight
+148	27.13	73	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	moderate	0	medium	mild	no_change	persistent_cough	Overweight
+148	27.13	73	past	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	moderate	0	medium	mild	no_change	persistent_cough	Overweight
+149	19.2	59	never	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	increased	no_change	Normal weight
+149	19.2	59	never	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	increased	no_change	Normal weight
+149	19.2	59	never	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	increased	no_change	Normal weight
+149	19.2	59	never	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	1	medium	no cough	increased	no_change	Normal weight
+150	30.9	48	past	M	no	Sugar	0	mild	soft palate, base of uvula visible	pacu30min	mild	0	medium	no cough	increased	no_change	Obese
+150	30.9	48	past	M	no	Sugar	0	mild	soft palate, base of uvula visible	pacu90min	no	0	medium	no cough	increased	no_change	Obese
+150	30.9	48	past	M	no	Sugar	0	mild	soft palate, base of uvula visible	postOp4hour	no	0	medium	no cough	increased	no_change	Obese
+150	30.9	48	past	M	no	Sugar	0	mild	soft palate, base of uvula visible	pod1am	no	1	medium	no cough	increased	no_change	Obese
+151	29.95	45	current	M	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	increased	more_cough	Overweight
+151	29.95	45	current	M	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	increased	more_cough	Overweight
+151	29.95	45	current	M	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	0	medium	no cough	increased	more_cough	Overweight
+151	29.95	45	current	M	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	pod1am	mild	1	medium	no cough	increased	more_cough	Overweight
+152	27.66	66	past	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	increased	more_cough	Overweight
+152	27.66	66	past	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu90min	mild	0	medium	no cough	increased	more_cough	Overweight
+152	27.66	66	past	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	postOp4hour	mild	0	medium	no cough	increased	more_cough	Overweight
+152	27.66	66	past	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pod1am	mild	2	medium	no cough	increased	more_cough	Overweight
+153	29.05	73	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	mild	increased	persistent_cough	Overweight
+153	29.05	73	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	mild	0	medium	mild	increased	persistent_cough	Overweight
+153	29.05	73	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	mild	0	medium	mild	increased	persistent_cough	Overweight
+153	29.05	73	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	severe	2	medium	mild	increased	persistent_cough	Overweight
+154	27.77	69	current	M	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Overweight
+154	27.77	69	current	M	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	more_cough	Overweight
+154	27.77	69	current	M	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	1	medium	no cough	no_change	more_cough	Overweight
+154	27.77	69	current	M	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Overweight
+155	31.35	53	past	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	large	no cough	no_change	more_cough	Obese
+155	31.35	53	past	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	large	no cough	no_change	more_cough	Obese
+155	31.35	53	past	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	postOp4hour	mild	2	large	no cough	no_change	more_cough	Obese
+155	31.35	53	past	M	no	Sugar	0	severe	soft palate, fauces, uvula visible	pod1am	mild	0	large	no cough	no_change	more_cough	Obese
+156	24.38	65	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	increased	no_change	Normal weight
+156	24.38	65	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	increased	no_change	Normal weight
+156	24.38	65	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	1	small	no cough	increased	no_change	Normal weight
+156	24.38	65	current	M	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	no	1	small	no cough	increased	no_change	Normal weight
+157	26.73	70	current	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	increased	more_cough	Overweight
+157	26.73	70	current	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	increased	more_cough	Overweight
+157	26.73	70	current	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	2	medium	no cough	increased	more_cough	Overweight
+157	26.73	70	current	M	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	mild	1	medium	no cough	increased	more_cough	Overweight
+158	33.56	66	current	M	no	Sugar	0	mild	soft palate, base of uvula visible	pacu30min	no	0	medium	no cough	increased	more_cough	Obese
+158	33.56	66	current	M	no	Sugar	0	mild	soft palate, base of uvula visible	pacu90min	no	0	medium	no cough	increased	more_cough	Obese
+158	33.56	66	current	M	no	Sugar	0	mild	soft palate, base of uvula visible	postOp4hour	mild	2	medium	no cough	increased	more_cough	Obese
+158	33.56	66	current	M	no	Sugar	0	mild	soft palate, base of uvula visible	pod1am	mild	2	medium	no cough	increased	more_cough	Obese
+159	33.22	73	current	M	no	Sugar	0	mild	soft palate, base of uvula visible	pacu30min	mild	0	medium	no cough	increased	more_cough	Obese
+159	33.22	73	current	M	no	Sugar	0	mild	soft palate, base of uvula visible	pacu90min	no	0	medium	no cough	increased	more_cough	Obese
+159	33.22	73	current	M	no	Sugar	0	mild	soft palate, base of uvula visible	postOp4hour	mild	1	medium	no cough	increased	more_cough	Obese
+159	33.22	73	current	M	no	Sugar	0	mild	soft palate, base of uvula visible	pod1am	mild	1	medium	no cough	increased	more_cough	Obese
+160	23.34	63	current	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Normal weight
+160	23.34	63	current	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+160	23.34	63	current	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+160	23.34	63	current	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+161	31.53	61	never	F	no	Sugar	0	severe	soft palate, base of uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Obese
+161	31.53	61	never	F	no	Sugar	0	severe	soft palate, base of uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Obese
+161	31.53	61	never	F	no	Sugar	0	severe	soft palate, base of uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Obese
+161	31.53	61	never	F	no	Sugar	0	severe	soft palate, base of uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Obese
+162	25.85	66	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+162	25.85	66	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+162	25.85	66	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Overweight
+162	25.85	66	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+163	20.83	44	never	F	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	small	no cough	no_change	no_change	Normal weight
+163	20.83	44	never	F	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	no cough	no_change	no_change	Normal weight
+163	20.83	44	never	F	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	small	no cough	no_change	no_change	Normal weight
+163	20.83	44	never	F	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	small	no cough	no_change	no_change	Normal weight
+164	17.01	65	never	F	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	no_change	no_change	Underweight
+164	17.01	65	never	F	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	no_change	no_change	Underweight
+164	17.01	65	never	F	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Underweight
+164	17.01	65	never	F	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	no_change	no_change	Underweight
+165	26.3	64	never	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	small	no cough	no_change	no_change	Overweight
+165	26.3	64	never	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	no cough	no_change	no_change	Overweight
+165	26.3	64	never	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	small	no cough	no_change	no_change	Overweight
+165	26.3	64	never	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	0	small	no cough	no_change	no_change	Overweight
+166	20.32	34	current	F	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	mild	no_change	cough_resolved	Normal weight
+166	20.32	34	current	F	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	mild	no_change	cough_resolved	Normal weight
+166	20.32	34	current	F	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	mild	no_change	cough_resolved	Normal weight
+166	20.32	34	current	F	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	mild	no_change	cough_resolved	Normal weight
+167	30.44	70	never	F	no	Sugar	0	mild	soft palate, base of uvula visible	pacu30min	no	0	medium	mild	no_change	cough_resolved	Obese
+167	30.44	70	never	F	no	Sugar	0	mild	soft palate, base of uvula visible	pacu90min	no	0	medium	mild	no_change	cough_resolved	Obese
+167	30.44	70	never	F	no	Sugar	0	mild	soft palate, base of uvula visible	postOp4hour	no	0	medium	mild	no_change	cough_resolved	Obese
+167	30.44	70	never	F	no	Sugar	0	mild	soft palate, base of uvula visible	pod1am	no	0	medium	mild	no_change	cough_resolved	Obese
+168	26.57	63	past	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	mild	no_change	cough_resolved	Overweight
+168	26.57	63	past	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	mild	no_change	cough_resolved	Overweight
+168	26.57	63	past	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	mild	no_change	cough_resolved	Overweight
+168	26.57	63	past	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	no_change	cough_resolved	Overweight
+169	21.37	32	past	F	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	moderate	no_change	cough_resolved	Normal weight
+169	21.37	32	past	F	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	moderate	no_change	cough_resolved	Normal weight
+169	21.37	32	past	F	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	moderate	no_change	cough_resolved	Normal weight
+169	21.37	32	past	F	no	Sugar	0	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	moderate	no_change	cough_resolved	Normal weight
+170	22.27	84	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	mild	no_change	cough_resolved	Normal weight
+170	22.27	84	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	mild	no_change	cough_resolved	Normal weight
+170	22.27	84	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	mild	no_change	cough_resolved	Normal weight
+170	22.27	84	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	no_change	cough_resolved	Normal weight
+171	22.45	64	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	mild	0	medium	no cough	no_change	no_change	Normal weight
+171	22.45	64	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Normal weight
+171	22.45	64	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	no_change	Normal weight
+171	22.45	64	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Normal weight
+172	26.49	48	never	F	no	Sugar	0	healthy	soft palate, fauces, uvula visible	pacu30min	mild	0	medium	mild	no_change	cough_resolved	Overweight
+172	26.49	48	never	F	no	Sugar	0	healthy	soft palate, fauces, uvula visible	pacu90min	no	0	medium	mild	no_change	cough_resolved	Overweight
+172	26.49	48	never	F	no	Sugar	0	healthy	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	mild	no_change	cough_resolved	Overweight
+172	26.49	48	never	F	no	Sugar	0	healthy	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	no_change	cough_resolved	Overweight
+173	24.8	58	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	no_change	no_change	Normal weight
+173	24.8	58	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	no_change	no_change	Normal weight
+173	24.8	58	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	mild	0	small	no cough	no_change	no_change	Normal weight
+173	24.8	58	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	small	no cough	no_change	no_change	Normal weight
+174	23.63	81	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Normal weight
+174	23.63	81	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	more_cough	Normal weight
+174	23.63	81	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	more_cough	Normal weight
+174	23.63	81	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Normal weight
+175	25.04	73	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Overweight
+175	25.04	73	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	more_cough	Overweight
+175	25.04	73	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	no_change	more_cough	Overweight
+175	25.04	73	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Overweight
+176	30.8	67	current	F	no	Sugar	0	severe	soft palate, base of uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Obese
+176	30.8	67	current	F	no	Sugar	0	severe	soft palate, base of uvula visible	pacu90min	no	0	medium	no cough	no_change	more_cough	Obese
+176	30.8	67	current	F	no	Sugar	0	severe	soft palate, base of uvula visible	postOp4hour	no	0	medium	no cough	no_change	more_cough	Obese
+176	30.8	67	current	F	no	Sugar	0	severe	soft palate, base of uvula visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Obese
+177	31.57	60	past	F	no	Sugar	0	severe	soft palate not visible at all	pacu30min	no	0	medium	no cough	no_change	more_cough	Obese
+177	31.57	60	past	F	no	Sugar	0	severe	soft palate not visible at all	pacu90min	no	0	medium	no cough	no_change	more_cough	Obese
+177	31.57	60	past	F	no	Sugar	0	severe	soft palate not visible at all	postOp4hour	no	0	medium	no cough	no_change	more_cough	Obese
+177	31.57	60	past	F	no	Sugar	0	severe	soft palate not visible at all	pod1am	mild	0	medium	no cough	no_change	more_cough	Obese
+178	30.49	79	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Obese
+178	30.49	79	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	more_cough	Obese
+178	30.49	79	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	mild	0	medium	no cough	no_change	more_cough	Obese
+178	30.49	79	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Obese
+179	26.56	53	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	more_cough	Overweight
+179	26.56	53	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	more_cough	Overweight
+179	26.56	53	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	mild	0	medium	no cough	no_change	more_cough	Overweight
+179	26.56	53	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	mild	0	medium	no cough	no_change	more_cough	Overweight
+180	21.61	35	current	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	small	no cough	no_change	more_cough	Normal weight
+180	21.61	35	current	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	no cough	no_change	more_cough	Normal weight
+180	21.61	35	current	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	0	small	no cough	no_change	more_cough	Normal weight
+180	21.61	35	current	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	mild	0	small	no cough	no_change	more_cough	Normal weight
+181	34.11	68	current	F	no	Sugar	0	severe	soft palate, base of uvula visible	pacu30min	no	0	medium	moderate	increased	cough_resolved	Obese
+181	34.11	68	current	F	no	Sugar	0	severe	soft palate, base of uvula visible	pacu90min	no	0	medium	moderate	increased	cough_resolved	Obese
+181	34.11	68	current	F	no	Sugar	0	severe	soft palate, base of uvula visible	postOp4hour	no	0	medium	moderate	increased	cough_resolved	Obese
+181	34.11	68	current	F	no	Sugar	0	severe	soft palate, base of uvula visible	pod1am	no	1	medium	moderate	increased	cough_resolved	Obese
+182	19.4	26	past	F	no	Sugar	1	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	small	no cough	no_change	no_change	Normal weight
+182	19.4	26	past	F	no	Sugar	1	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	small	no cough	no_change	no_change	Normal weight
+182	19.4	26	past	F	no	Sugar	1	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	small	no cough	no_change	no_change	Normal weight
+182	19.4	26	past	F	no	Sugar	1	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	0	small	no cough	no_change	no_change	Normal weight
+183	26.18	62	past	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	no_change	no_change	Overweight
+183	26.18	62	past	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	no_change	no_change	Overweight
+183	26.18	62	past	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	1	medium	no cough	no_change	no_change	Overweight
+183	26.18	62	past	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	no cough	no_change	no_change	Overweight
+184	28.08	69	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	moderate	no_change	persistent_cough	Overweight
+184	28.08	69	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	moderate	no_change	persistent_cough	Overweight
+184	28.08	69	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	1	medium	moderate	no_change	persistent_cough	Overweight
+184	28.08	69	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	mild	0	medium	moderate	no_change	persistent_cough	Overweight
+185	28.12	60	past	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	large	no cough	increased	no_change	Overweight
+185	28.12	60	past	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	large	no cough	increased	no_change	Overweight
+185	28.12	60	past	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	4	large	no cough	increased	no_change	Overweight
+185	28.12	60	past	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	1	large	no cough	increased	no_change	Overweight
+186	25.26	73	past	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	increased	no_change	Overweight
+186	25.26	73	past	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	increased	no_change	Overweight
+186	25.26	73	past	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	1	medium	no cough	increased	no_change	Overweight
+186	25.26	73	past	F	no	Sugar	0	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	1	medium	no cough	increased	no_change	Overweight
+187	18.87	66	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	small	no cough	increased	no_change	Normal weight
+187	18.87	66	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	small	no cough	increased	no_change	Normal weight
+187	18.87	66	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	no	5	small	no cough	increased	no_change	Normal weight
+187	18.87	66	never	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	no	2	small	no cough	increased	no_change	Normal weight
+188	23.88	79	never	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	small	mild	increased	cough_resolved	Normal weight
+188	23.88	79	never	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	small	mild	increased	cough_resolved	Normal weight
+188	23.88	79	never	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	3	small	mild	increased	cough_resolved	Normal weight
+188	23.88	79	never	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	pod1am	no	2	small	mild	increased	cough_resolved	Normal weight
+189	23.23	86	never	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	small	mild	increased	cough_resolved	Normal weight
+189	23.23	86	never	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	small	mild	increased	cough_resolved	Normal weight
+189	23.23	86	never	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	1	small	mild	increased	cough_resolved	Normal weight
+189	23.23	86	never	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	pod1am	no	2	small	mild	increased	cough_resolved	Normal weight
+190	29.76	42	past	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	increased	more_cough	Overweight
+190	29.76	42	past	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	increased	more_cough	Overweight
+190	29.76	42	past	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	postOp4hour	no	2	medium	no cough	increased	more_cough	Overweight
+190	29.76	42	past	F	no	Sugar	0	severe	soft palate, fauces, uvula visible	pod1am	mild	1	medium	no cough	increased	more_cough	Overweight
+191	25.25	56	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	no cough	increased	more_cough	Overweight
+191	25.25	56	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	no	0	medium	no cough	increased	more_cough	Overweight
+191	25.25	56	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	mild	1	medium	no cough	increased	more_cough	Overweight
+191	25.25	56	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	mild	1	medium	no cough	increased	more_cough	Overweight
+192	20.76	48	never	F	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	0	medium	no cough	increased	more_cough	Normal weight
+192	20.76	48	never	F	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	no cough	increased	more_cough	Normal weight
+192	20.76	48	never	F	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	1	medium	no cough	increased	more_cough	Normal weight
+192	20.76	48	never	F	no	Sugar	0	severe	soft palate, fauces, uvula, pillars visible	pod1am	mild	1	medium	no cough	increased	more_cough	Normal weight
+193	26.93	38	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu30min	no	0	medium	mild	increased	persistent_cough	Overweight
+193	26.93	38	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pacu90min	mild	1	medium	mild	increased	persistent_cough	Overweight
+193	26.93	38	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	postOp4hour	mild	2	medium	mild	increased	persistent_cough	Overweight
+193	26.93	38	current	F	no	Sugar	0	mild	soft palate, fauces, uvula visible	pod1am	mild	2	medium	mild	increased	persistent_cough	Overweight
+194	26.51	52	past	M	no	Sugar	2	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	mild	2	medium	moderate	decreased	cough_resolved	Overweight
+194	26.51	52	past	M	no	Sugar	2	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	no	0	medium	moderate	decreased	cough_resolved	Overweight
+194	26.51	52	past	M	no	Sugar	2	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	medium	moderate	decreased	cough_resolved	Overweight
+194	26.51	52	past	M	no	Sugar	2	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	moderate	decreased	cough_resolved	Overweight
+195	23.32	84	past	M	no	Sugar	3	mild	soft palate, base of uvula visible	pacu30min	no	3	medium	no cough	decreased	more_cough	Normal weight
+195	23.32	84	past	M	no	Sugar	3	mild	soft palate, base of uvula visible	pacu90min	no	0	medium	no cough	decreased	more_cough	Normal weight
+195	23.32	84	past	M	no	Sugar	3	mild	soft palate, base of uvula visible	postOp4hour	no	0	medium	no cough	decreased	more_cough	Normal weight
+195	23.32	84	past	M	no	Sugar	3	mild	soft palate, base of uvula visible	pod1am	mild	0	medium	no cough	decreased	more_cough	Normal weight
+196	21.8	80	never	M	no	Sugar	4	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	2	small	no cough	decreased	no_change	Normal weight
+196	21.8	80	never	M	no	Sugar	4	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	2	small	no cough	decreased	no_change	Normal weight
+196	21.8	80	never	M	no	Sugar	4	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	no	0	small	no cough	decreased	no_change	Normal weight
+196	21.8	80	never	M	no	Sugar	4	severe	soft palate, fauces, uvula, pillars visible	pod1am	no	0	small	no cough	decreased	no_change	Normal weight
+197	27.76	66	past	M	no	Sugar	2	severe	soft palate, base of uvula visible	pacu30min	no	2	large	moderate	decreased	cough_resolved	Overweight
+197	27.76	66	past	M	no	Sugar	2	severe	soft palate, base of uvula visible	pacu90min	no	2	large	moderate	decreased	cough_resolved	Overweight
+197	27.76	66	past	M	no	Sugar	2	severe	soft palate, base of uvula visible	postOp4hour	no	0	large	moderate	decreased	cough_resolved	Overweight
+197	27.76	66	past	M	no	Sugar	2	severe	soft palate, base of uvula visible	pod1am	no	0	large	moderate	decreased	cough_resolved	Overweight
+198	27.15	67	past	M	no	Sugar	8	mild	soft palate, fauces, uvula visible	pacu30min	no	4	medium	mild	decreased	cough_resolved	Overweight
+198	27.15	67	past	M	no	Sugar	8	mild	soft palate, fauces, uvula visible	pacu90min	no	2	medium	mild	decreased	cough_resolved	Overweight
+198	27.15	67	past	M	no	Sugar	8	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	mild	decreased	cough_resolved	Overweight
+198	27.15	67	past	M	no	Sugar	8	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	decreased	cough_resolved	Overweight
+199	25.69	82	never	M	no	Sugar	2	severe	soft palate, fauces, uvula visible	pacu30min	no	2	medium	no cough	decreased	no_change	Overweight
+199	25.69	82	never	M	no	Sugar	2	severe	soft palate, fauces, uvula visible	pacu90min	no	2	medium	no cough	decreased	no_change	Overweight
+199	25.69	82	never	M	no	Sugar	2	severe	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	no cough	decreased	no_change	Overweight
+199	25.69	82	never	M	no	Sugar	2	severe	soft palate, fauces, uvula visible	pod1am	no	1	medium	no cough	decreased	no_change	Overweight
+200	28.41	54	past	M	no	Sugar	4	mild	soft palate, base of uvula visible	pacu30min	no	2	medium	no cough	decreased	no_change	Overweight
+200	28.41	54	past	M	no	Sugar	4	mild	soft palate, base of uvula visible	pacu90min	no	2	medium	no cough	decreased	no_change	Overweight
+200	28.41	54	past	M	no	Sugar	4	mild	soft palate, base of uvula visible	postOp4hour	no	1	medium	no cough	decreased	no_change	Overweight
+200	28.41	54	past	M	no	Sugar	4	mild	soft palate, base of uvula visible	pod1am	no	0	medium	no cough	decreased	no_change	Overweight
+201	19.93	65	current	M	no	Sugar	2	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	2	medium	no cough	decreased	no_change	Normal weight
+201	19.93	65	current	M	no	Sugar	2	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	2	medium	no cough	decreased	no_change	Normal weight
+201	19.93	65	current	M	no	Sugar	2	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	no	1	medium	no cough	decreased	no_change	Normal weight
+201	19.93	65	current	M	no	Sugar	2	severe	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	decreased	no_change	Normal weight
+202	22.06	81	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pacu30min	mild	2	medium	mild	decreased	cough_resolved	Normal weight
+202	22.06	81	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pacu90min	no	1	medium	mild	decreased	cough_resolved	Normal weight
+202	22.06	81	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	postOp4hour	no	1	medium	mild	decreased	cough_resolved	Normal weight
+202	22.06	81	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	decreased	cough_resolved	Normal weight
+203	30.07	66	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pacu30min	mild	2	medium	mild	decreased	cough_resolved	Obese
+203	30.07	66	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pacu90min	no	1	medium	mild	decreased	cough_resolved	Obese
+203	30.07	66	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	postOp4hour	no	1	medium	mild	decreased	cough_resolved	Obese
+203	30.07	66	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	decreased	cough_resolved	Obese
+204	23.2	46	current	M	no	Sugar	1	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	mild	3	medium	mild	decreased	cough_resolved	Normal weight
+204	23.2	46	current	M	no	Sugar	1	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	mild	2	medium	mild	decreased	cough_resolved	Normal weight
+204	23.2	46	current	M	no	Sugar	1	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	2	medium	mild	decreased	cough_resolved	Normal weight
+204	23.2	46	current	M	no	Sugar	1	healthy	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	mild	decreased	cough_resolved	Normal weight
+205	20.68	45	current	M	no	Sugar	1	mild	soft palate, fauces, uvula visible	pacu30min	mild	1	medium	mild	decreased	cough_resolved	Normal weight
+205	20.68	45	current	M	no	Sugar	1	mild	soft palate, fauces, uvula visible	pacu90min	mild	1	medium	mild	decreased	cough_resolved	Normal weight
+205	20.68	45	current	M	no	Sugar	1	mild	soft palate, fauces, uvula visible	postOp4hour	mild	2	medium	mild	decreased	cough_resolved	Normal weight
+205	20.68	45	current	M	no	Sugar	1	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	decreased	cough_resolved	Normal weight
+206	26.26	76	current	M	no	Sugar	3	mild	soft palate, fauces, uvula visible	pacu30min	no	3	large	no cough	decreased	more_cough	Overweight
+206	26.26	76	current	M	no	Sugar	3	mild	soft palate, fauces, uvula visible	pacu90min	no	2	large	no cough	decreased	more_cough	Overweight
+206	26.26	76	current	M	no	Sugar	3	mild	soft palate, fauces, uvula visible	postOp4hour	no	2	large	no cough	decreased	more_cough	Overweight
+206	26.26	76	current	M	no	Sugar	3	mild	soft palate, fauces, uvula visible	pod1am	mild	0	large	no cough	decreased	more_cough	Overweight
+207	27.47	45	past	M	no	Sugar	5	healthy	soft palate, fauces, uvula visible	pacu30min	no	3	medium	no cough	no_change	no_change	Overweight
+207	27.47	45	past	M	no	Sugar	5	healthy	soft palate, fauces, uvula visible	pacu90min	no	2	medium	no cough	no_change	no_change	Overweight
+207	27.47	45	past	M	no	Sugar	5	healthy	soft palate, fauces, uvula visible	postOp4hour	no	2	medium	no cough	no_change	no_change	Overweight
+207	27.47	45	past	M	no	Sugar	5	healthy	soft palate, fauces, uvula visible	pod1am	no	3	medium	no cough	no_change	no_change	Overweight
+208	29.91	84	past	M	no	Sugar	3	mild	soft palate, fauces, uvula visible	pacu30min	no	1	medium	no cough	no_change	no_change	Overweight
+208	29.91	84	past	M	no	Sugar	3	mild	soft palate, fauces, uvula visible	pacu90min	no	2	medium	no cough	no_change	no_change	Overweight
+208	29.91	84	past	M	no	Sugar	3	mild	soft palate, fauces, uvula visible	postOp4hour	no	1	medium	no cough	no_change	no_change	Overweight
+208	29.91	84	past	M	no	Sugar	3	mild	soft palate, fauces, uvula visible	pod1am	no	1	medium	no cough	no_change	no_change	Overweight
+209	27.76	45	current	M	no	Sugar	4	healthy	soft palate, fauces, uvula visible	pacu30min	no	2	medium	no cough	decreased	no_change	Overweight
+209	27.76	45	current	M	no	Sugar	4	healthy	soft palate, fauces, uvula visible	pacu90min	no	2	medium	no cough	decreased	no_change	Overweight
+209	27.76	45	current	M	no	Sugar	4	healthy	soft palate, fauces, uvula visible	postOp4hour	no	1	medium	no cough	decreased	no_change	Overweight
+209	27.76	45	current	M	no	Sugar	4	healthy	soft palate, fauces, uvula visible	pod1am	no	1	medium	no cough	decreased	no_change	Overweight
+210	31.18	64	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pacu30min	no	2	large	no cough	no_change	no_change	Obese
+210	31.18	64	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pacu90min	no	2	large	no cough	no_change	no_change	Obese
+210	31.18	64	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	postOp4hour	no	1	large	no cough	no_change	no_change	Obese
+210	31.18	64	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pod1am	no	2	large	no cough	no_change	no_change	Obese
+211	32.18	54	current	M	no	Sugar	2	severe	soft palate, fauces, uvula visible	pacu30min	no	2	medium	no cough	decreased	no_change	Obese
+211	32.18	54	current	M	no	Sugar	2	severe	soft palate, fauces, uvula visible	pacu90min	no	2	medium	no cough	decreased	no_change	Obese
+211	32.18	54	current	M	no	Sugar	2	severe	soft palate, fauces, uvula visible	postOp4hour	no	3	medium	no cough	decreased	no_change	Obese
+211	32.18	54	current	M	no	Sugar	2	severe	soft palate, fauces, uvula visible	pod1am	no	1	medium	no cough	decreased	no_change	Obese
+212	27.43	73	past	M	no	Sugar	6	severe	soft palate, base of uvula visible	pacu30min	no	2	medium	moderate	decreased	cough_resolved	Overweight
+212	27.43	73	past	M	no	Sugar	6	severe	soft palate, base of uvula visible	pacu90min	no	2	medium	moderate	decreased	cough_resolved	Overweight
+212	27.43	73	past	M	no	Sugar	6	severe	soft palate, base of uvula visible	postOp4hour	no	3	medium	moderate	decreased	cough_resolved	Overweight
+212	27.43	73	past	M	no	Sugar	6	severe	soft palate, base of uvula visible	pod1am	no	1	medium	moderate	decreased	cough_resolved	Overweight
+213	22.15	81	never	M	no	Sugar	4	mild	soft palate, fauces, uvula, pillars visible	pacu30min	mild	3	small	mild	decreased	cough_resolved	Normal weight
+213	22.15	81	never	M	no	Sugar	4	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	2	small	mild	decreased	cough_resolved	Normal weight
+213	22.15	81	never	M	no	Sugar	4	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	no	2	small	mild	decreased	cough_resolved	Normal weight
+213	22.15	81	never	M	no	Sugar	4	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	1	small	mild	decreased	cough_resolved	Normal weight
+214	22.44	42	current	M	no	Sugar	1	mild	soft palate, fauces, uvula visible	pacu30min	mild	1	medium	mild	no_change	cough_resolved	Normal weight
+214	22.44	42	current	M	no	Sugar	1	mild	soft palate, fauces, uvula visible	pacu90min	mild	1	medium	mild	no_change	cough_resolved	Normal weight
+214	22.44	42	current	M	no	Sugar	1	mild	soft palate, fauces, uvula visible	postOp4hour	no	1	medium	mild	no_change	cough_resolved	Normal weight
+214	22.44	42	current	M	no	Sugar	1	mild	soft palate, fauces, uvula visible	pod1am	no	1	medium	mild	no_change	cough_resolved	Normal weight
+215	22.84	38	current	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pacu30min	mild	2	medium	mild	decreased	cough_resolved	Normal weight
+215	22.84	38	current	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pacu90min	mild	1	medium	mild	decreased	cough_resolved	Normal weight
+215	22.84	38	current	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	postOp4hour	mild	1	medium	mild	decreased	cough_resolved	Normal weight
+215	22.84	38	current	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pod1am	no	1	medium	mild	decreased	cough_resolved	Normal weight
+216	25.77	62	current	M	no	Sugar	4	severe	soft palate, fauces, uvula visible	pacu30min	mild	2	medium	mild	decreased	cough_resolved	Overweight
+216	25.77	62	current	M	no	Sugar	4	severe	soft palate, fauces, uvula visible	pacu90min	mild	2	medium	mild	decreased	cough_resolved	Overweight
+216	25.77	62	current	M	no	Sugar	4	severe	soft palate, fauces, uvula visible	postOp4hour	mild	2	medium	mild	decreased	cough_resolved	Overweight
+216	25.77	62	current	M	no	Sugar	4	severe	soft palate, fauces, uvula visible	pod1am	no	1	medium	mild	decreased	cough_resolved	Overweight
+217	31.64	54	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pacu30min	mild	3	medium	mild	decreased	cough_resolved	Obese
+217	31.64	54	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pacu90min	mild	1	medium	mild	decreased	cough_resolved	Obese
+217	31.64	54	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	postOp4hour	mild	1	medium	mild	decreased	cough_resolved	Obese
+217	31.64	54	past	M	no	Sugar	2	mild	soft palate, fauces, uvula visible	pod1am	no	2	medium	mild	decreased	cough_resolved	Obese
+218	28.36	62	never	M	no	Sugar	10	mild	soft palate, base of uvula visible	pacu30min	mild	6	medium	mild	decreased	persistent_cough	Overweight
+218	28.36	62	never	M	no	Sugar	10	mild	soft palate, base of uvula visible	pacu90min	mild	4	medium	mild	decreased	persistent_cough	Overweight
+218	28.36	62	never	M	no	Sugar	10	mild	soft palate, base of uvula visible	postOp4hour	no	3	medium	mild	decreased	persistent_cough	Overweight
+218	28.36	62	never	M	no	Sugar	10	mild	soft palate, base of uvula visible	pod1am	mild	2	medium	mild	decreased	persistent_cough	Overweight
+219	26.37	63	past	M	no	Sugar	1	severe	soft palate, fauces, uvula, pillars visible	pacu30min	no	2	small	no cough	decreased	more_cough	Overweight
+219	26.37	63	past	M	no	Sugar	1	severe	soft palate, fauces, uvula, pillars visible	pacu90min	no	1	small	no cough	decreased	more_cough	Overweight
+219	26.37	63	past	M	no	Sugar	1	severe	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	1	small	no cough	decreased	more_cough	Overweight
+219	26.37	63	past	M	no	Sugar	1	severe	soft palate, fauces, uvula, pillars visible	pod1am	mild	1	small	no cough	decreased	more_cough	Overweight
+220	23.04	19	current	M	no	Sugar	6	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	mild	3	small	mild	decreased	persistent_cough	Normal weight
+220	23.04	19	current	M	no	Sugar	6	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	mild	3	small	mild	decreased	persistent_cough	Normal weight
+220	23.04	19	current	M	no	Sugar	6	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	2	small	mild	decreased	persistent_cough	Normal weight
+220	23.04	19	current	M	no	Sugar	6	healthy	soft palate, fauces, uvula, pillars visible	pod1am	mild	2	small	mild	decreased	persistent_cough	Normal weight
+221	26.54	67	past	M	no	Sugar	7	severe	soft palate, fauces, uvula visible	pacu30min	moderate	4	large	moderate	decreased	persistent_cough	Overweight
+221	26.54	67	past	M	no	Sugar	7	severe	soft palate, fauces, uvula visible	pacu90min	moderate	3	large	moderate	decreased	persistent_cough	Overweight
+221	26.54	67	past	M	no	Sugar	7	severe	soft palate, fauces, uvula visible	postOp4hour	moderate	1	large	moderate	decreased	persistent_cough	Overweight
+221	26.54	67	past	M	no	Sugar	7	severe	soft palate, fauces, uvula visible	pod1am	mild	2	large	moderate	decreased	persistent_cough	Overweight
+222	26.53	55	never	M	no	Sugar	4	mild	soft palate, fauces, uvula visible	pacu30min	mild	4	large	mild	no_change	persistent_cough	Overweight
+222	26.53	55	never	M	no	Sugar	4	mild	soft palate, fauces, uvula visible	pacu90min	mild	2	large	mild	no_change	persistent_cough	Overweight
+222	26.53	55	never	M	no	Sugar	4	mild	soft palate, fauces, uvula visible	postOp4hour	mild	4	large	mild	no_change	persistent_cough	Overweight
+222	26.53	55	never	M	no	Sugar	4	mild	soft palate, fauces, uvula visible	pod1am	mild	4	large	mild	no_change	persistent_cough	Overweight
+223	23.37	33	current	M	no	Sugar	7	mild	soft palate, fauces, uvula visible	pacu30min	moderate	5	large	moderate	decreased	persistent_cough	Normal weight
+223	23.37	33	current	M	no	Sugar	7	mild	soft palate, fauces, uvula visible	pacu90min	mild	4	large	moderate	decreased	persistent_cough	Normal weight
+223	23.37	33	current	M	no	Sugar	7	mild	soft palate, fauces, uvula visible	postOp4hour	mild	5	large	moderate	decreased	persistent_cough	Normal weight
+223	23.37	33	current	M	no	Sugar	7	mild	soft palate, fauces, uvula visible	pod1am	mild	2	large	moderate	decreased	persistent_cough	Normal weight
+224	23.81	43	current	M	no	Sugar	6	mild	soft palate, fauces, uvula visible	pacu30min	mild	3	medium	mild	decreased	persistent_cough	Normal weight
+224	23.81	43	current	M	no	Sugar	6	mild	soft palate, fauces, uvula visible	pacu90min	mild	3	medium	mild	decreased	persistent_cough	Normal weight
+224	23.81	43	current	M	no	Sugar	6	mild	soft palate, fauces, uvula visible	postOp4hour	mild	3	medium	mild	decreased	persistent_cough	Normal weight
+224	23.81	43	current	M	no	Sugar	6	mild	soft palate, fauces, uvula visible	pod1am	mild	2	medium	mild	decreased	persistent_cough	Normal weight
+225	33.39	69	past	M	no	Sugar	3	severe	soft palate, base of uvula visible	pacu30min	moderate	3	medium	moderate	decreased	persistent_cough	Obese
+225	33.39	69	past	M	no	Sugar	3	severe	soft palate, base of uvula visible	pacu90min	mild	4	medium	moderate	decreased	persistent_cough	Obese
+225	33.39	69	past	M	no	Sugar	3	severe	soft palate, base of uvula visible	postOp4hour	moderate	3	medium	moderate	decreased	persistent_cough	Obese
+225	33.39	69	past	M	no	Sugar	3	severe	soft palate, base of uvula visible	pod1am	moderate	2	medium	moderate	decreased	persistent_cough	Obese
+226	25.9	35	never	F	no	Sugar	9	mild	soft palate, fauces, uvula visible	pacu30min	mild	4	medium	mild	decreased	cough_resolved	Overweight
+226	25.9	35	never	F	no	Sugar	9	mild	soft palate, fauces, uvula visible	pacu90min	mild	4	medium	mild	decreased	cough_resolved	Overweight
+226	25.9	35	never	F	no	Sugar	9	mild	soft palate, fauces, uvula visible	postOp4hour	no	0	medium	mild	decreased	cough_resolved	Overweight
+226	25.9	35	never	F	no	Sugar	9	mild	soft palate, fauces, uvula visible	pod1am	no	0	medium	mild	decreased	cough_resolved	Overweight
+227	16.42	67	never	F	no	Sugar	1	mild	soft palate, fauces, uvula, pillars visible	pacu30min	no	1	medium	no cough	decreased	no_change	Underweight
+227	16.42	67	never	F	no	Sugar	1	mild	soft palate, fauces, uvula, pillars visible	pacu90min	no	1	medium	no cough	decreased	no_change	Underweight
+227	16.42	67	never	F	no	Sugar	1	mild	soft palate, fauces, uvula, pillars visible	postOp4hour	mild	2	medium	no cough	decreased	no_change	Underweight
+227	16.42	67	never	F	no	Sugar	1	mild	soft palate, fauces, uvula, pillars visible	pod1am	no	0	medium	no cough	decreased	no_change	Underweight
+228	20.08	66	never	F	no	Sugar	4	mild	soft palate, fauces, uvula visible	pacu30min	no	4	small	no cough	decreased	more_cough	Normal weight
+228	20.08	66	never	F	no	Sugar	4	mild	soft palate, fauces, uvula visible	pacu90min	no	4	small	no cough	decreased	more_cough	Normal weight
+228	20.08	66	never	F	no	Sugar	4	mild	soft palate, fauces, uvula visible	postOp4hour	no	1	small	no cough	decreased	more_cough	Normal weight
+228	20.08	66	never	F	no	Sugar	4	mild	soft palate, fauces, uvula visible	pod1am	mild	0	small	no cough	decreased	more_cough	Normal weight
+229	17.01	43	past	F	yes	Sugar	5	severe	soft palate, fauces, uvula visible	pacu30min	no	6	medium	no cough	decreased	no_change	Underweight
+229	17.01	43	past	F	yes	Sugar	5	severe	soft palate, fauces, uvula visible	pacu90min	no	4	medium	no cough	decreased	no_change	Underweight
+229	17.01	43	past	F	yes	Sugar	5	severe	soft palate, fauces, uvula visible	postOp4hour	no	3	medium	no cough	decreased	no_change	Underweight
+229	17.01	43	past	F	yes	Sugar	5	severe	soft palate, fauces, uvula visible	pod1am	no	2	medium	no cough	decreased	no_change	Underweight
+230	27.01	83	current	F	no	Sugar	5	mild	soft palate, fauces, uvula visible	pacu30min	mild	3	medium	mild	decreased	cough_resolved	Overweight
+230	27.01	83	current	F	no	Sugar	5	mild	soft palate, fauces, uvula visible	pacu90min	mild	4	medium	mild	decreased	cough_resolved	Overweight
+230	27.01	83	current	F	no	Sugar	5	mild	soft palate, fauces, uvula visible	postOp4hour	mild	3	medium	mild	decreased	cough_resolved	Overweight
+230	27.01	83	current	F	no	Sugar	5	mild	soft palate, fauces, uvula visible	pod1am	no	2	medium	mild	decreased	cough_resolved	Overweight
+231	33.43	55	past	F	no	Sugar	3	mild	soft palate, fauces, uvula visible	pacu30min	no	3	medium	no cough	decreased	more_cough	Obese
+231	33.43	55	past	F	no	Sugar	3	mild	soft palate, fauces, uvula visible	pacu90min	no	1	medium	no cough	decreased	more_cough	Obese
+231	33.43	55	past	F	no	Sugar	3	mild	soft palate, fauces, uvula visible	postOp4hour	no	1	medium	no cough	decreased	more_cough	Obese
+231	33.43	55	past	F	no	Sugar	3	mild	soft palate, fauces, uvula visible	pod1am	mild	1	medium	no cough	decreased	more_cough	Obese
+232	26.08	55	past	F	no	Sugar	4	severe	soft palate, fauces, uvula visible	pacu30min	no	4	large	mild	decreased	persistent_cough	Overweight
+232	26.08	55	past	F	no	Sugar	4	severe	soft palate, fauces, uvula visible	pacu90min	mild	4	large	mild	decreased	persistent_cough	Overweight
+232	26.08	55	past	F	no	Sugar	4	severe	soft palate, fauces, uvula visible	postOp4hour	mild	1	large	mild	decreased	persistent_cough	Overweight
+232	26.08	55	past	F	no	Sugar	4	severe	soft palate, fauces, uvula visible	pod1am	mild	1	large	mild	decreased	persistent_cough	Overweight
+233	21.97	43	past	F	no	Sugar	8	mild	soft palate, fauces, uvula visible	pacu30min	mild	4	small	moderate	increased	persistent_cough	Normal weight
+233	21.97	43	past	F	no	Sugar	8	mild	soft palate, fauces, uvula visible	pacu90min	mild	6	small	moderate	increased	persistent_cough	Normal weight
+233	21.97	43	past	F	no	Sugar	8	mild	soft palate, fauces, uvula visible	postOp4hour	mild	6	small	moderate	increased	persistent_cough	Normal weight
+233	21.97	43	past	F	no	Sugar	8	mild	soft palate, fauces, uvula visible	pod1am	moderate	6	small	moderate	increased	persistent_cough	Normal weight
+234	21.67	44	past	F	no	Sugar	3	healthy	soft palate, fauces, uvula, pillars visible	pacu30min	moderate	3	small	moderate	no_change	persistent_cough	Normal weight
+234	21.67	44	past	F	no	Sugar	3	healthy	soft palate, fauces, uvula, pillars visible	pacu90min	mild	2	small	moderate	no_change	persistent_cough	Normal weight
+234	21.67	44	past	F	no	Sugar	3	healthy	soft palate, fauces, uvula, pillars visible	postOp4hour	moderate	7	small	moderate	no_change	persistent_cough	Normal weight
+234	21.67	44	past	F	no	Sugar	3	healthy	soft palate, fauces, uvula, pillars visible	pod1am	moderate	3	small	moderate	no_change	persistent_cough	Normal weight
+235	15.6	23	never	F	no	Sugar	2	severe	soft palate, fauces, uvula visible	pacu30min	mild	4	medium	moderate	decreased	persistent_cough	Underweight
+235	15.6	23	never	F	no	Sugar	2	severe	soft palate, fauces, uvula visible	pacu90min	moderate	2	medium	moderate	decreased	persistent_cough	Underweight
+235	15.6	23	never	F	no	Sugar	2	severe	soft palate, fauces, uvula visible	postOp4hour	mild	1	medium	moderate	decreased	persistent_cough	Underweight
+235	15.6	23	never	F	no	Sugar	2	severe	soft palate, fauces, uvula visible	pod1am	mild	1	medium	moderate	decreased	persistent_cough	Underweight

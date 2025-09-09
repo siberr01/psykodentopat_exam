@@ -225,4 +225,14 @@ joined_exam_data %>%
 # Create a table with two categorical columns
 janitor::tabyl(joined_exam_data, gender, treat)
 
+# Save data ----
+# Uncomment to save
+#fileName <- paste0("joined_exam_data_", Sys.Date(), ".txt") 
+
+#write_delim(
+#  joined_exam_data,
+#  file = fileName,
+#  delim = "\t"
+#)
+
 #----End----####
