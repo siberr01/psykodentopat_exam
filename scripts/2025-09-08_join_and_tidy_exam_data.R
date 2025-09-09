@@ -199,7 +199,7 @@ joined_exam_data %>%
   ) %>% 
   knitr::kable(digits = 2, caption = "Throat Pain at POD1AM by Treatment (Females Only)")
 
-## Stratifying cater. column gender dor persons with BMI <25
+## Stratifying cater. column gender for persons with BMI <25
 joined_exam_data %>%
   filter(BMI < 25) %>%
   group_by(gender) %>%
@@ -221,5 +221,8 @@ joined_exam_data %>%
     swallowPain_sd = sd(swallowPain, na.rm = TRUE),
     .groups = "drop"
   )
+
+# Create a table with two categorical columns
+janitor::tabyl(joined_exam_data, gender, treat)
 
 #----End----####
