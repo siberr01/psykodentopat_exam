@@ -64,6 +64,32 @@ density_age_distribution_by_gender <- ggplot(joined_exam_data,
   scale_fill_brewer(palette = "Pastel2")
 density_age_distribution_by_gender
 
+# Does the preoperative pain change with age of the patients? ----
+## Box-plot to show the distribution of age related to preOp pain
+
+ggplot(joined_exam_data, aes(x = preOp_pain, y = age)) +
+  geom_boxplot() +
+  labs(
+    x = "Preoperative pain (Yes/No)",       # The age-distribution seems to be quite similar in both gropus
+    y = "Age"
+  )
+
+## Denisty-plot, can be more intuitive to read
+ggplot(joined_exam_data, aes(x = age, fill = preOp_pain)) +
+  geom_density(alpha = 0.4) +
+  labs(
+    x = "Age",
+    y = "Density"                 
+  )
+
+## Want to explore why we get these kind of "strange" results
+
+### Exploring the variables
+skimr::skim(joined_exam_data$age)
+skimr::skim(joined_exam_data$preOp_pain)
+
+# Only 2 patient experienced preOp pain, therefore the data is too limited to say anything about how preOp pain is related to age 
+
 # T-tests (Welch Two Sample t-test) ----
 t.test(age ~ treat, data = joined_exam_data)
 t.test(age ~ preOp_pain, data = joined_exam_data)
