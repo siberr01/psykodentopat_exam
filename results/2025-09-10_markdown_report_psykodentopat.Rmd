@@ -13,11 +13,209 @@ This is a R Markdown report for the group exam in RMED901A for the group psykode
 
 The report includes all the steps we have conducted throughout the course related to the exam data (i.e., exploration, tidying, visualization, and statistical analyses).
 
-## Data exploration
+##Setup
+```{r packages, include=FALSE}
+library(tidyverse)
+library(here)
+library(ggplot2)
+library(patchwork)
+```
 
+
+## Reading the data
+```{r read data, include=FALSE}
+exam_data <- read_delim(here("data","exam_data.txt"))
+joined_exam_data <- read_delim(here("data","joined_exam_data_2025-09-09.txt"))
+```
+
+
+## Data exploration
+To get an overview of the dataset, we inspected its structure and content using 
+tidyverse functions such as `glimpse()`, the base R function str(), and the skim() function from the skimr package.
+
+```{r data exploration}
+exam_data
+glimpse(exam_data)
+str(exam_data)
+head(exam_data)
+tail(exam_data)
+skimr::skim(exam_data)
+```
+The dataset contained 265 rows and 20 columns.  
+
+### Observations
+From the initial inspection we noted several issues:
+
+- Many variables were unnecessarily prefixed with "preOp_" (gender, age, smoking, pain).
+- The column "BMI kg/m2" did not have a tidy variable name, as it contained spaces and special characters; should be renamed.
+- There were two separate gender columns ("preOp_gender" and "1gender").
+- Several column names included both measurement time and the type of observation in the same variable name (e.g., "pacu30min_cough", "pacu30min_throatPain"), indicating that the dataset was in wide format.
+- The variables "month" and "year" were not mentioned in the codebook, might refer to month/year of operation, but might be something else as well.
+- The column "preOp_ASA_Mallampati" contained two measures (ASA (American Society of Anesthesiologists) physical status and Mallampati score).
+- Several columns appeared as numeric, but on inspection they represented categorical values and should be recoded as factors.
+
+### Patient IDs
+We next examined the patient identifiers to check for duplicates. Although the dataset contains 265 rows, there are only **235 unique patient IDs**, which means that some patients are represented more than once.  
+```{r}
+exam_data %>% 
+  count(patient_id) %>% 
+  distinct()
+```
+
+Further inspection showed that **28 patients are recorded twice** and **2 patients appear three times**:
+```{r}
+exam_data %>% 
+  count(patient_id) %>% 
+  filter(n>1)
+
+exam_data %>% 
+  count(patient_id) %>% 
+  filter(n>2)
+```
+
+By pulling the IDs that occur more than once, we confirmed that these represent patients who underwent surgery on multiple occasions (different month/year):
+```{r}
+exam_data %>% 
+  count(patient_id) %>% 
+  filter(n>1) %>% 
+  pull(patient_id)
+```
 
 ## Tidying of data
 
+### Renaming of columns
+Several variables were renamed to make the dataset easier to work with and more consistent with tidy data principles. In particular, the unnecessary `"preOp_"` prefix was removed from baseline variables and the column `"BMI kg/m2"` was given a tidy name without spaces or special characters.  
+```{r}
+exam_data <- exam_data %>%
+  rename(
+    gender = preOp_gender,
+    smoking = preOp_smoking,
+    BMI = "BMI kg/m2",
+    swallowPain = pacu30min_swallowPain,
+    age = preOp_age
+    )
+```
+
+### Removing duplicate column
+During the initial inspection we found that gender was recorded in two separate columns (`preOp_gender` and `1gender`). After checking, these two variables were identical. To avoid redundancy and potential confusion, we kept the renamed `gender` column and removed `1gender` from the dataset.  
+```{r}
+exam_data$gender == exam_data$`1gender`
+
+exam_data <- exam_data %>% 
+  select(-`1gender`)
+```
+
+### Restructuring data (to long format)
+Several outcome variables (e.g., `cough`, `throatPain`) were originally stored in **wide format**, with both the time point and the symptom encoded in the column names (e.g., `pacu30min_cough`, `postOp4hour_throatPain`).  
+
+To make the dataset tidy, we first used `pivot_longer()` to gather these columns into two new variables:  
+- `time_final`, capturing the measurement occasion  
+- `symptom`, capturing the type of observation (cough or throat pain)  
+The corresponding values were stored in the column `value`.  
+
+Next, we applied `pivot_wider()` to spread the `symptom` variable back into separate columns (`cough` and `throatPain`), so that each row corresponds to one patient at one time point, with both outcomes recorded. Finally, we renamed `time_final` to `time` for clarity.  
+```{r}
+exam_data_clean <- exam_data %>%
+  pivot_longer(
+    cols = matches("cough|throatPain"), 
+    names_to = c("time_final", "symptom"),
+    names_sep = "_",
+    values_to = "value"
+  ) %>%
+  pivot_wider(
+    names_from = symptom,
+    values_from = value
+  )
+
+exam_data_clean <- exam_data_clean %>%  
+  rename(time = time_final)
+```
+
+### Removing `month` and `year`
+The variables `month` and `year` were included in the dataset, but their meaning was unclear and they were not documented in the accompanying notes. Since they are not needed for the planned analyses, these columns were removed.  
+```{r}
+exam_data_clean <- exam_data_clean %>% 
+  select(-month, -year)
+```
+
+### Separating ASA_Mallampati to ASA and mallampati
+The variable `preOp_ASA_Mallampati` contained two pieces of information combined in a single field:  
+- ASA classification (American Society of Anesthesiologists physical status), and  
+- Mallampati score (airway assessment).  
+
+To make the dataset tidy, these measures were separated into two distinct variables (`ASA` and `mallampati`) using `separate()`.
+```{r}
+exam_data_clean <- exam_data_clean %>%
+  separate(preOp_ASA_Mallampati, 
+           into = c("ASA", "mallampati"), 
+           sep = "_")
+  
+exam_data_clean %>% 
+  count(ASA, mallampati)
+```
+
+### Converting variabels from numeric to factor
+Several variables in the dataset were originally coded as numbers, but represented categorical information. To make the dataset tidy and improve interpretability, these variables were converted into factors with descriptive labels:  
+
+- `cough`: recoded from values 0–3 into `"no"`, `"mild"`, `"moderate"`, and `"severe"`  
+- `gender`: recoded from 0/1 into `"M"` and `"F"`  
+- `smoking`: recoded from 1/2/3 into `"current"`, `"past"`, `"never"`  
+- `preOp_pain`: recoded from 0/1 into `"no"`, `"yes"`  
+- `treat`: recoded from 0/1 into `"Sugar"` and `"Licorice"`  
+- `ASA`: recoded into a factor with three levels (1–3)  
+- `mallampati`: recoded into a factor with four levels (1–4)  
+
+This ensures that categorical variables are treated appropriately during analysis and improves the readability of results.
+```{r}
+exam_data_clean <- exam_data_clean %>%             
+  mutate(cough = factor(                    
+    cough, 
+    levels = c(0,1,2,3),
+    labels = c("no","mild", "moderate","severe")
+  )
+  ) 
+
+exam_data_clean <- exam_data_clean %>%
+  mutate(
+    gender = factor(
+      gender, 
+      levels = c(0,1),
+      labels = c("M","F")
+    )
+  )
+
+exam_data_clean <- exam_data_clean %>% 
+  mutate(
+    smoking = factor(
+      smoking, 
+      levels = c(1,2,3),
+      labels = c("current","past","never")
+    )
+  )
+
+exam_data_clean <- exam_data_clean %>% 
+  mutate(preOp_pain = factor(
+    preOp_pain, 
+    levels = c(0,1),
+    labels = c("no","yes")
+    )
+  )
+
+exam_data_clean$treat <- factor(      # Convert the variable `treat` into a factor with two levels:
+  exam_data_clean$treat,
+  levels = c(0, 1),                 # 0 = "Sugar 5g" and 1 = "Licorice 0.5g"
+  labels = c("Sugar", "Licorice")
+)
+
+exam_data_clean %>% 
+  mutate(
+    ASA = factor(ASA, levels = 1:3),
+    mallampati = factor(mallampati, levels = 1:4)
+  )
+
+```
+
+### Join and tidy
 
 ## Visualization
 
@@ -28,3 +226,6 @@ The report includes all the steps we have conducted throughout the course relate
 ## Closing remarks
 
 
+```{r}
+sessionInfo()
+```
