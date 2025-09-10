@@ -13,26 +13,59 @@ library(here)
 library(ggplot2)
 library(patchwork)
 
-# Read the data ----
-joined_exam_data <- read_delim(here("data","joined_exam_data_2025-09-09.txt")) %>% 
+# Load data
+joined_exam_data <- read_delim(here("data","joined_exam_data_2025-09-09.txt"))
+
+# Mutate from character to factor
+joined_exam_data <- joined_exam_data %>% 
   mutate(across(where(is.character), as.factor))
 
+# Are there any correlated measures? ----
+GGally::ggcorr(joined_exam_data)
+# Seems like throatPain and swallowPain are correlated, and also age and BMI. Also seems like Patient ID is correlated with swallowPain and throatPain, probably an artifact, could also be that that the patients recruited later had more pain...?
 
-# Check the data ----
-## joined_exam_data
-joined_exam_data
-glimpse(joined_exam_data)
-str(joined_exam_data)
-head(joined_exam_data)
-tail(joined_exam_data)
-skimr::skim(joined_exam_data)
+# Does the age distribution depend on treat? ----
+ggplot(joined_exam_data, aes(x = age, fill = treat)) +
+  geom_density(alpha = 0.5) +
+  theme_gray() +
+  labs(title = "Age distribution by treatment",
+       x = "Patient age",
+       fill = "Treatment:") +
+  theme(legend.position = "bottom") +
+  scale_fill_brewer(palette = "PuOr")
 
+# Exploring whether the age distribution of patients differs by gender ----
+## Numerical summery
+joined_exam_data %>%
+  group_by(gender) %>%
+  summarise(
+    mean_age = mean(age, na.rm = TRUE),
+    sd_age   = sd(age, na.rm = TRUE),
+    min_age  = min(age, na.rm = TRUE),
+    max_age  = max(age, na.rm = TRUE),
+    n        = n()
+  )
 
-# Questions for the dataset 
+## Box plot displaying age distribution by gender
+plot_age_distribution_by_gender <- ggplot(joined_exam_data, 
+    aes(x = gender, y = age, fill = gender)) +
+  geom_boxplot() +
+  labs(title = "Age distribution by gender") + 
+  scale_fill_brewer(palette = "Pastel2")
+plot_age_distribution_by_gender
 
-## Does the preoperative pain change with age of the patients?
+## Density plot to visualize the full shape of the age distribution by gender
+density_age_distribution_by_gender <- ggplot(joined_exam_data, 
+                                          aes(x = age, fill = gender)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Age distribution by gender", 
+       x = "Patient age", 
+       fill = "Gender") +
+  scale_fill_brewer(palette = "Pastel2")
+density_age_distribution_by_gender
 
-# Making a box-plot to show the distribution of age related to preOp pain
+# Does the preoperative pain change with age of the patients? ----
+## Box-plot to show the distribution of age related to preOp pain
 
 ggplot(joined_exam_data, aes(x = preOp_pain, y = age)) +
   geom_boxplot() +
@@ -41,7 +74,7 @@ ggplot(joined_exam_data, aes(x = preOp_pain, y = age)) +
     y = "Age"
   )
 
-# Making a denisty-plot, can be more intuitive to read
+## Denisty-plot, can be more intuitive to read
 ggplot(joined_exam_data, aes(x = age, fill = preOp_pain)) +
   geom_density(alpha = 0.4) +
   labs(
@@ -49,15 +82,17 @@ ggplot(joined_exam_data, aes(x = age, fill = preOp_pain)) +
     y = "Density"                 
   )
 
-# Both groups seem to have two “age clusters” – one around 35–45 and one around 65–70 
-# Can indicate that we have different age-cohorts in the dataset 
+## Want to explore why we get these kind of "strange" results
 
-# Exploring the variables
+### Exploring the variables
 skimr::skim(joined_exam_data$age)
 skimr::skim(joined_exam_data$preOp_pain)
 
-# Only 2 patient experienced preOp pain, therefore the data is to limited to say 
-# anything about how preOp pain is related to age 
+# Only 2 patient experienced preOp pain, therefore the data is too limited to say anything about how preOp pain is related to age 
 
+# T-tests (Welch Two Sample t-test) ----
+t.test(age ~ treat, data = joined_exam_data)
+t.test(age ~ preOp_pain, data = joined_exam_data)
+t.test(age ~ gender, data = joined_exam_data)
 
 #----End----####
