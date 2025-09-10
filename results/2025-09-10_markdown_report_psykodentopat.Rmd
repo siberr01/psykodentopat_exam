@@ -1,0 +1,30 @@
+---
+title: "Report for psykodentopat"
+author: "Hilde Kollsete Gjelberg, Ingrid Eline Holm, and Simen Berrefjord"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is a R Markdown report for the group exam in RMED901A for the group psykodentopat. The group consists of Hilde Kollsete Gjelberg, Ingrid Eline Holm, and Simen Berrefjord.
+
+The report includes all the steps we have conducted throughout the course related to the exam data (i.e., exploration, tidying, visualization, and statistical analyses).
+
+## Data exploration
+
+
+## Tidying of data
+
+
+## Visualization
+
+
+## Statistical analyses
+
+
+## Closing remarks
+
+
