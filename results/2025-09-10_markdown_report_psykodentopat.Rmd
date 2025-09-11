@@ -2,7 +2,10 @@
 title: "Report for psykodentopat"
 author: "Hilde Kollsete Gjelberg, Ingrid Eline Holm, and Simen Berrefjord"
 date: "`r Sys.Date()`"
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -28,6 +31,8 @@ library(patchwork)
 library(tidyverse)
 library(here)
 library(broom)
+library(lme4)
+library(broom.mixed)
 
 # Load data
 joined_exam_data <- read_delim(here("data","joined_exam_data_2025-09-09.txt"))
@@ -119,25 +124,25 @@ We have three variables of interest to answer this question:
 - `time`: Post operative throat pain was assessed at 4 hours after operation and the first morning after operation. 
 
 #### A simple approach
-TEXT
+We investigated if the patients reported different pain scores at postOp4hour.
 
-First, we can investigate how the pain scores are distributed to see if they are normally distributed.
+First, we created a histogram to see the distribution of throatPain scores at postOp4hour.
 
-```{r pain distribution, echo=TRUE}
-## Filter to 4-hour timepoint only
+```{r pain distribution, echo=TRUE, warning=FALSE}
+# Filter to 4-hour timepoint only
 postOp4h_data <- joined_exam_data %>% 
   filter(time == "postOp4hour")
 
-## Create plot
+# Create plot
 ggplot(postOp4h_data, aes(x = throatPain)) +
   geom_histogram(binwidth = 1) +
   facet_wrap(~treat) +
   labs(title = "Distribution of throatPain at postOp4hour")
 ```
-The pain values are left skewed, with many patients reporting 0 throatPain in both treatment conditions. Due to 
+The pain values are highly skewed, with many patients reporting 0 throatPain in both treatment conditions. Due to the pain scores not being normally distributed, a Wilcoxon rank sum test is appropriate.
 
 ```{r wilcox throatPain-postOp4hour, echo=TRUE}
-### Descriptive statistics by treatment
+# Descriptive statistics by treatment
 postOp4h_data %>% 
   group_by(treat) %>% 
   summarise(
@@ -151,36 +156,65 @@ postOp4h_data %>%
     caption = "Throat Pain at 4 Hours Post-Operation by Treatment"
   )
 
-### Statistical test - Wilcoxon (appropriate for skewed pain data)
+# Wilcoxon rank sum test
 wilcox.test(throatPain ~ treat, data = postOp4h_data) %>% 
   tidy() %>% 
   knitr::kable(
-    digits = 3,
+    digits = 4,
     col.names = c("Statistic", "p-value", "Method", "Alternative"),
     caption = "Wilcoxon Test: Treatment Effect at 4 Hours"
   )
 ```
 
+At 4 hours post-operation, patients in the licorice group experienced lower throat pain compared to the sugar group. The licorice group had a mean pain score of 0.35 (median = 0), while the sugar group had a mean pain score of 0.91 (median = 0). Notably, 79.5% of patients receiving licorice gargle reported no throat pain, compared to 55.2% in the sugar group. The Wilcoxon rank sum test showed a statistically significant difference in throat pain scores between treatment groups (W = 5109.5, p = 0.0001).
 
 #### A more complex approach
 In order to investigate if licorice reduced the risk of post operative throat pain, we can conduct a regression analysis of how `treat` affects `throatPain` over `time`.
 
 ```{r lmm throatpain-time-treat, echo=TRUE}
-### Mixed effects model with all timepoints
-library(lme4)
-library(broom.mixed)
-
+# Mixed effects model with all timepoints
 throat_model <- lmer(throatPain ~ treat * time + (1|patient_id), 
                      data = joined_exam_data)
 
-### Tidy results focusing on treatment effects
+# Tidy results focusing on treatment effects
 tidy(throat_model, effects = "fixed") %>% 
-  knitr::kable(digits = 3, caption = "Mixed Effects Model Results") 
+  knitr::kable(digits = 3, caption = "Mixed effects model results") 
 
-### Full model summary
+# Full model summary
 summary(throat_model)
 ```
-This model shows that sugar treatment (`treatSugar`) increases pain by 0.75 points compared to licorice across all time points.
+The model showed a significant main effect of treatment (β = 0.752, t = 5.496), indicating that sugar treatment increases throat pain by approximately 0.75 points compared to licorice across all time points.
+
+We can also visualize this using ggplot2:
+
+```{r visualizing treat-time-throatPain, echo=TRUE, warning=FALSE}
+# Ensure correct time order
+joined_exam_data$time <- factor(joined_exam_data$time, 
+                               levels = c("pacu30min", "pacu90min", "postOp4hour", "pod1am"))
+
+# Plot
+joined_exam_data %>% 
+  group_by(treat, time) %>% 
+  summarise(
+    mean_pain = mean(throatPain, na.rm = TRUE),
+    se_pain = sd(throatPain, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  ) %>% 
+  ggplot(aes(x = time, y = mean_pain, color = treat, group = treat)) +
+  geom_line(linewidth = 0.5) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = mean_pain - se_pain, ymax = mean_pain + se_pain), 
+                width = 0.1) +
+  labs(
+    x = "Time point",
+    y = "Throat pain score (mean)",
+    color = "Treatment",
+    title = "Throat pain over time by treatment"
+  ) +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set2")
+```
+
 
 ## Closing remarks
 
