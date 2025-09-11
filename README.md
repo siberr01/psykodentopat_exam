@@ -2,75 +2,37 @@
   <img src="./psykodentopat_image.png" alt="Alt text" width="300">
 </p>
 
-# README: Exam project for RMED901A
-Welcome to the GitHub repository for psykodentopat's group exam in RMED901A!
+# RMED901A exam project: Psykodentopat
 
-The folder structure in this repository is as follows:
+## Overview
+This repository contains the group exam project for RMED901A, analyzing clinical data on post-operative throat pain treatments.
 
-* data: containing the original and tidied datasets, in addition to original and new codebooks.
-* questions: containing the exam questions.
-* results: containing output from scripts (plots), and a subfolder including a RMarkdown report and HTML output from said RMarkdown report.
-* scripts: containing scripts for the exploration, tidying, vizualizing, and analysis of the exam data.
+## Team members
+- Ingrid Eline Holm
+- Hilde K. Gjelberg
+- Simen Berrefjord
 
-_For a more extensive overview of the folder structure and the files, see below._
+## Project description
+Analysis of licorice gargle effectiveness in reducing post-operative throat pain compared to sugar gargle control.
 
-## Folders:   
+## Repository structure
 
-### data:   
-  * codebook.html
-    + original codebook from mittuib
+### 📁 `data/`
+- `exam_data.txt` - Original dataset from mittuib
+- `exam_data_join.txt` - Additional original dataset from mittuib  
+- `joined_exam_data_2025-09-09.txt` - **Final cleaned dataset used for analysis**
+- `codebook.html` - Original codebook
+- `codebook_revision_notes.md` - Documentation of changes made
 
-  * codebook_revision_notes.md
-    + changes made to original codebook from mittuib
-  
-  * exam_data.txt  
-    + original dataset from mittuib  
-      
-    
- * exam_data_join.txt  
-   + original dataset from mittuib  
-     
+### 📁 `scripts/`
+- `2025-09-05_exploration.R` - Initial data exploration and cleaning
+- `2025-09-08_join_and_tidy_exam_data.R` - Data joining and tidying
+- `2025-09-09_visualization.R` - Visualization tasks
+- `2025-09-10_analysis.R` - Statistical analysis
 
- * exam_data_clean_2025-09-08.txt  
-   + clean and tidy version of original exam_data.txt  
-  
- * joined_exam_data_2025-09-09.txt
-   + joined original exam_data.txt and exam_data_join.txt  
-   + clean and tidy version  
-   + this dataset is used for visualization and analyses  
- 
+### 📁 `results/`
+- `2025-09-10_markdown_report_psykodentopat_files/` - RMarkdown report folder
+- Various `.png` files - Generated plots and visualizations
 
-### scripts:  
-* 2025-09-05_exploration.R  
-  + initial exploration and cleaning of original dataset exam_data.txt  
-   
-* 2025-09-08_join_and_tidy_exam_data.R  
-  + exploration and cleaning of original dataset exam_data_join.txt
-  + joining clean version of exam_data_join.txt to exam_data_clean_2025-09-08.txt
-  + saving new dataset joined_exam_data_2025-09-09.txt
-  + exploring joined_exam_data_2025-09-09.txt and performing simple stratifying of the data
- 
- * 2025-09-09_visualization.R  
-   + performing exam tasks on visualization using joined_exam_data_2025-09-09.txt
-  
- * 2025-09-10_analysis.R
-   + running exam tasks on analysis using joined_exam_data_2025-09-09.txt  
-    
-### results:
-* **2025-09-10_markdown_report_psykodentopat_files**
-  + folder containing RMarkdown report for this project
-
-* correlation_matrix_2025-09-11_all_variables.png
-  + correlation matrix visualizing any possible correlations of variables in the dataset (only numeric variables)  
-        
-* denistyplot_2025-09-11_age_gender.png
-  + densityplot visualizing age distribution related to gender
-
-* denistyplot_2025-09-11_age_preOp_pain.png
-  + densityplot visualizing age distribution related to preoperative pain
-
-* denistyplot_2025-09-11_age_treatment.png
-  + densityplot visualizing age distribution related to treatment group 
-  
-
-
+### 📁 `questions/`
+- Exam questions and requirements
