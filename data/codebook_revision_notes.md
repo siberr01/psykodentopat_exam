@@ -55,7 +55,10 @@ This document records all revisions made to the original codebook, including cla
    + **Description**        
      - Change in severity of cough from "pacu30min" to "pod1am", "no change" = (no extubation_cough  == no cough at pod1am); "more_cough" =(extubation_cough < cough at pod1am);  "cough_resolved" = (cough at pod1am > extubation_cough); "persistent_cough" = (extubation_cough  == cough at pod1am)  
      - Type: factor  
-   
+
+* `BMI_category`
+   + **Description**
+       - 
 
 ### Pivot into long format
 During the data tidying process, the dataset was reshaped from **wide format** (one row per patient with multiple time-point columns) to **long format** (one row per patient per time point). This transformation created three new variables:     
