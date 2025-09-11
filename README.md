@@ -47,13 +47,13 @@ Group: psykodentopat
 * correlation_matrix_2025-09-11_all_variables.png
   + correlation matrix visualizing any possible correlations of variables in the dataset (only numeric variables)  
         
-*denistyplot_2025-09-11_age_gender.png
+* denistyplot_2025-09-11_age_gender.png
   + densityplot visualizing age distribution related to gender
 
-*denistyplot_2025-09-11_age_preOp_pain.png
+* denistyplot_2025-09-11_age_preOp_pain.png
   + densityplot visualizing age distribution related to preoperative pain
 
-*denistyplot_2025-09-11_age_treatment.png
+* denistyplot_2025-09-11_age_treatment.png
   + densityplot visualizing age distribution related to treatment group 
   
 
