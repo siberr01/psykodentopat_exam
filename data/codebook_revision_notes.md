@@ -20,7 +20,8 @@ This document records all revisions made to the original codebook, including cla
 * `1gender` 
 * `month`
 * `year`
-    
+* `pacu30min_cough`, `pacu90min_cough`, `postOp4hour_cough`, `pod1am_cough`
+* `pacu30min_throatPain`, `pacu90min_throatPain`, `postOp4hour_cough`, `pod1am_cough`
 **Reason for change:**    
 - `1gender` variable was a duplicate of the original gender variable
 - `month` and `year` variable was unessasary information for our analyes    
@@ -42,3 +43,6 @@ This document records all revisions made to the original codebook, including cla
   + **Comments**
     - This was a part of the original variable `preOp_ASA_Mallampati`, coded as: 1 = soft palate, fauces, uvula, pillars visible; 2 = soft palate, fauces, uvula visible; 3 = soft palate, base of uvula visible; 4 = soft palate not visible at all
 
+* `cough`
+
+* `throatPain`
