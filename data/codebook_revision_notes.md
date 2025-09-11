@@ -17,7 +17,8 @@ This document records all revisions made to the original codebook, including cla
 ---
 
 ## Removing collums  
-* `1gender` was removed for the dataset
+* `1gender` was removed for the dataset  
+    
 **Reason for change:**    
 - This variable was a duplicate of the original gender variable   
 
