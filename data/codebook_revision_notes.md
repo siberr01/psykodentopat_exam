@@ -21,10 +21,11 @@ This document records all revisions made to the original codebook, including cla
 * `month`
 * `year`
 * `pacu30min_cough`, `pacu90min_cough`, `postOp4hour_cough`, `pod1am_cough`
-* `pacu30min_throatPain`, `pacu90min_throatPain`, `postOp4hour_cough`, `pod1am_cough`
+* `pacu30min_throatPain`, `pacu90min_throatPain`, `postOp4hour_throatPain`, `pod1am_throatPain`  
 **Reason for change:**    
 - `1gender` variable was a duplicate of the original gender variable
-- `month` and `year` variable was unessasary information for our analyes    
+- `month` and `year` variable was unessasary information for our analyes
+-  The variables for registration of cough and throatpain at different timepoints was removed in the tidying prosess, turning the dataset into longer formate. See "New variables" section.     
 
 ---
 
