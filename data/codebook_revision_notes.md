@@ -4,7 +4,7 @@ _Last updated: 2025-09-11_
   
 This document records all revisions made to the original codebook, including clarifications, category standardizations, and variable descriptions.
 
-## Renaming variables:   
+## Renaming variables  
 * `preOp_gender` = `gender`  
 * `preOp_smoking`= `smoking`  
 * `BMI kg/m2` = `BMI`  
@@ -17,10 +17,14 @@ This document records all revisions made to the original codebook, including cla
 ---
 
 ## Removing collums  
-* `1gender` was removed for the dataset  
+* `1gender` 
+* `month`
+* `year`
     
 **Reason for change:**    
-- This variable was a duplicate of the original gender variable   
+- `1gender` variable was a duplicate of the original gender variable
+- `month` and `year` variable was unessasary information for our analyes    
 
 ---
 
+## 
