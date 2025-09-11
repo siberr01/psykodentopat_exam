@@ -1,3 +1,5 @@
+<img src="./psykodentopat_image.png" alt="Alt text" width="500">
+
 # README exam project for RMED901A
 GitHub repository for group exam in RMED901A  
 Group: psykodentopat
