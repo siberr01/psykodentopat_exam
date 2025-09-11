@@ -31,7 +31,8 @@ Analysis of licorice gargle effectiveness in reducing post-operative throat pain
 - `2025-09-10_analysis.R` - Statistical analysis
 
 ### 📁 `results/`
-- `2025-09-10_markdown_report_psykodentopat_files/` - RMarkdown report folder
+- `2025-09-10_markdown_report_psykodentopat.Rmd` - RMarkdown file for report
+- `2025-09-10_markdown_report_psykodentopat.html` - HTML output for RMarkdown report
 - Various `.png` files - Generated plots and visualizations
 
 ### 📁 `questions/`
