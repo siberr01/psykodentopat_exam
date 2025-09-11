@@ -37,16 +37,6 @@ joined_exam_data %>%
     n = n()
   )
 
-## Throat pain at pacu30min
-joined_exam_data %>% 
-  filter(time == "pacu30min") %>% 
-  group_by(treat) %>% 
-  summarise(
-    mean_pain = mean(throatPain, na.rm = TRUE),
-    median_pain = median(throatPain, na.rm = TRUE),
-    n = n()
-  )
-
 # NOTE: Median of throatPain is 0 in both Licorice and Sugar, indicating a skewed distribution. Due to this, a wilcox test might be appropriate.
 
 ## Wilcox test: Licorice vs sugar throatPain at pod1am
@@ -75,37 +65,6 @@ summary(throat_model)
 
 # NOTE: treatSugar coefficient = 0.752: Sugar increases pain by 0.75 points
 # NOTE: treatSugar:timepod1am = -0.422: Additional 0.42 point reduction at POD1AM
-
-# Create a plot (sanity check)
-## Reorder time levels in chronological order
-joined_exam_data$time <- factor(joined_exam_data$time, 
-                                levels = c("pacu30min", "pacu90min", "postOp4hour", "pod1am"))
-
-## Calculate means and standard errors by treatment and time
-summary_data <- joined_exam_data %>% 
-  group_by(treat, time) %>% 
-  summarise(
-    mean_pain = mean(throatPain, na.rm = TRUE),
-    se_pain = sd(throatPain, na.rm = TRUE) / sqrt(n()),
-    n = n(),
-    .groups = "drop"
-  )
-
-## Create the plot
-ggplot(summary_data, aes(x = time, y = mean_pain, color = treat, group = treat)) +
-  geom_line(size = 1) +
-  geom_point(size = 3) +
-  geom_errorbar(aes(ymin = mean_pain - se_pain, ymax = mean_pain + se_pain), 
-                width = 0.1) +
-  labs(
-    x = "Timepoint",
-    y = "Mean throat pain",
-    color = "Treatment",
-    title = "Throat pain over time by treatment",
-    subtitle = "Error bars show standard error"
-  ) +
-  theme_minimal() +
-  scale_y_continuous(limits = c(0, NA))
 
 # Exploring whether the treatment group depend on preoperative smoking ----
 ## Table of treatment (rows) by smoking (columns)
