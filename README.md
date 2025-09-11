@@ -17,8 +17,12 @@ _For a more extensive overview of the folder structure and the files, see below.
 ## Folders:   
 
 ### data:   
-  * codebook.html  
-    
+  * codebook.html
+    + original codebook from mittuib
+
+  * codebook_revision_notes.md
+    + changes made to original codebook from mittuib
+  
   * exam_data.txt  
     + original dataset from mittuib  
       
