@@ -27,4 +27,16 @@ This document records all revisions made to the original codebook, including cla
 
 ---
 
-## 
+## New variables   
+* `ASA`
+  + **Description**  
+    - American Society of Anesthesiologists (ASA) physical status, 1 = a normal healthy patient; 2 = a patient with mild systemic disease
+  + **Comments**
+    - This was a part of the original variable `preOp_ASA_Mallampati`
+      
+* `mallampati`
+  + **Description**  
+    - Mallampati score, with increasing difficulty of intubation, 1 = soft palate, fauces, uvula, pillars visible; 2 = soft palate, fauces, uvula visible; 3 = soft palate, base of uvula visible; 4 = soft palate not visible at all
+  + **Comments**
+    - This was a part of the original variable `preOp_ASA_Mallampati`
+
