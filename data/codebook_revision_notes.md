@@ -56,7 +56,7 @@ During the data tidying process, the dataset was reshaped from **wide format** (
     - Type: factor
       
 * `throatPain`
- + **Description**      
+  + **Description**      
     - Sore throat pain score at rest, 11 point Likert scale, 0=no pain, 10 = worst pain   
     - Type: numeric  
   
