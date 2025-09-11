@@ -45,8 +45,8 @@ This document records all revisions made to the original codebook, including cla
     - Type: factor   
   + **Comments**
     - This was a part of the original variable `preOp_ASA_Mallampati`, coded as: 1 = soft palate, fauces, uvula, pillars visible; 2 = soft palate, fauces, uvula visible; 3 = soft palate, base of uvula visible; 4 = soft palate not visible at all
-
-  * `throat_pain_change`
+  
+* `throat_pain_change`
   + **Description**    
     - Change in severity of throat pain from "pacu30min" to "pod1am", "increased" = pod1am > pacu30min; "decreased" = pod1am < pacu30min; "no_change" =  pod1am == pacu30min
     - Type: factor   
