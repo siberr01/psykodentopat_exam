@@ -22,6 +22,9 @@ joined_exam_data <- joined_exam_data %>%
 
 # Are there any correlated measures? ----
 GGally::ggcorr(joined_exam_data)
+joined_exam_data %>%
+  select(-patient_id) %>% 
+  ggcorr()
 # Seems like throatPain and swallowPain are correlated, and also age and BMI. Also seems like Patient ID is correlated with swallowPain and throatPain, probably an artifact, could also be that that the patients recruited later had more pain...?
 
 # Does the age distribution depend on treat? ----
@@ -74,13 +77,21 @@ ggplot(joined_exam_data, aes(x = preOp_pain, y = age)) +
     y = "Age"
   )
 
-## Denisty-plot, can be more intuitive to read
+## Denisty-plot, can be more intuitive to read but can also give the wrong impression in this case
 ggplot(joined_exam_data, aes(x = age, fill = preOp_pain)) +
   geom_density(alpha = 0.4) +
   labs(
     x = "Age",
     y = "Density"                 
   )
+
+ggplot(joined_exam_data, aes(x = preOp_pain, y = age)) +
+  geom_dotplot(binaxis = "y", stackdir = "center", dotsize = 0.8,
+               binwidth = 1) +
+  labs(title = "Age by Pre-Op Pain Status",
+       x = "Pre-Op Pain",
+       y = "Age") +
+  theme_minimal()
 
 ## Want to explore why we get these kind of "strange" results
 
