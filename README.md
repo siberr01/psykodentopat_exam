@@ -2,9 +2,17 @@
   <img src="./psykodentopat_image.png" alt="Alt text" width="300">
 </p>
 
-# README exam project for RMED901A
-GitHub repository for group exam in RMED901A  
-Group: psykodentopat
+# README: Exam project for RMED901A
+Welcome to the GitHub repository for psykodentopat's group exam in RMED901A!
+
+The folder structure in this repository is as follows:
+
+* data: containing the original and tidied datasets, in addition to original and new codebooks.
+* questions: containing the exam questions.
+* results: containing output from scripts (plots), and a subfolder including a RMarkdown report and HTML output from said RMarkdown report.
+* scripts: containing scripts for the exploration, tidying, vizualizing, and analysis of the exam data.
+
+_For a more extensive overview of the folder structure and the files, see below._
 
 ## Folders:   
 
