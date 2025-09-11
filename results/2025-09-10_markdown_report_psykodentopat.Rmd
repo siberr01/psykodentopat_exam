@@ -23,6 +23,114 @@ The report includes all the steps we have conducted throughout the course relate
 
 
 ## Visualization
+The next part of our project concerned visualization. We used the joined_exam_data_2025-09-09.txt.   
+Our task was to create plots to answer the following questions: 
+
+**1. Are there any correlated measurements?**  
+
+To explore potential relationships between the variables, we created a correlation matrix.  
+The `patient_id` collumn was excluded because it is just an identifier and does not carry meaningful information for correlation analysis.  
+```{r reading data, include=FALSE}
+library(tidyverse)
+library(here)
+library(ggplot2)
+library(patchwork)
+joined_exam_data <- read_delim(here("data","joined_exam_data_2025-09-09.txt"))
+
+```
+
+```{r warning = FALSE}
+joined_exam_data %>%
+  select(-patient_id) %>% 
+  GGally::ggcorr()
+```
+  
+This correlation matrix demonstrates a strong positive correlation between `swallowPain` and `throatPain`.`BMI` and `age` appears to have a weak positive correlation.  
+  
+  
+**2.  Does the age distribution depend on treatmeant-group?**  
+To investigate whether age distribution differs between treatment groups, we created a density plot stratified by treatment.  
+
+```{r ggplot patient age treatment, include=FALSE}
+ggplot <- ggplot(joined_exam_data, aes(x = age, fill = treat)) +
+  geom_density(alpha = 0.5) +
+  theme_gray() +
+  labs(title = "Age distribution by treatment",
+       x = "Patient age",
+       fill = "Treatment:") +
+  theme(legend.position = "bottom") +
+  scale_fill_brewer(palette = "PuOr")
+```
+ 
+```{r, echo=TRUE, eval=FALSE}
+ggplot(joined_exam_data, aes(x = age, fill = treat)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Age distribution by treatment",
+       x = "Patient age",
+       fill = "Treatment:")
+```
+
+```{r, echo=FALSE}
+ggplot
+```
+  
+This density-plot demonstrates that the age distributions in the two treatment groups are similar, and age distribution does not seem to depend on treatment. There may be a mild tendency for Licorice-treated patients to be older on average, based on the higher peak in the 65–75 age range.  
+
+**Does the age distribution of the patients depend on their sex?**
+  
+To investigate whether age distribution depend on sex, we created a density plot stratified by `gender`.   
+
+```{r ggplot age gender, include=FALSE}
+density_age_distribution_by_gender <- ggplot(joined_exam_data, 
+                                          aes(x = age, fill = gender)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Age distribution by gender", 
+       x = "Patient age", 
+       fill = "Gender") +
+  scale_fill_brewer(palette = "Pastel2")
+density_age_distribution_by_gender
+```
+```{r, echo=TRUE, eval=FALSE}
+ggplot(joined_exam_data, aes(x = age, fill = gender)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Age distribution by gender", 
+       x = "Patient age", 
+       fill = "Gender")
+```
+```{r, echo =FALSE}
+density_age_distribution_by_gender
+```
+
+This density-plot demonstrates that the age distribution does not strongly depend on gender seeing as the density curves overlap substantially.  
+    
+    
+**Does the preoperative pain change with age of the patients?**  
+
+```{r}
+ggplot(joined_exam_data, aes(x = age, fill = preOp_pain)) +
+  geom_density(alpha = 0.4) +
+  labs(
+    x = "Age",
+    y = "Density"                 
+  )
+```
+  
+This density-plot can indicate difference in age in those experiencing preoperative pain and not. However, only two patients in the dataset reported pre-operative pain.The density curve for the "yes" group therefore represents very few observations and should be interpreted with caution. This explains why the curve looks irregular compared to the "no" group.  
+  
+To illustrate it in a more approriate way, we made a dotplot. 
+```{r}
+ggplot(joined_exam_data, aes(x = preOp_pain, y = age)) +
+  geom_dotplot(binaxis = "y", stackdir = "center", dotsize = 0.8,
+               binwidth = 1) +
+  labs(title = "Age by Pre-Op Pain Status",
+       x = "Pre-Op Pain",
+       y = "Age") +
+  theme_minimal()
+```
+
+
+The dotplot illustrates that the data is highly imbalanced, and the datamaterial is too limited to answer the question.   
+
 
 
 ## Statistical analyses
