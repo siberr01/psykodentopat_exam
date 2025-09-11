@@ -12,9 +12,9 @@ library(tidyverse)
 library(here)
 
 # Read the data ----
-exam_data_clean <- read_delim(here("data","exam_data_clean_2025-09-08.txt"))
+exam_data_clean <- read_delim(here("data", "exam_data_clean_2025-09-08.txt"))
 
-exam_data_join <- read_delim(here("data","exam_data_join.txt"))
+exam_data_join <- read_delim(here("data", "exam_data_join.txt"))
 
 # Check the data ----
 ## Exam data clean
@@ -33,25 +33,23 @@ head(exam_data_join)
 tail(exam_data_join)
 skimr::skim(exam_data_join)
 
-## Change variables from numeric to factor 
+## Change variables from numeric to factor
 
 ### Surgery size
-exam_data_join <- exam_data_join %>%             
-  mutate(intraOp_surgerySize = factor(                    
-    intraOp_surgerySize, 
-    levels = c(1,2,3),
-    labels = c("small", "medium","large")
-  )
-  ) 
+exam_data_join <- exam_data_join %>%
+  mutate(intraOp_surgerySize = factor(
+    intraOp_surgerySize,
+    levels = c(1, 2, 3),
+    labels = c("small", "medium", "large")
+  ))
 
 ### Extubation cough
-exam_data_join <- exam_data_join %>%             
-  mutate(extubation_cough = factor(                    
-    extubation_cough, 
-    levels = c(0,1,2,3),
-    labels = c("no cough","mild", "moderate","severe")
-  )
-  )
+exam_data_join <- exam_data_join %>%
+  mutate(extubation_cough = factor(
+    extubation_cough,
+    levels = c(0, 1, 2, 3),
+    labels = c("no cough", "mild", "moderate", "severe")
+  ))
 
 ### Sanity check
 skimr::skim(exam_data_join)
@@ -61,7 +59,7 @@ skimr::skim(exam_data_join)
 nrow(exam_data_clean)
 distinct(exam_data_clean)
 
-exam_data_clean <- exam_data_clean %>% 
+exam_data_clean <- exam_data_clean %>%
   distinct()
 
 nrow(exam_data_clean)
@@ -70,13 +68,13 @@ nrow(exam_data_clean)
 nrow(exam_data_join)
 distinct(exam_data_join)
 
-exam_data_join <- exam_data_join %>% 
+exam_data_join <- exam_data_join %>%
   distinct()
 
 nrow(exam_data_join)
 
 # Join the dataframes ----
-joined_exam_data <- exam_data_clean %>% 
+joined_exam_data <- exam_data_clean %>%
   left_join(exam_data_join)
 
 glimpse(joined_exam_data)
@@ -92,24 +90,22 @@ joined_exam_data <- joined_exam_data %>%
 glimpse(joined_exam_data)
 
 ### ASA and Mallampati to factors
-joined_exam_data <- joined_exam_data %>%             
-  mutate(ASA = factor(                    
-    ASA, 
-    levels = c(1,2,3),
-    labels = c("healthy", "mild","severe")
-  )
-  ) 
+joined_exam_data <- joined_exam_data %>%
+  mutate(ASA = factor(
+    ASA,
+    levels = c(1, 2, 3),
+    labels = c("healthy", "mild", "severe")
+  ))
 
-joined_exam_data <- joined_exam_data %>%             
-  mutate(mallampati = factor(                    
-    mallampati, 
-    levels = c(1,2,3,4),
-    labels = c("soft palate, fauces, uvula, pillars visible", "soft palate, fauces, uvula visible","soft palate, base of uvula visible","soft palate not visible at all")
-  )
-  )
+joined_exam_data <- joined_exam_data %>%
+  mutate(mallampati = factor(
+    mallampati,
+    levels = c(1, 2, 3, 4),
+    labels = c("soft palate, fauces, uvula, pillars visible", "soft palate, fauces, uvula visible", "soft palate, base of uvula visible", "soft palate not visible at all")
+  ))
 
 ### Changing from chr to factor
-joined_exam_data <- joined_exam_data %>% 
+joined_exam_data <- joined_exam_data %>%
   mutate(across(where(is.character), as.factor))
 
 glimpse(joined_exam_data)
@@ -119,35 +115,37 @@ glimpse(joined_exam_data)
 ## Create both change variables first
 
 ### Throat pain change
-throat_pain_change <- joined_exam_data %>% 
-  select(patient_id, time, throatPain) %>% 
-  filter(time %in% c("pacu30min", "pod1am")) %>% 
-  pivot_wider(names_from = time, values_from = throatPain) %>% 
+throat_pain_change <- joined_exam_data %>%
+  select(patient_id, time, throatPain) %>%
+  filter(time %in% c("pacu30min", "pod1am")) %>%
+  pivot_wider(names_from = time, values_from = throatPain) %>%
   mutate(throat_pain_change = case_when(
     pod1am > pacu30min ~ "increased",
-    pod1am < pacu30min ~ "decreased", 
+    pod1am < pacu30min ~ "decreased",
     pod1am == pacu30min ~ "no_change"
-  )) %>% 
+  )) %>%
   select(patient_id, throat_pain_change)
 
 ### Cough change
-cough_change <- joined_exam_data %>% 
-  filter(time == "pod1am") %>% 
+cough_change <- joined_exam_data %>%
+  filter(time == "pod1am") %>%
   mutate(cough_change = case_when(
     extubation_cough == "no cough" & cough == "no" ~ "no_change",
     extubation_cough == "no cough" & cough %in% c("mild", "moderate", "severe") ~ "more_cough",
     extubation_cough %in% c("mild", "moderate", "severe") & cough == "no" ~ "cough_resolved",
     extubation_cough %in% c("mild", "moderate", "severe") & cough %in% c("mild", "moderate", "severe") ~ "persistent_cough"
-  )) %>% 
+  )) %>%
   select(patient_id, cough_change)
 
 # One pipe for joining throat pain, cough, BMI categories, selecting columns, and arranging by ID
-joined_exam_data <- joined_exam_data %>% 
-  left_join(throat_pain_change, by = "patient_id") %>% 
-  left_join(cough_change, by = "patient_id") %>% 
-  mutate(BMI_category = cut(BMI, breaks = c(-Inf, 18.5, 25, 30, Inf), 
-                            labels = c("Underweight", "Normal weight", "Overweight", "Obese"), 
-                            right = FALSE)) %>% 
+joined_exam_data <- joined_exam_data %>%
+  left_join(throat_pain_change, by = "patient_id") %>%
+  left_join(cough_change, by = "patient_id") %>%
+  mutate(BMI_category = cut(BMI,
+    breaks = c(-Inf, 18.5, 25, 30, Inf),
+    labels = c("Underweight", "Normal weight", "Overweight", "Obese"),
+    right = FALSE
+  )) %>%
   select(patient_id, BMI, age, smoking, gender, everything()) %>%
   arrange(patient_id)
 
@@ -157,20 +155,22 @@ skimr::skim(joined_exam_data)
 
 # Exploring missing data
 joined_exam_data %>%
-  summarise(across(everything(), ~ sum(is.na(.)))) %>%   # Showing were we have missing values
-  pivot_longer(cols = everything(),
-               names_to = "variable",
-               values_to = "n_missing") %>%
+  summarise(across(everything(), ~ sum(is.na(.)))) %>% # Showing were we have missing values
+  pivot_longer(
+    cols = everything(),
+    names_to = "variable",
+    values_to = "n_missing"
+  ) %>%
   arrange(desc(n_missing))
 
 # It appears as we have 8 missing values in swallowPain, cough, throatPain and extubation_cough
-# Since we have a long formate, this is only missing values for two individuals 
+# Since we have a long formate, this is only missing values for two individuals
 
 
 # Stratify data ----
 ## Stratify by gender
-joined_exam_data %>% 
-  group_by(gender) %>% 
+joined_exam_data %>%
+  group_by(gender) %>%
   summarise(
     min = min(swallowPain, na.rm = TRUE),
     max = max(swallowPain, na.rm = TRUE),
@@ -181,22 +181,22 @@ joined_exam_data %>%
   )
 
 ## Report min, max, mean, sd
-#gender   min   max  mean    sd
+# gender   min   max  mean    sd
 #<fct>  <dbl> <dbl> <dbl> <dbl>
-#1 F          0     9 0.613  1.62
-#2 M          0    10 0.993  1.88
+# 1 F          0     9 0.613  1.62
+# 2 M          0    10 0.993  1.88
 
 ## Throat pain day after by treatment (for females)
-joined_exam_data %>% 
-  filter(gender == "F" & time == "pod1am") %>% 
-  group_by(treat) %>% 
+joined_exam_data %>%
+  filter(gender == "F" & time == "pod1am") %>%
+  group_by(treat) %>%
   summarise(
     min = min(throatPain, na.rm = TRUE),
     max = max(throatPain, na.rm = TRUE),
     mean = mean(throatPain, na.rm = TRUE),
     sd = sd(throatPain, na.rm = TRUE),
     n = n()
-  ) %>% 
+  ) %>%
   knitr::kable(digits = 2, caption = "Throat Pain at POD1AM by Treatment (Females Only)")
 
 ## Stratifying cater. column gender for persons with BMI <25
@@ -227,12 +227,12 @@ janitor::tabyl(joined_exam_data, gender, treat)
 
 # Save data ----
 # Uncomment to save
-#fileName <- paste0("joined_exam_data_", Sys.Date(), ".txt") 
+# fileName <- paste0("joined_exam_data_", Sys.Date(), ".txt")
 
-#write_delim(
+# write_delim(
 #  joined_exam_data,
 #  file = fileName,
 #  delim = "\t"
-#)
+# )
 
 #----End----####

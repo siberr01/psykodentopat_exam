@@ -14,16 +14,16 @@ library(ggplot2)
 library(patchwork)
 
 # Load data
-joined_exam_data <- read_delim(here("data","joined_exam_data_2025-09-09.txt"))
+joined_exam_data <- read_delim(here("data", "joined_exam_data_2025-09-09.txt"))
 
 # Mutate from character to factor
-joined_exam_data <- joined_exam_data %>% 
+joined_exam_data <- joined_exam_data %>%
   mutate(across(where(is.character), as.factor))
 
 # Are there any correlated measures? ----
 GGally::ggcorr(joined_exam_data)
 joined_exam_data %>%
-  select(-patient_id) %>% 
+  select(-patient_id) %>%
   ggcorr()
 # Seems like throatPain and swallowPain are correlated, and also age and BMI. Also seems like Patient ID is correlated with swallowPain and throatPain, probably an artifact, could also be that that the patients recruited later had more pain...?
 
@@ -31,9 +31,11 @@ joined_exam_data %>%
 ggplot(joined_exam_data, aes(x = age, fill = treat)) +
   geom_density(alpha = 0.5) +
   theme_gray() +
-  labs(title = "Age distribution by treatment",
-       x = "Patient age",
-       fill = "Treatment:") +
+  labs(
+    title = "Age distribution by treatment",
+    x = "Patient age",
+    fill = "Treatment:"
+  ) +
   theme(legend.position = "bottom") +
   scale_fill_brewer(palette = "PuOr")
 
@@ -50,20 +52,26 @@ joined_exam_data %>%
   )
 
 ## Box plot displaying age distribution by gender
-plot_age_distribution_by_gender <- ggplot(joined_exam_data, 
-    aes(x = gender, y = age, fill = gender)) +
+plot_age_distribution_by_gender <- ggplot(
+  joined_exam_data,
+  aes(x = gender, y = age, fill = gender)
+) +
   geom_boxplot() +
-  labs(title = "Age distribution by gender") + 
+  labs(title = "Age distribution by gender") +
   scale_fill_brewer(palette = "Pastel2")
 plot_age_distribution_by_gender
 
 ## Density plot to visualize the full shape of the age distribution by gender
-density_age_distribution_by_gender <- ggplot(joined_exam_data, 
-                                          aes(x = age, fill = gender)) +
+density_age_distribution_by_gender <- ggplot(
+  joined_exam_data,
+  aes(x = age, fill = gender)
+) +
   geom_density(alpha = 0.5) +
-  labs(title = "Age distribution by gender", 
-       x = "Patient age", 
-       fill = "Gender") +
+  labs(
+    title = "Age distribution by gender",
+    x = "Patient age",
+    fill = "Gender"
+  ) +
   scale_fill_brewer(palette = "Pastel2")
 density_age_distribution_by_gender
 
@@ -73,7 +81,7 @@ density_age_distribution_by_gender
 ggplot(joined_exam_data, aes(x = preOp_pain, y = age)) +
   geom_boxplot() +
   labs(
-    x = "Preoperative pain (Yes/No)",       # The age-distribution seems to be quite similar in both gropus
+    x = "Preoperative pain (Yes/No)", # The age-distribution seems to be quite similar in both gropus
     y = "Age"
   )
 
@@ -82,15 +90,19 @@ ggplot(joined_exam_data, aes(x = age, fill = preOp_pain)) +
   geom_density(alpha = 0.4) +
   labs(
     x = "Age",
-    y = "Density"                 
+    y = "Density"
   )
 
 ggplot(joined_exam_data, aes(x = preOp_pain, y = age)) +
-  geom_dotplot(binaxis = "y", stackdir = "center", dotsize = 0.8,
-               binwidth = 1) +
-  labs(title = "Age by Pre-Op Pain Status",
-       x = "Pre-Op Pain",
-       y = "Age") +
+  geom_dotplot(
+    binaxis = "y", stackdir = "center", dotsize = 0.8,
+    binwidth = 1
+  ) +
+  labs(
+    title = "Age by Pre-Op Pain Status",
+    x = "Pre-Op Pain",
+    y = "Age"
+  ) +
   theme_minimal()
 
 ## Want to explore why we get these kind of "strange" results
@@ -99,7 +111,7 @@ ggplot(joined_exam_data, aes(x = preOp_pain, y = age)) +
 skimr::skim(joined_exam_data$age)
 skimr::skim(joined_exam_data$preOp_pain)
 
-# Only 2 patient experienced preOp pain, therefore the data is too limited to say anything about how preOp pain is related to age 
+# Only 2 patient experienced preOp pain, therefore the data is too limited to say anything about how preOp pain is related to age
 
 # T-tests (Welch Two Sample t-test) ----
 t.test(age ~ treat, data = joined_exam_data)
