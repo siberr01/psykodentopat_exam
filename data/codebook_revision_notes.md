@@ -53,8 +53,8 @@ This document records all revisions made to the original codebook, including cla
   
  * `cough_change`  
    + **Description**        
-    - Change in severity of cough from "pacu30min" to "pod1am", "no change" = (no extubation_cough  == no cough at pod1am); "more_cough" =(extubation_cough < cough at pod1am);  "cough_resolved" = (cough at pod1am > extubation_cough); "persistent_cough" = (extubation_cough  == cough at pod1am)  
-    - Type: factor  
+     - Change in severity of cough from "pacu30min" to "pod1am", "no change" = (no extubation_cough  == no cough at pod1am); "more_cough" =(extubation_cough < cough at pod1am);  "cough_resolved" = (cough at pod1am > extubation_cough); "persistent_cough" = (extubation_cough  == cough at pod1am)  
+     - Type: factor  
    
 
 ### Pivot into long format
