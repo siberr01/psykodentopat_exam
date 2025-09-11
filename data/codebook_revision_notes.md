@@ -9,14 +9,15 @@ This document records all revisions made to the original codebook, including cla
 * `preOp_smoking`= `smoking`  
 * `BMI kg/m2` = `BMI`  
 * `pacu30min_swallowPain`= `swallowPain`  
-* `preOp_age` = `age`  
+* `preOp_age` = `age`
+* `intraOp_surgerySize`= `surgerySize`
     
 **Reason for change:**  
-- The original names of the variables contained unessasary information 
+- The original names of the variables contained unnecessary information 
 
 ---
 
-## Removing collums  
+## Removing columns  
 * `1gender` 
 * `month`
 * `year`
@@ -26,7 +27,7 @@ This document records all revisions made to the original codebook, including cla
   
 **Reason for change:**    
 - `1gender` variable was a duplicate of the original gender variable
-- `month` and `year` variable was unessasary information for our analyes
+- `month` and `year` variable was unnecessary information for our analysis
 -  The variables for registration of cough and throatpain at different timepoints was removed in the tidying prosess, turning the dataset into longer formate. See "New variables" - section.     
 
 ---
@@ -34,10 +35,10 @@ This document records all revisions made to the original codebook, including cla
 ## New variables   
 * `ASA`
   + **Description**  
-    - American Society of Anesthesiologists (ASA) physical status, "healthy" = a normal healthy patient; "mild" = a patient with mild systemic disease; "severe" = a patient with severe systemic disease and
+    - American Society of Anesthesiologists (ASA) physical status, "healthy" = a normal healthy patient; "mild" = a patient with mild systemic disease; "severe" = a patient with severe systemic disease.
     - Type: factor
   + **Comments**
-    - This was a part of the original variable `preOp_ASA_Mallampati`, coded as: 1 = a normal healthy patient; 2 = a patient with mild systemic disease; 3 = a patient with severe systemic disease
+    - This was a part of the original variable `preOp_ASA_Mallampati`, coded as: 1 = a normal healthy patient; 2 = a patient with mild systemic disease; 3 = a patient with severe systemic disease.
       
 * `mallampati`
   + **Description**    
@@ -53,13 +54,13 @@ This document records all revisions made to the original codebook, including cla
   
  * `cough_change`  
    + **Description**        
-     - Change in severity of cough from "pacu30min" to "pod1am", "no change" = (no extubation_cough  == no cough at pod1am); "more_cough" =(extubation_cough < cough at pod1am);  "cough_resolved" = (cough at pod1am > extubation_cough); "persistent_cough" = (extubation_cough  == cough at pod1am)  
+     - Change in severity of cough from "extubation_cough" to "pod1am", "no change" = (no extubation_cough  == no cough at pod1am); "more_cough" =(extubation_cough < cough at pod1am);  "cough_resolved" = (cough at pod1am > extubation_cough); "persistent_cough" = (extubation_cough  == cough at pod1am)  
      - Type: factor  
 
-* `BMI_category`
-   + **Description**
-       - 
-
+* `BMI_category`  
+   + **Description**  
+       -  Cutting BMI into quartiles, "underweight" = BMI < 18.5; "normal weight" = BMI 18.5 ≤ 25; "overweight" = 25 ≤ 30; "obese" = BMI ≥ 30 
+    
 ### Pivot into long format
 During the data tidying process, the dataset was reshaped from **wide format** (one row per patient with multiple time-point columns) to **long format** (one row per patient per time point). This transformation created three new variables:     
 
