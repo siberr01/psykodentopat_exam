@@ -19,7 +19,8 @@ Analysis of licorice gargle effectiveness in reducing post-operative throat pain
 
 ### 📁 `data/`
 - `exam_data.txt` - Original dataset from mittuib
-- `exam_data_join.txt` - Additional original dataset from mittuib  
+- `exam_data_join.txt` - Additional original dataset from mittuib
+- `exam_data_clean_2025-09-08.txt` - Cleaned dataset in progress 
 - `joined_exam_data_2025-09-09.txt` - **Final cleaned dataset used for analysis**
 - `codebook.html` - Original codebook
 - `codebook_revision_notes.md` - Documentation of changes made
