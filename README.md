@@ -1,4 +1,6 @@
-<img src="./psykodentopat_image.png" alt="Alt text" width="500">
+<p align="center">
+  <img src="./psykodentopat_image.png" alt="Alt text" width="300">
+</p>
 
 # README exam project for RMED901A
 GitHub repository for group exam in RMED901A  
