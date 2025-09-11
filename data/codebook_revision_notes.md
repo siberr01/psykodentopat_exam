@@ -6,7 +6,7 @@ This document records all revisions made to the original codebook, including cla
 
 ## Renaming variables:   
 * `preOp_gender` = `gender`  
-* `preOp_smoking`= smoking`  
+* `preOp_smoking`= `smoking`  
 * `BMI kg/m2` = `BMI`  
 * `pacu30min_swallowPain`= `swallowPain`  
 * `preOp_age` = `age`
@@ -18,3 +18,8 @@ This document records all revisions made to the original codebook, including cla
 
 ## Removing collums  
 * `1gender` was removed for the dataset
+**Reason for change:**    
+- This variable was a duplicate of the original gender variable   
+
+---
+
