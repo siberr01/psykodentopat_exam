@@ -27,7 +27,7 @@ This document records all revisions made to the original codebook, including cla
 **Reason for change:**    
 - `1gender` variable was a duplicate of the original gender variable
 - `month` and `year` variable was unessasary information for our analyes
--  The variables for registration of cough and throatpain at different timepoints was removed in the tidying prosess, turning the dataset into longer formate. See "New variables" section.     
+-  The variables for registration of cough and throatpain at different timepoints was removed in the tidying prosess, turning the dataset into longer formate. See "New variables" - section.     
 
 ---
 
@@ -46,6 +46,22 @@ This document records all revisions made to the original codebook, including cla
   + **Comments**
     - This was a part of the original variable `preOp_ASA_Mallampati`, coded as: 1 = soft palate, fauces, uvula, pillars visible; 2 = soft palate, fauces, uvula visible; 3 = soft palate, base of uvula visible; 4 = soft palate not visible at all
 
-* `cough`
 
+### Pivot into long format
+During the data tidying process, the dataset was reshaped from **wide format** (one row per patient with multiple time-point columns) to **long format** (one row per patient per time point). This transformation created three new variables:     
+
+* `cough`
+  + **Description**    
+    - Amount of coughing, No; Mild; Moderate; Severe  
+    - Type: factor
+      
 * `throatPain`
+ + **Description**      
+    - Sore throat pain score at rest, 11 point Likert scale, 0=no pain, 10 = worst pain   
+    - Type: numeric  
+  
+* `time`  
+  + **Description**      
+    - Indicates the time point of measurement, pacu30min = 30 minutes after arrival in PACU; pacu90min = 90 minutes after arrival in PACU; postOp4hour = 4 hours after surgery; pod1am = first postoperative morning  
+    - Type: factor  
+  
