@@ -2,7 +2,10 @@
 title: "Report for psykodentopat"
 author: "Hilde Kollsete Gjelberg, Ingrid Eline Holm, and Simen Berrefjord"
 date: "`r Sys.Date()`"
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -23,6 +26,194 @@ The report includes all the steps we have conducted throughout the course relate
 
 
 ## Statistical analyses
+```{r load data, include=FALSE}
+library(patchwork)
+library(tidyverse)
+library(here)
+library(broom)
+library(lme4)
+library(broom.mixed)
+
+# Load data
+joined_exam_data <- read_delim(here("data","joined_exam_data_2025-09-09.txt"))
+
+# Mutate from character to factor
+joined_exam_data <- joined_exam_data %>% 
+  mutate(across(where(is.character), as.factor))
+```
+
+In this section, we investigate three main questions:
+
+  1. Does the treatment depend on the preoperative smoking?
+  2. Does the treatment depend on the gender of the patient?  
+  3. According to the data, was the treatment with licorice gargle reducing the risk of post operative throat pain?
+
+The variables and their respective levels involved in these questions are:
+
+- `smoking`: current, past, never
+- `gender`: Male, Female  
+- `treat`: Licorice, Sugar
+- `time`: pacu30min, pacu90min, postOp4hour, pod1am
+- `throatPain`: Assessed on a 11-point Likert scale (0 = no pain, 10 = worst pain)
+
+### Does the treatment depend on the preoperative smoking?
+In order to answer this, we first created a table for visual inspection of how `smoking` status was distributed across `treat`. 
+
+```{r treatment-smoking table, echo=TRUE}
+# Create dataset with one row per participant
+patient_level_data <- joined_exam_data %>% 
+  distinct(patient_id, treat, smoking, gender, age, BMI)
+
+# Table of treatment (rows) by smoking (columns) - one per patient
+table(patient_level_data$treat, patient_level_data$smoking) %>% 
+  knitr::kable(
+    caption = "Treatment Distribution by Smoking Status",
+    col.names = c("Current", "Never", "Past")
+  )
+```
+On face value, it seems as though the distribution of `smoking` status is evenly distributed between the `treat` conditions. However, we can also test this using a chi-squared test!
+
+```{r chi-squared test treat-smoking, echo=TRUE}
+chisq.test(table(patient_level_data$treat, patient_level_data$smoking)) %>% 
+  tidy() %>% 
+  knitr::kable(
+    digits = 3,
+    col.names = c("Chi-square", "p-value", "df", "Method"),
+    caption = "Association between Treatment and Smoking Status"
+  )
+```
+The chi-squared statistic was 0.009 (p = 0.995), showing that the treatment is not dependent of smoking status.
+
+### Does the treatment depend on the gender of the patient?
+Similary to the previous analysis, we can conduct a chi-squared test of `treat` and `gender`. 
+
+```{r table treat-gender, echo=TRUE}
+## Table of treatment (rows) by gender (columns) - one per patient
+table(patient_level_data$treat, patient_level_data$gender) %>% 
+  knitr::kable(
+    caption = "Treatment Distribution by Gender",
+    col.names = c("Female", "Male")
+  )
+```
+
+The distribution of `gender` by received `treat` seems even, but we also wish to test this using a chi-squared test.
+
+```{r chi-square treat-gender, echo=TRUE}
+chisq_treat_gender_result <- chisq.test(table(patient_level_data$treat, patient_level_data$gender)) %>% 
+  tidy() %>% 
+  rename(
+    chi_square = statistic,
+    degrees_of_freedom = parameter
+  ) %>% 
+  knitr::kable(
+    digits = 3,
+    col.names = c("Chi-square", "p-value", "df", "Method"),
+    caption = "Association between Treatment and Gender"
+  )
+
+chisq_treat_gender_result
+```
+This chi-squared test was insignificant (p = 0.631), indicating that the groups are evenly distributed across `treat` and `gender`.
+
+### Was the treatment with licorice gargle reducing the risk of post operative throat pain?
+
+We have three variables of interest to answer this question:
+
+- `treat`: Licorice or Sugar. 
+- `throatPain`: Assessed on a 11-point Likert scale (0 = no pain, 10 = worst pain).
+- `time`: Post operative throat pain was assessed at 4 hours after operation and the first morning after operation. 
+
+#### A simple approach
+We investigated if the patients reported different pain scores at postOp4hour.
+
+First, we created a histogram to see the distribution of throatPain scores at postOp4hour.
+
+```{r pain distribution, echo=TRUE, warning=FALSE}
+# Filter to 4-hour timepoint only
+postOp4h_data <- joined_exam_data %>% 
+  filter(time == "postOp4hour")
+
+# Create plot
+ggplot(postOp4h_data, aes(x = throatPain)) +
+  geom_histogram(binwidth = 1) +
+  facet_wrap(~treat) +
+  labs(title = "Distribution of throatPain at postOp4hour")
+```
+The pain values are highly skewed, with many patients reporting 0 throatPain in both treatment conditions. Due to the pain scores not being normally distributed, a Wilcoxon rank sum test is appropriate.
+
+```{r wilcox throatPain-postOp4hour, echo=TRUE}
+# Descriptive statistics by treatment
+postOp4h_data %>% 
+  group_by(treat) %>% 
+  summarise(
+    mean_pain = mean(throatPain, na.rm = TRUE),
+    median_pain = median(throatPain, na.rm = TRUE),
+    prop_no_pain = mean(throatPain == 0, na.rm = TRUE),
+    n = n()
+  ) %>% 
+  knitr::kable(
+    digits = 3,
+    caption = "Throat Pain at 4 Hours Post-Operation by Treatment"
+  )
+
+# Wilcoxon rank sum test
+wilcox.test(throatPain ~ treat, data = postOp4h_data) %>% 
+  tidy() %>% 
+  knitr::kable(
+    digits = 4,
+    col.names = c("Statistic", "p-value", "Method", "Alternative"),
+    caption = "Wilcoxon Test: Treatment Effect at 4 Hours"
+  )
+```
+
+At 4 hours post-operation, patients in the licorice group experienced lower throat pain compared to the sugar group. The licorice group had a mean pain score of 0.35 (median = 0), while the sugar group had a mean pain score of 0.91 (median = 0). Notably, 79.5% of patients receiving licorice gargle reported no throat pain, compared to 55.2% in the sugar group. The Wilcoxon rank sum test showed a statistically significant difference in throat pain scores between treatment groups (W = 5109.5, p = 0.0001).
+
+#### A more complex approach
+In order to investigate if licorice reduced the risk of post operative throat pain, we can conduct a regression analysis of how `treat` affects `throatPain` over `time`.
+
+```{r lmm throatpain-time-treat, echo=TRUE}
+# Mixed effects model with all timepoints
+throat_model <- lmer(throatPain ~ treat * time + (1|patient_id), 
+                     data = joined_exam_data)
+
+# Tidy results focusing on treatment effects
+tidy(throat_model, effects = "fixed") %>% 
+  knitr::kable(digits = 3, caption = "Mixed effects model results") 
+
+# Full model summary
+summary(throat_model)
+```
+The model showed a significant main effect of treatment (β = 0.752, t = 5.496), indicating that sugar treatment increases throat pain by approximately 0.75 points compared to licorice across all time points.
+
+We can also visualize this using ggplot2:
+
+```{r visualizing treat-time-throatPain, echo=TRUE, warning=FALSE}
+# Ensure correct time order
+joined_exam_data$time <- factor(joined_exam_data$time, 
+                               levels = c("pacu30min", "pacu90min", "postOp4hour", "pod1am"))
+
+# Plot
+joined_exam_data %>% 
+  group_by(treat, time) %>% 
+  summarise(
+    mean_pain = mean(throatPain, na.rm = TRUE),
+    se_pain = sd(throatPain, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  ) %>% 
+  ggplot(aes(x = time, y = mean_pain, color = treat, group = treat)) +
+  geom_line(linewidth = 0.5) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = mean_pain - se_pain, ymax = mean_pain + se_pain), 
+                width = 0.1) +
+  labs(
+    x = "Time point",
+    y = "Throat pain score (mean)",
+    color = "Treatment",
+    title = "Throat pain over time by treatment"
+  ) +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set2")
+```
 
 
 ## Closing remarks
