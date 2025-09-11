@@ -13,7 +13,7 @@ This is a R Markdown report for the group exam in RMED901A for the group psykode
 
 The report includes all the steps we have conducted throughout the course related to the exam data (i.e., exploration, tidying, visualization, and statistical analyses).
 
-##Setup
+## Setup
 ```{r packages, include=FALSE}
 library(tidyverse)
 library(here)
@@ -25,11 +25,12 @@ library(patchwork)
 ## Reading the data
 ```{r read data, include=FALSE}
 exam_data <- read_delim(here("data","exam_data.txt"))
+exam_data_join <- read_delim(here("data", "exam_data_join.txt"))
 joined_exam_data <- read_delim(here("data","joined_exam_data_2025-09-09.txt"))
 ```
 
 
-## Data exploration
+## Data exploration: Part 1: Original dataset
 To get an overview of the dataset, we inspected its structure and content using 
 tidyverse functions such as `glimpse()`, the base R function str(), and the skim() function from the skimr package.
 
@@ -41,7 +42,20 @@ head(exam_data)
 tail(exam_data)
 skimr::skim(exam_data)
 ```
-The dataset contained 265 rows and 20 columns.  
+The dataset contains 265 rows and 20 columns. Each row represents one patient observation. The variables can be grouped as follows:  
+
+- **Identifiers and demographics:** `patient_id`, `preOp_gender`, `preOp_age`, `BMI kg/m2`, `preOp_smoking`  
+- **Preoperative information:** `preOp_pain`, `preOp_ASA_Mallampati`  
+- **Treatment allocation:** `treat`  
+- **Postoperative outcomes:** repeated measures of `cough`, `throatPain`, and `swallowPain` recorded at several time points (`pacu30min`, `pacu90min`, `postOp4hour`, `pod1am`)  
+- **Other variables:** `month`, `year`  
+
+Most variables in the dataset can be divided into numeric and categorical variables: 
+**Numeric variables:**  
+  `preOp_age`, `BMI kg/m2`, and several outcome variables (e.g., `pacu30min_cough`, `pacu90min_throatPain`, `postOp4hour_swallowPain`).
+
+- **Categorical variables:**  
+  `preOp_gender`, `1gender`, `preOp_smoking`, `preOp_pain`, `preOp_ASA_Mallampati`, and `treat`.
 
 ### Observations
 From the initial inspection we noted several issues:
@@ -52,7 +66,7 @@ From the initial inspection we noted several issues:
 - Several column names included both measurement time and the type of observation in the same variable name (e.g., "pacu30min_cough", "pacu30min_throatPain"), indicating that the dataset was in wide format.
 - The variables "month" and "year" were not mentioned in the codebook, might refer to month/year of operation, but might be something else as well.
 - The column "preOp_ASA_Mallampati" contained two measures (ASA (American Society of Anesthesiologists) physical status and Mallampati score).
-- Several columns appeared as numeric, but on inspection they represented categorical values and should be recoded as factors.
+- Several columns appeared as numeric (e.g., 0/1 for gender, 1/2/3 for smoking), but on inspection they represented categorical values and should be converted into factors with descriptive labels.
 
 ### Patient IDs
 We next examined the patient identifiers to check for duplicates. Although the dataset contains 265 rows, there are only **235 unique patient IDs**, which means that some patients are represented more than once.  
@@ -81,7 +95,7 @@ exam_data %>%
   pull(patient_id)
 ```
 
-## Tidying of data
+## Tidying of data: Part 1: Original dataset
 
 ### Renaming of columns
 Several variables were renamed to make the dataset easier to work with and more consistent with tidy data principles. In particular, the unnecessary `"preOp_"` prefix was removed from baseline variables and the column `"BMI kg/m2"` was given a tidy name without spaces or special characters.  
@@ -215,7 +229,84 @@ exam_data_clean %>%
 
 ```
 
-### Join and tidy
+## Data exploration: Part 2: Additional dataset
+We inspected the additional dataset using the same functions as for the original dataset. 
+```{r}
+exam_data_join
+glimpse(exam_data_join)
+str(exam_data_join)
+head(exam_data_join)
+tail(exam_data_join)
+skimr::skim(exam_data_join)
+```
+The additional dataset contains 245 rows and 3 columns. patient_id is identifier. 
+All three variables; "patient_id", "intraOp_surgerySize" and "extubation_cough", are stored as numeric.
+
+### Observations
+- The additional dataset contains 245 patients, slightly fewer than in the main dataset (265).
+- "intraOp_surgerySize" and "extubation_cough" represent categorical or ordinal information and will need to be converted to factors with meaningful labels.
+- Two missing values were observed in extubation_cough.
+
+Before joining this dataset with the main dataset, we tidied it. 
+
+## Tidying of data: Part 2: Additional dataset
+### Converting variabels from numeric to factor
+The variables `intraOp_surgerySize` and `extubation_cough` were converted to factors with descriptive labels.  
+```{r}
+exam_data_join <- exam_data_join %>%             
+  mutate(intraOp_surgerySize = factor(                    
+    intraOp_surgerySize, 
+    levels = c(1,2,3),
+    labels = c("small", "medium","large")
+  )
+  ) 
+
+exam_data_join <- exam_data_join %>%             
+  mutate(extubation_cough = factor(                    
+    extubation_cough, 
+    levels = c(0,1,2,3),
+    labels = c("no cough","mild", "moderate","severe")
+  )
+  )
+```
+
+### Checking for duplicates in both data sets
+Before joining the two datasets (`exam_data_clean` and `exam_data_join`) we checked for and removed duplicate row to ensure that each patient ID was represented only once per dataset.
+
+```{r}
+nrow(exam_data_clean)
+distinct(exam_data_clean)
+
+exam_data_clean <- exam_data_clean %>% 
+  distinct()
+
+nrow(exam_data_clean)
+
+nrow(exam_data_join)
+distinct(exam_data_join)
+
+exam_data_join <- exam_data_join %>% 
+  distinct()
+
+nrow(exam_data_join)
+```
+After removing duplicates, the cleaned datasets contained **940 rows** (`exam_data_clean`) and **235 rows** (`exam_data_join`).
+
+## Joined dataset
+### Joining
+The additional dataset (`exam_data_join`) was then merged with the main dataset (`exam_data_clean`) using a **left join** on `patient_id`.  
+A left join was chosen to ensure that all patients from the main dataset were retained, even if no matching record was available in the additional dataset.  
+```{r}
+joined_exam_data <- exam_data_clean %>% 
+  left_join(exam_data_join)
+```
+
+### Exploration
+After joining, we used `glimpse()` to quickly inspect the structure of the combined dataset.  
+
+### Tidying 
+#### Renaming of columns
+
 
 ## Visualization
 
