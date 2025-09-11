@@ -30,17 +30,19 @@ joined_exam_data <- read_delim(here("data","joined_exam_data_2025-09-09.txt"))
 ```
 
 
-## Data exploration: Part 1: Original dataset
+## Data exploration: Original dataset
 To get an overview of the dataset, we inspected its structure and content using 
-tidyverse functions such as `glimpse()`, the base R function str(), and the skim() function from the skimr package.
+tidyverse functions such as `glimpse()`, the base R function str(), and the skim() function from the skimr package. In the following, we illustrate the output using skim(). 
+```{r}
+skimr::skim(exam_data)
+```
 
-```{r data exploration}
+```{r, echo=TRUE, eval=FALSE}
 exam_data
 glimpse(exam_data)
 str(exam_data)
 head(exam_data)
 tail(exam_data)
-skimr::skim(exam_data)
 ```
 The dataset contains 265 rows and 20 columns. Each row represents one patient observation. The variables can be grouped as follows:  
 
@@ -51,7 +53,8 @@ The dataset contains 265 rows and 20 columns. Each row represents one patient ob
 - **Other variables:** `month`, `year`  
 
 Most variables in the dataset can be divided into numeric and categorical variables: 
-**Numeric variables:**  
+
+- **Numeric variables:**  
   `preOp_age`, `BMI kg/m2`, and several outcome variables (e.g., `pacu30min_cough`, `pacu90min_throatPain`, `postOp4hour_swallowPain`).
 
 - **Categorical variables:**  
@@ -61,11 +64,11 @@ Most variables in the dataset can be divided into numeric and categorical variab
 From the initial inspection we noted several issues:
 
 - Many variables were unnecessarily prefixed with "preOp_" (gender, age, smoking, pain).
-- The column "BMI kg/m2" did not have a tidy variable name, as it contained spaces and special characters; should be renamed.
-- There were two separate gender columns ("preOp_gender" and "1gender").
-- Several column names included both measurement time and the type of observation in the same variable name (e.g., "pacu30min_cough", "pacu30min_throatPain"), indicating that the dataset was in wide format.
-- The variables "month" and "year" were not mentioned in the codebook, might refer to month/year of operation, but might be something else as well.
-- The column "preOp_ASA_Mallampati" contained two measures (ASA (American Society of Anesthesiologists) physical status and Mallampati score).
+- The column `BMI kg/m2`did not have a tidy variable name, as it contained spaces and special characters; should be renamed.
+- There were two separate gender columns ("`preOp_gender` and "`1gender`).
+- Several column names included both measurement time and the type of observation in the same variable name (e.g., "`pacu30min_cough`, "`pacu30min_throatPain`), indicating that the dataset was in wide format.
+- The variables `month` and `year` were not mentioned in the codebook, might refer to month/year of operation, but might be something else as well.
+- The column `preOp_ASA_Mallampati` contained two measures (ASA (American Society of Anesthesiologists) physical status and Mallampati score).
 - Several columns appeared as numeric (e.g., 0/1 for gender, 1/2/3 for smoking), but on inspection they represented categorical values and should be converted into factors with descriptive labels.
 
 ### Patient IDs
@@ -95,10 +98,10 @@ exam_data %>%
   pull(patient_id)
 ```
 
-## Tidying of data: Part 1: Original dataset
+## Tidying of data: Original dataset
 
 ### Renaming of columns
-Several variables were renamed to make the dataset easier to work with and more consistent with tidy data principles. In particular, the unnecessary `"preOp_"` prefix was removed from baseline variables and the column `"BMI kg/m2"` was given a tidy name without spaces or special characters.  
+Several variables were renamed to make the dataset easier to work with and more consistent with tidy data principles. In particular, the unnecessary "preOp_" prefix was removed from baseline variables and the column `"BMI kg/m2"` was given a tidy name without spaces or special characters.  
 ```{r}
 exam_data <- exam_data %>%
   rename(
@@ -110,9 +113,9 @@ exam_data <- exam_data %>%
     )
 ```
 
-### Removing duplicate column
+### Removing duplicate columns
 During the initial inspection we found that gender was recorded in two separate columns (`preOp_gender` and `1gender`). After checking, these two variables were identical. To avoid redundancy and potential confusion, we kept the renamed `gender` column and removed `1gender` from the dataset.  
-```{r}
+```{r, echo=TRUE, eval=FALSE}
 exam_data$gender == exam_data$`1gender`
 
 exam_data <- exam_data %>% 
@@ -122,12 +125,12 @@ exam_data <- exam_data %>%
 ### Restructuring data (to long format)
 Several outcome variables (e.g., `cough`, `throatPain`) were originally stored in **wide format**, with both the time point and the symptom encoded in the column names (e.g., `pacu30min_cough`, `postOp4hour_throatPain`).  
 
-To make the dataset tidy, we first used `pivot_longer()` to gather these columns into two new variables:  
+To make the dataset tidy, we first used "pivot_longer()" to gather these columns into two new variables:  
 - `time_final`, capturing the measurement occasion  
 - `symptom`, capturing the type of observation (cough or throat pain)  
 The corresponding values were stored in the column `value`.  
 
-Next, we applied `pivot_wider()` to spread the `symptom` variable back into separate columns (`cough` and `throatPain`), so that each row corresponds to one patient at one time point, with both outcomes recorded. Finally, we renamed `time_final` to `time` for clarity.  
+Next, we applied "pivot_wider()" to spread the `symptom` variable back into separate columns (`cough` and `throatPain`), so that each row corresponds to one patient at one time point, with both outcomes recorded. Finally, we renamed `time_final` to `time` for clarity.  
 ```{r}
 exam_data_clean <- exam_data %>%
   pivot_longer(
@@ -153,11 +156,11 @@ exam_data_clean <- exam_data_clean %>%
 ```
 
 ### Separating ASA_Mallampati to ASA and mallampati
-The variable `preOp_ASA_Mallampati` contained two pieces of information combined in a single field:  
+The column `preOp_ASA_Mallampati` contained two pieces of information combined in a single field:  
 - ASA classification (American Society of Anesthesiologists physical status), and  
 - Mallampati score (airway assessment).  
 
-To make the dataset tidy, these measures were separated into two distinct variables (`ASA` and `mallampati`) using `separate()`.
+To make the dataset tidy, these measures were separated into two distinct variables (`ASA` and `mallampati`) using "separate()".
 ```{r}
 exam_data_clean <- exam_data_clean %>%
   separate(preOp_ASA_Mallampati, 
@@ -171,11 +174,11 @@ exam_data_clean %>%
 ### Converting variabels from numeric to factor
 Several variables in the dataset were originally coded as numbers, but represented categorical information. To make the dataset tidy and improve interpretability, these variables were converted into factors with descriptive labels:  
 
-- `cough`: recoded from values 0–3 into `"no"`, `"mild"`, `"moderate"`, and `"severe"`  
-- `gender`: recoded from 0/1 into `"M"` and `"F"`  
-- `smoking`: recoded from 1/2/3 into `"current"`, `"past"`, `"never"`  
-- `preOp_pain`: recoded from 0/1 into `"no"`, `"yes"`  
-- `treat`: recoded from 0/1 into `"Sugar"` and `"Licorice"`  
+- `cough`: recoded from values 0–3 into "no", "mild", "moderate", and "severe"  
+- `gender`: recoded from 0/1 into "M" and "F"  
+- `smoking`: recoded from 1/2/3 into "current", "past", "never"  
+- `preOp_pain`: recoded from 0/1 into "no", "yes"  
+- `treat`: recoded from 0/1 into "Sugar" and "Licorice"  
 - `ASA`: recoded into a factor with three levels (1–3)  
 - `mallampati`: recoded into a factor with four levels (1–4)  
 
@@ -229,27 +232,30 @@ exam_data_clean %>%
 
 ```
 
-## Data exploration: Part 2: Additional dataset
-We inspected the additional dataset using the same functions as for the original dataset. 
-```{r}
+## Data exploration: Additional dataset
+We inspected the additional dataset using the same functions as for the original dataset, illustrated in the output using skim().
+```{r, include=FALSE}
 exam_data_join
 glimpse(exam_data_join)
 str(exam_data_join)
 head(exam_data_join)
 tail(exam_data_join)
+```
+
+```{r}
 skimr::skim(exam_data_join)
 ```
 The additional dataset contains 245 rows and 3 columns. patient_id is identifier. 
-All three variables; "patient_id", "intraOp_surgerySize" and "extubation_cough", are stored as numeric.
+All three variables; `patient_id`, `intraOp_surgerySize` and `extubation_cough`, are stored as numeric.
 
 ### Observations
 - The additional dataset contains 245 patients, slightly fewer than in the main dataset (265).
-- "intraOp_surgerySize" and "extubation_cough" represent categorical or ordinal information and will need to be converted to factors with meaningful labels.
+- `intraOp_surgerySize` and `extubation_cough` represent categorical or ordinal information and will need to be converted to factors with meaningful labels.
 - Two missing values were observed in extubation_cough.
 
 Before joining this dataset with the main dataset, we tidied it. 
 
-## Tidying of data: Part 2: Additional dataset
+## Tidying of data: Additional dataset
 ### Converting variabels from numeric to factor
 The variables `intraOp_surgerySize` and `extubation_cough` were converted to factors with descriptive labels.  
 ```{r}
@@ -290,22 +296,124 @@ exam_data_join <- exam_data_join %>%
 
 nrow(exam_data_join)
 ```
-After removing duplicates, the cleaned datasets contained **940 rows** (`exam_data_clean`) and **235 rows** (`exam_data_join`).
+After removing duplicates, the cleaned datasets contained **940 rows** ("exam_data_clean") and **235 rows** ("exam_data_join").
 
 ## Joined dataset
 ### Joining
-The additional dataset (`exam_data_join`) was then merged with the main dataset (`exam_data_clean`) using a **left join** on `patient_id`.  
-A left join was chosen to ensure that all patients from the main dataset were retained, even if no matching record was available in the additional dataset.  
+The additional dataset ("exam_data_join") was then merged with the main dataset ("exam_data_clean") using a **left join** on `patient_id`.  
+A left join was chosen to ensure that all patients from the main dataset were retained, even if no matching record was available in the additional dataset.
+After joining, we used "glimpse()" to quickly inspect the structure of the combined dataset.  
 ```{r}
 joined_exam_data <- exam_data_clean %>% 
   left_join(exam_data_join)
 ```
 
-### Exploration
-After joining, we used `glimpse()` to quickly inspect the structure of the combined dataset.  
+```{r, echo=TRUE, eval=FALSE}
+glimpse(joined_exam_data)
+```
 
-### Tidying 
+### Tidying the joined dataset
 #### Renaming of columns
+Unnecessary "intraOp_" prefix was removed from `intraOp_surgerySize` column. 
+```{r}
+joined_exam_data <- joined_exam_data %>%
+  rename(
+    surgerySize = intraOp_surgerySize,
+  )
+```
+
+#### Recoding ASA and Mallampati to factors
+As for the main dataset, `ASA` and `Mallampati` were converted into factors with three and four levels respectively. 
+```{r}
+joined_exam_data <- joined_exam_data %>%             
+  mutate(ASA = factor(                    
+    ASA, 
+    levels = c(1,2,3),
+    labels = c("healthy", "mild","severe")
+  )
+  ) 
+
+joined_exam_data <- joined_exam_data %>%             
+  mutate(mallampati = factor(                    
+    mallampati, 
+    levels = c(1,2,3,4),
+    labels = c("soft palate, fauces, uvula, pillars visible", "soft palate, fauces, uvula visible","soft palate, base of uvula visible","soft palate not visible at all")
+  )
+  )
+```
+
+#### Changing from character to factor
+Variables coded as characters were converted into factors:  
+```{r}
+joined_exam_data <- joined_exam_data %>% 
+  mutate(across(where(is.character), as.factor))
+```
+
+#### Creation of new columns
+To evaluate changes in symptoms over time, two new variables were created:  
+
+- **`throat_pain_change`**: compares throat pain at "pacu30min" and "pod1am" for each patient, and categorises the change as *increased*, *decreased*, or *no_change*.  
+- **`cough_change`**: compares cough status at extubation with cough at "pod1am". Patients were categorised as *no_change*, *more_cough*, *cough_resolved*, or *persistent_cough*.  
+
+These derived variables allow symptom progression to be analysed more easily.
+```{r}
+throat_pain_change <- joined_exam_data %>% 
+  select(patient_id, time, throatPain) %>% 
+  filter(time %in% c("pacu30min", "pod1am")) %>% 
+  pivot_wider(names_from = time, values_from = throatPain) %>% 
+  mutate(throat_pain_change = case_when(
+    pod1am > pacu30min ~ "increased",
+    pod1am < pacu30min ~ "decreased", 
+    pod1am == pacu30min ~ "no_change"
+  )) %>% 
+  select(patient_id, throat_pain_change)
+
+cough_change <- joined_exam_data %>% 
+  filter(time == "pod1am") %>% 
+  mutate(cough_change = case_when(
+    extubation_cough == "no cough" & cough == "no" ~ "no_change",
+    extubation_cough == "no cough" & cough %in% c("mild", "moderate", "severe") ~ "more_cough",
+    extubation_cough %in% c("mild", "moderate", "severe") & cough == "no" ~ "cough_resolved",
+    extubation_cough %in% c("mild", "moderate", "severe") & cough %in% c("mild", "moderate", "severe") ~ "persistent_cough"
+  )) %>% 
+  select(patient_id, cough_change)
+```
+
+#### Finalising the joined dataset
+In a single pipeline, we combined the newly created outcome variables with the main dataset, derived BMI categories, and organised the dataset for further analysis:  
+
+- `throat_pain_change` and `cough_change` were joined by `patient_id`.  
+- A categorical variable `BMI_category` was created by grouping BMI values into four ranges (*Underweight*, *Normal weight*, *Overweight*, *Obese*).  
+- Columns were reordered to place core patient variables (`patient_id`, `BMI`, `age`, `smoking`, `gender`) first.  
+- The dataset was arranged by `patient_id` for clarity.  
+```{r}
+joined_exam_data <- joined_exam_data %>% 
+  left_join(throat_pain_change, by = "patient_id") %>% 
+  left_join(cough_change, by = "patient_id") %>% 
+  mutate(BMI_category = cut(BMI, breaks = c(-Inf, 18.5, 25, 30, Inf), 
+                            labels = c("Underweight", "Normal weight", "Overweight", "Obese"), 
+                            right = FALSE)) %>% 
+  select(patient_id, BMI, age, smoking, gender, everything()) %>%
+  arrange(patient_id)
+
+```
+
+#### Exploration of the joined data 
+We explored the joined dataset using "skim()" and summarised missing values across all variables.  
+Eight missing values were identified in `swallowPain`, `cough`, `throatPain`, and `extubation_cough`.  
+Since the dataset is in long format, these correspond to only two individuals.  
+```{r, echo=TRUE, eval=FALSE}
+skimr::skim(joined_exam_data)
+```
+
+```{r}
+joined_exam_data %>%
+  summarise(across(everything(), ~ sum(is.na(.)))) %>%   # Showing were we have missing values
+  pivot_longer(cols = everything(),
+               names_to = "variable",
+               values_to = "n_missing") %>%
+  arrange(desc(n_missing))
+```
 
 
 ## Visualization
