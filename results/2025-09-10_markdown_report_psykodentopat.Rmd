@@ -16,7 +16,6 @@ This is a R Markdown report for the group exam in RMED901A for the group psykode
 
 The report includes all the steps we have conducted throughout the course related to the exam data (i.e., exploration, tidying, visualization, and statistical analyses).
 
-## Setup
 ```{r packages, include=FALSE}
 library(tidyverse)
 library(here)
@@ -24,14 +23,11 @@ library(ggplot2)
 library(patchwork)
 ```
 
-
-## Reading the data
 ```{r read data, include=FALSE}
-exam_data <- read_delim(here("data","exam_data.txt"))
+exam_data <- read_delim(here("data", "exam_data.txt"))
 exam_data_join <- read_delim(here("data", "exam_data_join.txt"))
-joined_exam_data <- read_delim(here("data","joined_exam_data_2025-09-09.txt"))
+joined_exam_data <- read_delim(here("data", "joined_exam_data_2025-09-09.txt"))
 ```
-
 
 ## Data exploration: Original dataset
 To get an overview of the dataset, we inspected its structure and content using 
@@ -77,27 +73,27 @@ From the initial inspection we noted several issues:
 ### Patient IDs
 We next examined the patient identifiers to check for duplicates. Although the dataset contains 265 rows, there are only **235 unique patient IDs**, which means that some patients are represented more than once.  
 ```{r}
-exam_data %>% 
-  count(patient_id) %>% 
+exam_data %>%
+  count(patient_id) %>%
   distinct()
 ```
 
 Further inspection showed that **28 patients are recorded twice** and **2 patients appear three times**:
 ```{r}
-exam_data %>% 
-  count(patient_id) %>% 
-  filter(n>1)
+exam_data %>%
+  count(patient_id) %>%
+  filter(n > 1)
 
-exam_data %>% 
-  count(patient_id) %>% 
-  filter(n>2)
+exam_data %>%
+  count(patient_id) %>%
+  filter(n > 2)
 ```
 
 By pulling the IDs that occur more than once, we confirmed that these represent patients who underwent surgery on multiple occasions (different month/year):
 ```{r}
-exam_data %>% 
-  count(patient_id) %>% 
-  filter(n>1) %>% 
+exam_data %>%
+  count(patient_id) %>%
+  filter(n > 1) %>%
   pull(patient_id)
 ```
 
@@ -113,7 +109,7 @@ exam_data <- exam_data %>%
     BMI = "BMI kg/m2",
     swallowPain = pacu30min_swallowPain,
     age = preOp_age
-    )
+  )
 ```
 
 ### Removing duplicate columns
@@ -121,7 +117,7 @@ During the initial inspection we found that gender was recorded in two separate 
 ```{r, echo=TRUE, eval=FALSE}
 exam_data$gender == exam_data$`1gender`
 
-exam_data <- exam_data %>% 
+exam_data <- exam_data %>%
   select(-`1gender`)
 ```
 
@@ -137,7 +133,7 @@ Next, we applied "pivot_wider()" to spread the `symptom` variable back into sepa
 ```{r}
 exam_data_clean <- exam_data %>%
   pivot_longer(
-    cols = matches("cough|throatPain"), 
+    cols = matches("cough|throatPain"),
     names_to = c("time_final", "symptom"),
     names_sep = "_",
     values_to = "value"
@@ -147,14 +143,14 @@ exam_data_clean <- exam_data %>%
     values_from = value
   )
 
-exam_data_clean <- exam_data_clean %>%  
+exam_data_clean <- exam_data_clean %>%
   rename(time = time_final)
 ```
 
 ### Removing `month` and `year`
 The variables `month` and `year` were included in the dataset, but their meaning was unclear and they were not documented in the accompanying notes. Since they are not needed for the planned analyses, these columns were removed.  
 ```{r}
-exam_data_clean <- exam_data_clean %>% 
+exam_data_clean <- exam_data_clean %>%
   select(-month, -year)
 ```
 
@@ -166,11 +162,12 @@ The column `preOp_ASA_Mallampati` contained two pieces of information combined i
 To make the dataset tidy, these measures were separated into two distinct variables (`ASA` and `mallampati`) using "separate()".
 ```{r}
 exam_data_clean <- exam_data_clean %>%
-  separate(preOp_ASA_Mallampati, 
-           into = c("ASA", "mallampati"), 
-           sep = "_")
-  
-exam_data_clean %>% 
+  separate(preOp_ASA_Mallampati,
+    into = c("ASA", "mallampati"),
+    sep = "_"
+  )
+
+exam_data_clean %>%
   count(ASA, mallampati)
 ```
 
@@ -187,52 +184,49 @@ Several variables in the dataset were originally coded as numbers, but represent
 
 This ensures that categorical variables are treated appropriately during analysis and improves the readability of results.
 ```{r}
-exam_data_clean <- exam_data_clean %>%             
-  mutate(cough = factor(                    
-    cough, 
-    levels = c(0,1,2,3),
-    labels = c("no","mild", "moderate","severe")
-  )
-  ) 
+exam_data_clean <- exam_data_clean %>%
+  mutate(cough = factor(
+    cough,
+    levels = c(0, 1, 2, 3),
+    labels = c("no", "mild", "moderate", "severe")
+  ))
 
 exam_data_clean <- exam_data_clean %>%
   mutate(
     gender = factor(
-      gender, 
-      levels = c(0,1),
-      labels = c("M","F")
+      gender,
+      levels = c(0, 1),
+      labels = c("M", "F")
     )
   )
 
-exam_data_clean <- exam_data_clean %>% 
+exam_data_clean <- exam_data_clean %>%
   mutate(
     smoking = factor(
-      smoking, 
-      levels = c(1,2,3),
-      labels = c("current","past","never")
+      smoking,
+      levels = c(1, 2, 3),
+      labels = c("current", "past", "never")
     )
   )
 
-exam_data_clean <- exam_data_clean %>% 
+exam_data_clean <- exam_data_clean %>%
   mutate(preOp_pain = factor(
-    preOp_pain, 
-    levels = c(0,1),
-    labels = c("no","yes")
-    )
-  )
+    preOp_pain,
+    levels = c(0, 1),
+    labels = c("no", "yes")
+  ))
 
-exam_data_clean$treat <- factor(      # Convert the variable `treat` into a factor with two levels:
+exam_data_clean$treat <- factor( # Convert the variable `treat` into a factor with two levels:
   exam_data_clean$treat,
-  levels = c(0, 1),                 # 0 = "Sugar 5g" and 1 = "Licorice 0.5g"
+  levels = c(0, 1), # 0 = "Sugar 5g" and 1 = "Licorice 0.5g"
   labels = c("Sugar", "Licorice")
 )
 
-exam_data_clean %>% 
+exam_data_clean %>%
   mutate(
     ASA = factor(ASA, levels = 1:3),
     mallampati = factor(mallampati, levels = 1:4)
   )
-
 ```
 
 ## Data exploration: Additional dataset
@@ -262,21 +256,19 @@ Before joining this dataset with the main dataset, we tidied it.
 ### Converting variabels from numeric to factor
 The variables `intraOp_surgerySize` and `extubation_cough` were converted to factors with descriptive labels.  
 ```{r}
-exam_data_join <- exam_data_join %>%             
-  mutate(intraOp_surgerySize = factor(                    
-    intraOp_surgerySize, 
-    levels = c(1,2,3),
-    labels = c("small", "medium","large")
-  )
-  ) 
+exam_data_join <- exam_data_join %>%
+  mutate(intraOp_surgerySize = factor(
+    intraOp_surgerySize,
+    levels = c(1, 2, 3),
+    labels = c("small", "medium", "large")
+  ))
 
-exam_data_join <- exam_data_join %>%             
-  mutate(extubation_cough = factor(                    
-    extubation_cough, 
-    levels = c(0,1,2,3),
-    labels = c("no cough","mild", "moderate","severe")
-  )
-  )
+exam_data_join <- exam_data_join %>%
+  mutate(extubation_cough = factor(
+    extubation_cough,
+    levels = c(0, 1, 2, 3),
+    labels = c("no cough", "mild", "moderate", "severe")
+  ))
 ```
 
 ### Checking for duplicates in both data sets
@@ -286,7 +278,7 @@ Before joining the two datasets (`exam_data_clean` and `exam_data_join`) we chec
 nrow(exam_data_clean)
 distinct(exam_data_clean)
 
-exam_data_clean <- exam_data_clean %>% 
+exam_data_clean <- exam_data_clean %>%
   distinct()
 
 nrow(exam_data_clean)
@@ -294,7 +286,7 @@ nrow(exam_data_clean)
 nrow(exam_data_join)
 distinct(exam_data_join)
 
-exam_data_join <- exam_data_join %>% 
+exam_data_join <- exam_data_join %>%
   distinct()
 
 nrow(exam_data_join)
@@ -307,7 +299,7 @@ The additional dataset ("exam_data_join") was then merged with the main dataset 
 A left join was chosen to ensure that all patients from the main dataset were retained, even if no matching record was available in the additional dataset.
 After joining, we used "glimpse()" to quickly inspect the structure of the combined dataset.  
 ```{r}
-joined_exam_data <- exam_data_clean %>% 
+joined_exam_data <- exam_data_clean %>%
   left_join(exam_data_join)
 ```
 
@@ -328,27 +320,25 @@ joined_exam_data <- joined_exam_data %>%
 #### Recoding ASA and Mallampati to factors
 As for the main dataset, `ASA` and `Mallampati` were converted into factors with three and four levels respectively. 
 ```{r}
-joined_exam_data <- joined_exam_data %>%             
-  mutate(ASA = factor(                    
-    ASA, 
-    levels = c(1,2,3),
-    labels = c("healthy", "mild","severe")
-  )
-  ) 
+joined_exam_data <- joined_exam_data %>%
+  mutate(ASA = factor(
+    ASA,
+    levels = c(1, 2, 3),
+    labels = c("healthy", "mild", "severe")
+  ))
 
-joined_exam_data <- joined_exam_data %>%             
-  mutate(mallampati = factor(                    
-    mallampati, 
-    levels = c(1,2,3,4),
-    labels = c("soft palate, fauces, uvula, pillars visible", "soft palate, fauces, uvula visible","soft palate, base of uvula visible","soft palate not visible at all")
-  )
-  )
+joined_exam_data <- joined_exam_data %>%
+  mutate(mallampati = factor(
+    mallampati,
+    levels = c(1, 2, 3, 4),
+    labels = c("soft palate, fauces, uvula, pillars visible", "soft palate, fauces, uvula visible", "soft palate, base of uvula visible", "soft palate not visible at all")
+  ))
 ```
 
 #### Changing from character to factor
 Variables coded as characters were converted into factors:  
 ```{r}
-joined_exam_data <- joined_exam_data %>% 
+joined_exam_data <- joined_exam_data %>%
   mutate(across(where(is.character), as.factor))
 ```
 
@@ -360,25 +350,25 @@ To evaluate changes in symptoms over time, two new variables were created:
 
 These derived variables allow symptom progression to be analysed more easily.
 ```{r}
-throat_pain_change <- joined_exam_data %>% 
-  select(patient_id, time, throatPain) %>% 
-  filter(time %in% c("pacu30min", "pod1am")) %>% 
-  pivot_wider(names_from = time, values_from = throatPain) %>% 
+throat_pain_change <- joined_exam_data %>%
+  select(patient_id, time, throatPain) %>%
+  filter(time %in% c("pacu30min", "pod1am")) %>%
+  pivot_wider(names_from = time, values_from = throatPain) %>%
   mutate(throat_pain_change = case_when(
     pod1am > pacu30min ~ "increased",
-    pod1am < pacu30min ~ "decreased", 
+    pod1am < pacu30min ~ "decreased",
     pod1am == pacu30min ~ "no_change"
-  )) %>% 
+  )) %>%
   select(patient_id, throat_pain_change)
 
-cough_change <- joined_exam_data %>% 
-  filter(time == "pod1am") %>% 
+cough_change <- joined_exam_data %>%
+  filter(time == "pod1am") %>%
   mutate(cough_change = case_when(
     extubation_cough == "no cough" & cough == "no" ~ "no_change",
     extubation_cough == "no cough" & cough %in% c("mild", "moderate", "severe") ~ "more_cough",
     extubation_cough %in% c("mild", "moderate", "severe") & cough == "no" ~ "cough_resolved",
     extubation_cough %in% c("mild", "moderate", "severe") & cough %in% c("mild", "moderate", "severe") ~ "persistent_cough"
-  )) %>% 
+  )) %>%
   select(patient_id, cough_change)
 ```
 
@@ -390,15 +380,16 @@ In a single pipeline, we combined the newly created outcome variables with the m
 - Columns were reordered to place core patient variables (`patient_id`, `BMI`, `age`, `smoking`, `gender`) first.  
 - The dataset was arranged by `patient_id` for clarity.  
 ```{r}
-joined_exam_data <- joined_exam_data %>% 
-  left_join(throat_pain_change, by = "patient_id") %>% 
-  left_join(cough_change, by = "patient_id") %>% 
-  mutate(BMI_category = cut(BMI, breaks = c(-Inf, 18.5, 25, 30, Inf), 
-                            labels = c("Underweight", "Normal weight", "Overweight", "Obese"), 
-                            right = FALSE)) %>% 
+joined_exam_data <- joined_exam_data %>%
+  left_join(throat_pain_change, by = "patient_id") %>%
+  left_join(cough_change, by = "patient_id") %>%
+  mutate(BMI_category = cut(BMI,
+    breaks = c(-Inf, 18.5, 25, 30, Inf),
+    labels = c("Underweight", "Normal weight", "Overweight", "Obese"),
+    right = FALSE
+  )) %>%
   select(patient_id, BMI, age, smoking, gender, everything()) %>%
   arrange(patient_id)
-
 ```
 
 #### Exploration of the joined data 
@@ -411,10 +402,12 @@ skimr::skim(joined_exam_data)
 
 ```{r}
 joined_exam_data %>%
-  summarise(across(everything(), ~ sum(is.na(.)))) %>%   # Showing were we have missing values
-  pivot_longer(cols = everything(),
-               names_to = "variable",
-               values_to = "n_missing") %>%
+  summarise(across(everything(), ~ sum(is.na(.)))) %>% # Showing were we have missing values
+  pivot_longer(
+    cols = everything(),
+    names_to = "variable",
+    values_to = "n_missing"
+  ) %>%
   arrange(desc(n_missing))
 ```
 
@@ -423,7 +416,7 @@ joined_exam_data %>%
 The next part of our project concerned visualization. We used the joined_exam_data_2025-09-09.txt.   
 Our task was to create plots to answer the following questions: 
 
-**1. Are there any correlated measurements?**  
+### **1. Are there any correlated measurements?**  
 
 To explore potential relationships between the variables, we created a correlation matrix.  
 The `patient_id` collumn was excluded because it is just an identifier and does not carry meaningful information for correlation analysis.  
@@ -432,29 +425,30 @@ library(tidyverse)
 library(here)
 library(ggplot2)
 library(patchwork)
-joined_exam_data <- read_delim(here("data","joined_exam_data_2025-09-09.txt"))
-
+joined_exam_data <- read_delim(here("data", "joined_exam_data_2025-09-09.txt"))
 ```
 
 ```{r warning = FALSE}
 joined_exam_data %>%
-  select(-patient_id) %>% 
+  select(-patient_id) %>%
   GGally::ggcorr()
 ```
   
 This correlation matrix demonstrates a strong positive correlation between `swallowPain` and `throatPain`.`BMI` and `age` appears to have a weak positive correlation.  
   
   
-**2.  Does the age distribution depend on treatmeant-group?**  
+### **2.  Does the age distribution depend on treatmeant-group?**  
 To investigate whether age distribution differs between treatment groups, we created a density plot stratified by treatment.  
 
 ```{r ggplot patient age treatment, include=FALSE}
 ggplot <- ggplot(joined_exam_data, aes(x = age, fill = treat)) +
   geom_density(alpha = 0.5) +
   theme_gray() +
-  labs(title = "Age distribution by treatment",
-       x = "Patient age",
-       fill = "Treatment:") +
+  labs(
+    title = "Age distribution by treatment",
+    x = "Patient age",
+    fill = "Treatment:"
+  ) +
   theme(legend.position = "bottom") +
   scale_fill_brewer(palette = "PuOr")
 ```
@@ -462,9 +456,11 @@ ggplot <- ggplot(joined_exam_data, aes(x = age, fill = treat)) +
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(joined_exam_data, aes(x = age, fill = treat)) +
   geom_density(alpha = 0.5) +
-  labs(title = "Age distribution by treatment",
-       x = "Patient age",
-       fill = "Treatment:")
+  labs(
+    title = "Age distribution by treatment",
+    x = "Patient age",
+    fill = "Treatment:"
+  )
 ```
 
 ```{r, echo=FALSE}
@@ -473,26 +469,32 @@ ggplot
   
 This density-plot demonstrates that the age distributions in the two treatment groups are similar, and age distribution does not seem to depend on treatment. There may be a mild tendency for Licorice-treated patients to be older on average, based on the higher peak in the 65–75 age range.  
 
-**Does the age distribution of the patients depend on their sex?**
+### **3. Does the age distribution of the patients depend on their sex?**
   
 To investigate whether age distribution depend on sex, we created a density plot stratified by `gender`.   
 
 ```{r ggplot age gender, include=FALSE}
-density_age_distribution_by_gender <- ggplot(joined_exam_data, 
-                                          aes(x = age, fill = gender)) +
+density_age_distribution_by_gender <- ggplot(
+  joined_exam_data,
+  aes(x = age, fill = gender)
+) +
   geom_density(alpha = 0.5) +
-  labs(title = "Age distribution by gender", 
-       x = "Patient age", 
-       fill = "Gender") +
+  labs(
+    title = "Age distribution by gender",
+    x = "Patient age",
+    fill = "Gender"
+  ) +
   scale_fill_brewer(palette = "Pastel2")
 density_age_distribution_by_gender
 ```
 ```{r, echo=TRUE, eval=FALSE}
 ggplot(joined_exam_data, aes(x = age, fill = gender)) +
   geom_density(alpha = 0.5) +
-  labs(title = "Age distribution by gender", 
-       x = "Patient age", 
-       fill = "Gender")
+  labs(
+    title = "Age distribution by gender",
+    x = "Patient age",
+    fill = "Gender"
+  )
 ```
 ```{r, echo =FALSE}
 density_age_distribution_by_gender
@@ -501,14 +503,14 @@ density_age_distribution_by_gender
 This density-plot demonstrates that the age distribution does not strongly depend on gender seeing as the density curves overlap substantially.  
     
     
-**Does the preoperative pain change with age of the patients?**  
+### **4. Does the preoperative pain change with age of the patients?**  
 
 ```{r}
 ggplot(joined_exam_data, aes(x = age, fill = preOp_pain)) +
   geom_density(alpha = 0.4) +
   labs(
     x = "Age",
-    y = "Density"                 
+    y = "Density"
   )
 ```
   
@@ -516,12 +518,21 @@ This density-plot can indicate difference in age in those experiencing preoperat
   
 To illustrate it in a more approriate way, we made a dotplot. 
 ```{r}
-ggplot(joined_exam_data, aes(x = preOp_pain, y = age)) +
-  geom_dotplot(binaxis = "y", stackdir = "center", dotsize = 0.8,
-               binwidth = 1) +
-  labs(title = "Age by Pre-Op Pain Status",
-       x = "Pre-Op Pain",
-       y = "Age") +
+# Create dataset with one row per participant
+patient_data_id_pain_age <- joined_exam_data %>%
+  distinct(patient_id, preOp_pain, age)
+
+# Create the plot with unique participants only
+ggplot(patient_data_id_pain_age, aes(x = preOp_pain, y = age)) +
+  geom_dotplot(
+    binaxis = "y", stackdir = "center", dotsize = 0.8,
+    binwidth = 1
+  ) +
+  labs(
+    title = "Age by Pre-Op Pain Status",
+    x = "Pre-Op Pain",
+    y = "Age"
+  ) +
   theme_minimal()
 ```
 
@@ -540,10 +551,10 @@ library(lme4)
 library(broom.mixed)
 
 # Load data
-joined_exam_data <- read_delim(here("data","joined_exam_data_2025-09-09.txt"))
+joined_exam_data <- read_delim(here("data", "joined_exam_data_2025-09-09.txt"))
 
 # Mutate from character to factor
-joined_exam_data <- joined_exam_data %>% 
+joined_exam_data <- joined_exam_data %>%
   mutate(across(where(is.character), as.factor))
 ```
 
@@ -566,11 +577,11 @@ In order to answer this, we first created a table for visual inspection of how `
 
 ```{r treatment-smoking table, echo=TRUE}
 # Create dataset with one row per participant
-patient_level_data <- joined_exam_data %>% 
+patient_level_data <- joined_exam_data %>%
   distinct(patient_id, treat, smoking, gender, age, BMI)
 
 # Table of treatment (rows) by smoking (columns) - one per patient
-table(patient_level_data$treat, patient_level_data$smoking) %>% 
+table(patient_level_data$treat, patient_level_data$smoking) %>%
   knitr::kable(
     caption = "Treatment Distribution by Smoking Status",
     col.names = c("Current", "Never", "Past")
@@ -579,8 +590,8 @@ table(patient_level_data$treat, patient_level_data$smoking) %>%
 On face value, it seems as though the distribution of `smoking` status is evenly distributed between the `treat` conditions. However, we can also test this using a chi-squared test!
 
 ```{r chi-squared test treat-smoking, echo=TRUE}
-chisq.test(table(patient_level_data$treat, patient_level_data$smoking)) %>% 
-  tidy() %>% 
+chisq.test(table(patient_level_data$treat, patient_level_data$smoking)) %>%
+  tidy() %>%
   knitr::kable(
     digits = 3,
     col.names = c("Chi-square", "p-value", "df", "Method"),
@@ -594,7 +605,7 @@ Similary to the previous analysis, we can conduct a chi-squared test of `treat` 
 
 ```{r table treat-gender, echo=TRUE}
 ## Table of treatment (rows) by gender (columns) - one per patient
-table(patient_level_data$treat, patient_level_data$gender) %>% 
+table(patient_level_data$treat, patient_level_data$gender) %>%
   knitr::kable(
     caption = "Treatment Distribution by Gender",
     col.names = c("Female", "Male")
@@ -604,12 +615,12 @@ table(patient_level_data$treat, patient_level_data$gender) %>%
 The distribution of `gender` by received `treat` seems even, but we also wish to test this using a chi-squared test.
 
 ```{r chi-square treat-gender, echo=TRUE}
-chisq_treat_gender_result <- chisq.test(table(patient_level_data$treat, patient_level_data$gender)) %>% 
-  tidy() %>% 
+chisq_treat_gender_result <- chisq.test(table(patient_level_data$treat, patient_level_data$gender)) %>%
+  tidy() %>%
   rename(
     chi_square = statistic,
     degrees_of_freedom = parameter
-  ) %>% 
+  ) %>%
   knitr::kable(
     digits = 3,
     col.names = c("Chi-square", "p-value", "df", "Method"),
@@ -635,7 +646,7 @@ First, we created a histogram to see the distribution of throatPain scores at po
 
 ```{r pain distribution, echo=TRUE, warning=FALSE}
 # Filter to 4-hour timepoint only
-postOp4h_data <- joined_exam_data %>% 
+postOp4h_data <- joined_exam_data %>%
   filter(time == "postOp4hour")
 
 # Create plot
@@ -644,26 +655,27 @@ ggplot(postOp4h_data, aes(x = throatPain)) +
   facet_wrap(~treat) +
   labs(title = "Distribution of throatPain at postOp4hour")
 ```
+
 The pain values are highly skewed, with many patients reporting 0 throatPain in both treatment conditions. Due to the pain scores not being normally distributed, a Wilcoxon rank sum test is appropriate.
 
 ```{r wilcox throatPain-postOp4hour, echo=TRUE}
 # Descriptive statistics by treatment
-postOp4h_data %>% 
-  group_by(treat) %>% 
+postOp4h_data %>%
+  group_by(treat) %>%
   summarise(
     mean_pain = mean(throatPain, na.rm = TRUE),
     median_pain = median(throatPain, na.rm = TRUE),
     prop_no_pain = mean(throatPain == 0, na.rm = TRUE),
     n = n()
-  ) %>% 
+  ) %>%
   knitr::kable(
     digits = 3,
     caption = "Throat Pain at 4 Hours Post-Operation by Treatment"
   )
 
 # Wilcoxon rank sum test
-wilcox.test(throatPain ~ treat, data = postOp4h_data) %>% 
-  tidy() %>% 
+wilcox.test(throatPain ~ treat, data = postOp4h_data) %>%
+  tidy() %>%
   knitr::kable(
     digits = 4,
     col.names = c("Statistic", "p-value", "Method", "Alternative"),
@@ -678,12 +690,13 @@ In order to investigate if licorice reduced the risk of post operative throat pa
 
 ```{r lmm throatpain-time-treat, echo=TRUE}
 # Mixed effects model with all timepoints
-throat_model <- lmer(throatPain ~ treat * time + (1|patient_id), 
-                     data = joined_exam_data)
+throat_model <- lmer(throatPain ~ treat * time + (1 | patient_id),
+  data = joined_exam_data
+)
 
 # Tidy results focusing on treatment effects
-tidy(throat_model, effects = "fixed") %>% 
-  knitr::kable(digits = 3, caption = "Mixed effects model results") 
+tidy(throat_model, effects = "fixed") %>%
+  knitr::kable(digits = 3, caption = "Mixed effects model results")
 
 # Full model summary
 summary(throat_model)
@@ -694,22 +707,24 @@ We can also visualize this using ggplot2:
 
 ```{r visualizing treat-time-throatPain, echo=TRUE, warning=FALSE}
 # Ensure correct time order
-joined_exam_data$time <- factor(joined_exam_data$time, 
-                               levels = c("pacu30min", "pacu90min", "postOp4hour", "pod1am"))
+joined_exam_data$time <- factor(joined_exam_data$time,
+  levels = c("pacu30min", "pacu90min", "postOp4hour", "pod1am")
+)
 
 # Plot
-joined_exam_data %>% 
-  group_by(treat, time) %>% 
+joined_exam_data %>%
+  group_by(treat, time) %>%
   summarise(
     mean_pain = mean(throatPain, na.rm = TRUE),
     se_pain = sd(throatPain, na.rm = TRUE) / sqrt(n()),
     .groups = "drop"
-  ) %>% 
+  ) %>%
   ggplot(aes(x = time, y = mean_pain, color = treat, group = treat)) +
   geom_line(linewidth = 0.5) +
   geom_point(size = 3) +
-  geom_errorbar(aes(ymin = mean_pain - se_pain, ymax = mean_pain + se_pain), 
-                width = 0.1) +
+  geom_errorbar(aes(ymin = mean_pain - se_pain, ymax = mean_pain + se_pain),
+    width = 0.1
+  ) +
   labs(
     x = "Time point",
     y = "Throat pain score (mean)",
@@ -721,7 +736,7 @@ joined_exam_data %>%
 ```
 
 
-## Closing remarks
+## Session info
 
 
 ```{r}
